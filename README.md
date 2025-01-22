@@ -44,7 +44,7 @@ El objetivo principal es facilitar la conexión entre personas e instituciones i
 ---
 
 ## 📈 Roadmap
-Consulta nuestro [Product Backlog](https://github.com/odps/voluntapp/docs/_Product Backlog.odt) para conocer las historias de usuario en desarrollo.
+Consulta nuestro [Product Backlog](https://github.com/odps/voluntapp/docs/_ProductBacklog.odt) para conocer las historias de usuario en desarrollo.
 
 ---
 
