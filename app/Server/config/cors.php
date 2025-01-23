@@ -15,13 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'register', 'logout'], // Aqui se definen las rutas permitidas de origen ajeno a Laravel
+    
+    'paths' => ['*'],
     'allowed_methods' => ['*'],
-    'allowed_origins' => env('FRONTEND_URL', 'http://localhost:4200'), //En esta linea de codigo se configura el servidor de Angular.
+    'allowed_origins' => ['*'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => 0,
-    'supports_credentials' => true,
-
-];
+    'supports_credentials' => false,
+    ];
