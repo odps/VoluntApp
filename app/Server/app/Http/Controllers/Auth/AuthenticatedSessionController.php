@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
                 ], 401);
             }
 
-            $token = $user->createToken('auth_token')->plainTextToken;
+            $token = $user->createToken('auth_token', ['*'], now()->addHours(12))->plainTextToken;
 
             return response()->json([
                 'message' => 'Login successful',
@@ -42,16 +42,16 @@ class AuthenticatedSessionController extends Controller
         }
     }
 
-public function destroy(Request $request): JsonResponse
-{
-    try {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
-    } catch (\Exception $e) {
-        return response()->json([
-            'message' => 'Logout failed',
-            'error' => $e->getMessage()
-        ], 500);
+    public function destroy(Request $request): JsonResponse
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return response()->json(['message' => 'Logged out successfully']);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Logout failed',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
-}
 }
