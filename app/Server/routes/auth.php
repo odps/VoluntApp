@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 
-//Esto pertenece a la api de breeze, son las rutas para registrar, login, y olvidar contrasena
+// Fichero en desuso, las rutas contenidas aqui requieren de un token previamente emitido al cliente para la validacion de CSRF, por simplicidad se mueven a API
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register');

@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //Requerido por breeze para la creacion de sesiones de usuario.
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');

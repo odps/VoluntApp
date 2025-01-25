@@ -14,13 +14,13 @@ return [
     | and production domains which access your API via a frontend SPA.
     |
     */
-    
-    //Esta funcion define cuales son los dominios que pueden recibir las cookies para autenticar usuarios.
-    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', '*')),
-    'middleware' => [
-        'verify_csrf_token' => Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
-        'encrypt_cookies' => Illuminate\Cookie\Middleware\EncryptCookies::class,
-    ],
+
+    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
+        '%s%s%s',
+        'localhost,localhost:3000,127.0.0.1,127.0.0.1:3000,127.0.0.1:8000,::1',
+        Sanctum::currentApplicationUrlWithPort(),
+        env('FRONTEND_URL') ? ','.parse_url(env('FRONTEND_URL'), PHP_URL_HOST) : ''
+    ))),
 
     /*
     |--------------------------------------------------------------------------
