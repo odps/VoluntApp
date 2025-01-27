@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\User\PostController;
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -43,3 +44,16 @@ Route::post('/email/verification-notification', [EmailVerificationNotificationCo
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth:sanctum')
     ->name('logout');
+
+// Rutas protegidas (Requiere login para poder acceder a ellas)
+Route::middleware('auth:sanctum')->group(function () {
+    // Rutas que controlan los posts en la red social
+    Route::post('/posts', [PostController::class, 'store']); // Ruta para almacenar un post
+    Route::delete('/posts/{post}', [PostController::class, 'destroy']); // Ruta para borrar un post
+    Route::put('/posts/{post}', [PostController::class, 'update']); // Ruta para editar un post
+    Route::get('/posts/{post}', [PostController::class, 'show']); // Obtener informacion de UN post
+    Route::get('/posts', [PostController::class, 'index']); // Obtener todos los posts en la BB.DD
+
+
+
+});
