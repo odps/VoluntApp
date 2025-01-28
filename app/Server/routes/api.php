@@ -9,6 +9,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\PostLikesController;
+use App\Http\Controllers\User\CommentController;
+use App\Http\Controllers\User\GroupController;
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -21,7 +24,7 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register');
 
-    Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest')
     ->name('login');
 
@@ -54,6 +57,28 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/posts/{post}', [PostController::class, 'show']); // Obtener informacion de UN post
     Route::get('/posts', [PostController::class, 'index']); // Obtener todos los posts en la BB.DD
 
+    //Likes de los posts
+    Route::post(
+        '/posts/{post}/likePost',
+        [PostLikesController::class, 'likePost']
+    );
 
+    //Comentarios de los posts
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
 
+    //Rutas de los grupos
+    Route::get('/groups', [GroupController::class, 'index']); // Lista todos los grupos del usuario
+    Route::post('/groups', [GroupController::class, 'store']); // Crea un nuevo grupo
+    Route::get('/groups/{group}', [
+        GroupController::class,
+        'show'
+    ]); // Mostrar detalles del grupo
+    Route::put('/groups/{group}', [
+        GroupController::class,
+        'update'
+    ]); // Modificar datos del grupo
+    Route::delete('/groups/{group}', [GroupController::class, 'destroy']); // Borrar el grupo
+    Route::post('/groups/{group}/join', [GroupController::class, 'join']); //Unirse a un grupo
+    Route::post('/groups/{group}/leave', [GroupController::class, 'leave']); // Abandonar un grupo
 });
