@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('user_id_1')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user_id_2')->references('id')->on('users')->onDelete('cascade');
 
-            // Ensure a user pair can only exist once
+            // Se verifica que una pareja de usuarios sea unica
             $table->unique(['user_id_1', 'user_id_2']);
         });
     }

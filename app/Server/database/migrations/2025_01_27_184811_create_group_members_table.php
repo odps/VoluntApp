@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('group_id'); // FK to groups.id
             $table->unsignedBigInteger('user_id'); // FK to users.id
             $table->enum('role', ['member', 'moderator', 'admin'])->default('member');
-            $table->timestamp('joined_at')->useCurrent();
+            $table->timestamps();
 
             // Composite Primary Key
             $table->primary(['group_id', 'user_id']);

@@ -12,6 +12,7 @@ use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\PostLikesController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\GroupController;
+use App\Http\Controllers\User\FriendRequestController;
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -56,16 +57,24 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/posts/{post}', [PostController::class, 'update']); // Ruta para editar un post
     Route::get('/posts/{post}', [PostController::class, 'show']); // Obtener informacion de UN post
     Route::get('/posts', [PostController::class, 'index']); // Obtener todos los posts en la BB.DD
-
     //Likes de los posts
     Route::post(
         '/posts/{post}/likePost',
         [PostLikesController::class, 'likePost']
     );
-
     //Comentarios de los posts
     Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
+
+    
+    //Rutas de amigos
+    Route::post('friends/request/{toUserId}', [FriendRequestController::class, 'sendRequest']); // Envia peticion de amistad
+    Route::get('friend-requests-pending', [FriendRequestController::class, 'getPendingRequests']); // Busca peticiones de amistad pendientes.
+    Route::post('friends/request/{friendRequest}/respond', [FriendRequestController::class, 'respondToRequest']); // Responde a la peticion
+    Route::delete('friends/remove/{friendId}', [FriendRequestController::class, 'removeFriend']); // Borra a un amigo
+    Route::get('friends/{userId}', [FriendRequestController::class, 'getFriends']); // Busca amigos de un usuario
+
+
 
     //Rutas de los grupos
     Route::get('/groups', [GroupController::class, 'index']); // Lista todos los grupos del usuario

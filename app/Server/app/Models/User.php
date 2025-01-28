@@ -46,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Devuelve las amistades del usuario
+    public function friendships()
+    {
+        return $this->hasMany(Friendship::class, 'user_id_1')->orWhere('user_id_2', $this->id);
+    }
 }
