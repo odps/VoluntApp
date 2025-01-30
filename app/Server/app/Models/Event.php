@@ -22,8 +22,7 @@ class Event extends Model
     }
     public function participants(){
         return $this->belongsToMany(User::class, 'event_participants', 'event_id', 'user_id')
-        ->withPivot('joined_at')
-        ->withTimestamps();  
+        ->withPivot('joined_at');
     }
 
     public function getTitle(){

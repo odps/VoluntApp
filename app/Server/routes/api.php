@@ -79,8 +79,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     //Rutas de los grupos
-    Route::get('/groups', [GroupController::class, 'index']); // Lista todos los grupos del usuario
     Route::post('/groups', [GroupController::class, 'store']); // Crea un nuevo grupo
+    Route::get('/groups', [GroupController::class, 'index']); // Lista todos los grupos del usuario
     Route::get('/groups/{group}', [
         GroupController::class,
         'show'
@@ -96,5 +96,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Rutas de los eventos
     Route::post('/events', [EventsController::class, 'store']); // Creacion de un evento
-    
+    Route::get('/events', [EventsController::class, 'index']); // Muestra todos los eventos del usuario
+    Route::get('events/{id}', [EventsController::class, 'show']); //Muestra la info de un evento en especifico
+    Route::put('events/edit/{id}',[EventsController::class,'update']); //Edita los parametros del evento.
+    Route::delete('/events/{id}', [EventsController::class, 'destroy']); // Borrar el grupo
+    Route::post('events/join',[EventsController::class,'join']); //Unirse a un evento
+    Route::post('events/leave',[EventsController::class,'leave']); //Abandonar a un evento
+
 });
