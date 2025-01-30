@@ -6,7 +6,6 @@ use App\Models\FriendRequest;
 use App\Models\Friendship;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class FriendRequestController extends Controller
 {
@@ -106,21 +105,15 @@ public function getPendingRequests(Request $request): JsonResponse
 }
 
 //Funcion que devuelve todos los amigos de un usuario especificado
-public function getFriends(User $user) : JsonResponse
+public function getFriends($id) : JsonResponse
 {
-    $friends = Friendship::where(function($query) use ($user) {
-        $query->where('user_id_1', $user->id)
-              ->orWhere('user_id_2', $user->id);
-    })->with(['friend' => function($query) use ($user) {
-        $query->where('id', '!=', $user->id);
-    }])->get();
+    $friends = (new Friendship())->getFriends($id);
 
-    if($friends->isEmpty()){
-        return response()->json([
-            'message'=>'No friends found',
-        ], 404);
+    if ($friends->isEmpty()) {
+        return response()->json(['message' => 'No friends found'], 404);
     }
+
     return response()->json($friends);
-    }
+}
 
 }

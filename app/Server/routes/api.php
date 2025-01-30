@@ -13,6 +13,7 @@ use App\Http\Controllers\User\PostLikesController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\GroupController;
 use App\Http\Controllers\User\FriendRequestController;
+use App\Http\Controllers\User\EventsController;
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -51,12 +52,13 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 
 // Rutas protegidas (Requiere login para poder acceder a ellas)
 Route::middleware('auth:sanctum')->group(function () {
+
     // Rutas que controlan los posts en la red social
     Route::post('/posts', [PostController::class, 'store']); // Ruta para almacenar un post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']); // Ruta para borrar un post
     Route::put('/posts/{post}', [PostController::class, 'update']); // Ruta para editar un post
     Route::get('/posts/{post}', [PostController::class, 'show']); // Obtener informacion de UN post
-    Route::get('/posts', [PostController::class, 'index']); // Obtener todos los posts en la BB.DD
+    Route::get('/posts', [PostController::class, 'index']); // Obtener TODOS los posts en la BB.DD
     //Likes de los posts
     Route::post(
         '/posts/{post}/likePost',
@@ -90,4 +92,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/groups/{group}', [GroupController::class, 'destroy']); // Borrar el grupo
     Route::post('/groups/{group}/join', [GroupController::class, 'join']); //Unirse a un grupo
     Route::post('/groups/{group}/leave', [GroupController::class, 'leave']); // Abandonar un grupo
+
+
+    //Rutas de los eventos
+    Route::post('/events', [EventsController::class, 'store']); // Creacion de un evento
+    
 });

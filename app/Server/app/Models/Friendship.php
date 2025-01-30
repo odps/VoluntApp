@@ -18,4 +18,13 @@ class Friendship extends Model
     {
         return $this->belongsTo(User::class, 'user_id_2')->orWhere('user_id_1', '!=', $this->user_id_1);
     }
-}
+
+    //Funcion que devuelve los amigos de un usuario especificado por su id.
+    public function getFriends($userId)
+    {
+        return $this->select('*')
+                    ->where('user_id_1', $userId )
+                    ->orWhere('user_id_2', $userId)
+                    ->get();
+    }
+};

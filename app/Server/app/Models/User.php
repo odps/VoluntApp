@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+
+use function Laravel\Prompts\select;
 
 class User extends Authenticatable
 {
@@ -47,9 +50,12 @@ class User extends Authenticatable
         ];
     }
 
-    //Devuelve las amistades del usuario
-    public function friendships()
+    //Define la relacion entre usuarios y eventos.
+    public function events()
     {
-        return $this->hasMany(Friendship::class, 'user_id_1')->orWhere('user_id_2', $this->id);
+        return $this->belongsToMany(Event::class, 'event_participants', 'user_id', 'event_id')
+                    ->withPivot('joined_at')
+                    ->withTimestamps();
     }
+
 }
