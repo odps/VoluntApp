@@ -109,9 +109,10 @@ Route::middleware('auth:sanctum')->group(function () {
     //Ruta de gestion del perfil de usuario
     Route::get('profile', [ProfileController::class, 'index']); // Obtener informacion del perfil del usuario
     Route::get('profile/{id}', [ProfileController::class, 'getProfile']); // Obtener info perfil especifico
+    Route::get('profile/picture/{id?}', [ProfileController::class, 'getProfilePicture']); //Obtiene foto de perfil de usuario
+    Route::post('edit/profile-picture', [ProfileController::class, 'setProfilePicture']); // Modifica la foto de perfil del usuario
     Route::put('edit/profile-email', [ProfileController::class, 'setEmail']); // Modifica el email del usuario
     Route::put('edit/profile-password', [ProfileController::class, 'setPassword']); // Modifica la contraseña del usuario
     Route::put('edit/profile-nickname', [ProfileController::class, 'setNickname']); //Modifica el nickname del usuario
-    Route::put('edit/profile-picture', [ProfileController::class, 'setProfilePicture']); // Modifica la foto de perfil del usuario
     Route::put('edit/profile-interests', [ProfileController::class, 'setInterests']); // Modifica los intereses del usuario
 });
