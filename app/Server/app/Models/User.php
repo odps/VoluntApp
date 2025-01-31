@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\DB;
-
-use function Laravel\Prompts\select;
 
 class User extends Authenticatable
 {
@@ -54,7 +51,11 @@ class User extends Authenticatable
     public function events()
     {
         return $this->belongsToMany(Event::class, 'event_participants', 'user_id', 'event_id')
-                    ->withPivot('joined_at');
+            ->withPivot('joined_at');
     }
-
+    //Define la relacion con el perfil del usuario
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
+    }
 }

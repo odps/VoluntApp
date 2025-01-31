@@ -14,6 +14,8 @@ use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\GroupController;
 use App\Http\Controllers\User\FriendRequestController;
 use App\Http\Controllers\User\EventsController;
+use App\Http\Controllers\User\ProfileController;
+use App\Models\Profile;
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -68,7 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
 
-    
+
     //Rutas de amigos
     Route::post('friends/request/{toUserId}', [FriendRequestController::class, 'sendRequest']); // Envia peticion de amistad
     Route::get('friend-requests-pending', [FriendRequestController::class, 'getPendingRequests']); // Busca peticiones de amistad pendientes.
@@ -98,9 +100,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/events', [EventsController::class, 'store']); // Creacion de un evento
     Route::get('/events', [EventsController::class, 'index']); // Muestra todos los eventos del usuario
     Route::get('events/{id}', [EventsController::class, 'show']); //Muestra la info de un evento en especifico
-    Route::put('events/edit/{id}',[EventsController::class,'update']); //Edita los parametros del evento.
+    Route::put('events/edit/{id}', [EventsController::class, 'update']); //Edita los parametros del evento.
     Route::delete('/events/{id}', [EventsController::class, 'destroy']); // Borrar el grupo
-    Route::post('events/join',[EventsController::class,'join']); //Unirse a un evento
-    Route::post('events/leave',[EventsController::class,'leave']); //Abandonar a un evento
+    Route::post('events/join', [EventsController::class, 'join']); //Unirse a un evento
+    Route::post('events/leave', [EventsController::class, 'leave']); //Abandonar a un evento
 
+
+    //Ruta de gestion del perfil de usuario
+    Route::get('profile', [ProfileController::class, 'index']); // Obtener informacion del perfil del usuario
+    Route::get('profile/{id}', [ProfileController::class, 'getProfile']); // Obtener info perfil especifico
+    Route::put('edit/profile-email', [ProfileController::class, 'setEmail']); // Modifica el email del usuario
+    Route::put('edit/profile-password', [ProfileController::class, 'setPassword']); // Modifica la contraseña del usuario
+    Route::put('edit/profile-nickname', [ProfileController::class, 'setNickname']); //Modifica el nickname del usuario
+    Route::put('edit/profile-picture', [ProfileController::class, 'setProfilePicture']); // Modifica la foto de perfil del usuario
+    Route::put('edit/profile-interests', [ProfileController::class, 'setInterests']); // Modifica los intereses del usuario
 });
