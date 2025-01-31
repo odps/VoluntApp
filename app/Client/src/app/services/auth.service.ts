@@ -23,4 +23,19 @@ export class AuthService {
     const loginData = { "email" : email, "password" : password };
     return this.http.post<any>(`${environment.apiUrl}/login`, loginData, {headers : environment.headers} );
   }
+
+  register(name: string, email: string, password: string, password2: string): Observable<any> {
+    const registerData = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "password_confirmation": password2
+    };
+    return this.http.post<any>(`${environment.apiUrl}/register`, registerData, { headers: environment.headers });
+  }
+
+  forgotPassword(email:string):Observable<any>{
+    const dataForgotPassword = {"email":email};
+    return this.http.post<any>(`${environment.apiUrl}/forgot-password`, dataForgotPassword, {headers:environment.headers});
+  }
 }

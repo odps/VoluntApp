@@ -13,6 +13,7 @@ export const routes: Routes = [
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { RegisterComponent } from './components/register/register.component';
 
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
@@ -21,5 +22,7 @@ export const routes: Routes = [
   // Ruta para el componente de login
   { path: 'login', component: LoginComponent },
   //Ruta para el componente de main
-  { path: 'main', component: MainComponent }
+  { path: 'main', component: MainComponent },
+  //Ruta para el componente de register
+  {path: 'register', component: RegisterComponent}
 ];

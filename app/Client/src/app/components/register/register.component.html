@@ -1,0 +1,19 @@
+<form method="POST" (ngSubmit)="onSubmit($event)">
+
+    <label>Nombre:</label><br>
+    <input type="text" [(ngModel)]="name" name="name" required> <br><br>
+
+    <label>Email:</label><br>
+    <input type="email" [(ngModel)]="email" name="email" required> <br><br>
+    
+    <label>Contraseña:</label><br>
+    <input type="password" [(ngModel)]="password" name="password" required> <br><br>
+
+    <label>Confirma contraseña:</label><br>
+    <input type="password" [(ngModel)]="password2" name="password2" required> <br><br>
+    
+    <a href="">Click aquí si ya tiene una cuenta</a><br><br>
+
+    <button type="submit">Registrarse</button>
+  </form>
+  <p *ngIf="error">{{ error }}</p>
