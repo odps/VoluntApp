@@ -15,7 +15,8 @@ use App\Http\Controllers\User\GroupController;
 use App\Http\Controllers\User\FriendRequestController;
 use App\Http\Controllers\User\EventsController;
 use App\Http\Controllers\User\ProfileController;
-use App\Models\Profile;
+use App\Http\Controllers\User\ReviewController;
+
 
 // Ruta para obtener los datos de la cuenta de usuario
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -115,4 +116,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('edit/profile-password', [ProfileController::class, 'setPassword']); // Modifica la contraseña del usuario
     Route::put('edit/profile-nickname', [ProfileController::class, 'setNickname']); //Modifica el nickname del usuario
     Route::put('edit/profile-interests', [ProfileController::class, 'setInterests']); // Modifica los intereses del usuario
+
+    //Ruta de las reviews entre usuarios
+    Route::post('/review', [ReviewController::class, 'setReview']); //Deja una review sobre el usuario
+    Route::get('/reviews/{userId}', [ReviewController::class, 'getReviews']); //Permite ver la info de las review
 });

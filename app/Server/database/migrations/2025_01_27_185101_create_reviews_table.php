@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('from_user_id');
             $table->unsignedBigInteger('to_user_id');
@@ -26,7 +26,6 @@ return new class extends Migration
             // Unique constraint
             $table->unique(['from_user_id', 'to_user_id']);
         });
-
     }
 
     /**
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('reviews');
     }
 };
