@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rating',
     ];
 
     /**
@@ -45,5 +46,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //Define la relacion entre usuarios y eventos.
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_participants', 'user_id', 'event_id')
+            ->withPivot('joined_at');
+    }
+    //Define la relacion con el perfil del usuario
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
     }
 }
