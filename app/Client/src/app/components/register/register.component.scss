@@ -1,0 +1,272 @@
+// Variables
+$color-dark: #121212;
+$color-light: #fff;
+$color-primary: #ff4d4d;
+$color-secondary: #2e2e2e;
+$font-family: "Montserrat", sans-serif;
+
+// Reset y estilos globales
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  box-sizing: border-box;
+}
+
+// Body
+body {
+  background-color: $color-dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+// Cuadrados de fondo
+.contenedor-fondo,
+.fondo1,
+.fondo2 {
+  display: none;
+}
+
+// Contenedor principal
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+// Título
+.title {
+  font-weight: normal;
+  color: $color-light;
+  margin-bottom: 30px;
+}
+
+// Imágenes
+.img1 {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+.img2,
+.img3 {
+  display: none;
+}
+
+// Caja de formulario
+.caja {
+  background-color: $color-secondary;
+  border: 1.5px solid $color-primary;
+  border-radius: 20px;
+  color: $color-light;
+  padding: 3rem;
+  width: 90%;
+  max-width: 400px;
+  min-width: 280px;
+
+  h2 {
+    font-weight: lighter;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-control {
+    background-color: $color-secondary;
+    border: 1px solid $color-light;
+    border-radius: 15px;
+    color: $color-light;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .iconos {
+    background-color: $color-secondary;
+    border: 1px solid $color-light;
+    border-radius: 15px;
+    color: $color-light;
+  }
+
+  .btn-primary {
+    background-color: $color-primary;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    border: none;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: lighten($color-primary, 10%);
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: $color-primary;
+    display: block;
+    margin-top: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Media Queries
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .contenedor-fondo {
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    z-index: -1;
+    max-height: 500px;
+    max-width: 500px;
+    height: 100%;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+  }
+
+  .fondo1,
+  .fondo2 {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-30deg);
+    position: absolute;
+    display: block;
+    height: 500px;
+    width: 350px;
+  }
+
+  .fondo1 {
+    top: -30%;
+    left: 9%;
+  }
+
+  .fondo2 {
+    top: -20%;
+    left: 5%;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .img1,
+  .img3 {
+    display: none;
+  }
+
+  .img2 {
+    display: block;
+    width: 210px;
+    margin-bottom: 20px;
+  }
+
+  .caja {
+    width: 100%;
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) {
+  .contenedor-fondo {
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    z-index: -1;
+    max-height: 500px;
+    max-width: 500px;
+    height: 100%;
+    width: 100%;
+    left: 10%;
+    top: 50%;
+  }
+
+  .fondo1,
+  .fondo2 {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-30deg);
+    position: absolute;
+    display: block;
+    height: 750px;
+    width: 500px;
+  }
+
+  .fondo1 {
+    top: -30%;
+    left: 9%;
+  }
+
+  .fondo2 {
+    top: -20%;
+    left: 5%;
+  }
+
+  .container-fluid {
+    flex-direction: row;
+    max-width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .title {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+  }
+
+  .img2 {
+    display: none;
+  }
+
+  .img1 {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  .img3 {
+    display: block;
+    margin: 5%;
+    width: 380px;
+  }
+
+  .caja {
+    margin: 5%;
+    position: relative;
+  }
+
+  .caja h2 {
+    padding-bottom: 10px;
+  }
+
+  .form-control,
+  .iconos {
+    margin-bottom: 15px;
+  }
+
+  .link {
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .btn-primary {
+    margin-top: 20px;
+  }
+}

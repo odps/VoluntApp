@@ -1,19 +1,185 @@
-<form method="POST" (ngSubmit)="onSubmit($event)">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoluntApp</title>
+    <!-- Link Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Link SASS -->
+    <link rel="stylesheet" href="register.component.scss" />
+    <!-- Iconos de Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!--Fuente Montserrat-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <label>Nombre:</label><br>
-    <input type="text" [(ngModel)]="name" name="name" required> <br><br>
+  <body>
+    <!-- Retángulos de fondo -->
+    <div class="contenedor-fondo">
+      <div class="fondo1"></div>
+      <div class="fondo2"></div>
+    </div>
 
-    <label>Email:</label><br>
-    <input type="email" [(ngModel)]="email" name="email" required> <br><br>
-    
-    <label>Contraseña:</label><br>
-    <input type="password" [(ngModel)]="password" name="password" required> <br><br>
+    <!-- Contenedor principal -->
+    <div class="container-fluid">
+      <h1 class="title">VoluntApp</h1>
+      <img
+        class="img2"
+        src="/assets/images/logo2.png"
+        alt="Segundo Logo de VoluntApp"
+      />
+      <img
+        class="img3"
+        src="/assets/images/logo3.png"
+        alt="Segundo Logo de VoluntApp con diferente altura"
+      />
+      <img class="img1" src="assets/images/logo1.png" alt="Logo de VoluntApp" />
 
-    <label>Confirma contraseña:</label><br>
-    <input type="password" [(ngModel)]="password2" name="password2" required> <br><br>
-    
-    <a href="">Click aquí si ya tiene una cuenta</a><br><br>
+      <!-- Contenedor del formulario -->
+      <div class="caja text-center">
+        <h2>Get started</h2>
+        <!-- Formulario -->
+        <form id="formulario" method="POST" (ngSubmit)="onSubmit($event)">
+          <!--Nombre-->
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <div class="input-group">
+              <!--Icono de Correo en Bootstrap-->
+              <span class="iconos input-group-text">
+                <i class="bi bi-person"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Introduce tu nombre"
+                [(ngModel)]="name"
+                name="name"
+                required
+              />
+            </div>
+          </div>
+          <!--Usuario-->
+          <!-- <div class="mb-3">
+            <label for="user" class="form-label">Nombre de Usuario</label>
+            <div class="input-group"> -->
+          <!--Icono de Correo en Bootstrap-->
+          <!-- <span class="iconos input-group-text">
+                <i class="bi bi-person-circle"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control"
+                id="user"
+                placeholder="Introduce tu usuario"
+                required
+              />
+            </div>
+          </div> -->
+          <!--Correo-->
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo</label>
+            <div class="input-group">
+              <!--Icono de Correo en Bootstrap-->
+              <span class="iconos input-group-text">
+                <i class="bi bi-envelope"></i>
+              </span>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Introduce tu correo"
+                [(ngModel)]="email"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+          <!--Contraseña-->
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <!--Icono de Correo en Bootstrap-->
+              <span class="iconos input-group-text">
+                <i class="bi bi-lock"></i>
+              </span>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Introduce tu contraseña"
+                [(ngModel)]="password"
+                name="password"
+                required
+              />
+            </div>
+          </div>
+          <!--Confirmar Contraseña-->
+          <div class="mb-3">
+            <label for="password" class="form-label"
+              >Confirmar Contraseña</label
+            >
+            <div class="input-group">
+              <!--Icono de Correo en Bootstrap-->
+              <span class="iconos input-group-text">
+                <i class="bi bi-lock"></i>
+              </span>
+              <input
+                type="password"
+                class="form-control"
+                id="password2"
+                placeholder="Introduce tu contraseña"
+                [(ngModel)]="password2"
+                name="password2"
+                required
+              />
+            </div>
+          </div>
 
-    <button type="submit">Registrarse</button>
-  </form>
-  <p *ngIf="error">{{ error }}</p>
+          <button type="submit" class="btn btn-primary w-100">
+            Registrarse
+          </button>
+        </form>
+
+        <!-- <p *ngIf="error">{{ error }}</p> -->
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("formulario")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const user = document.getElementById("user").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const password2 = document.getElementById("password2").value;
+
+          // Validaciones al conectarse a un backend
+
+          if (password === password2) {
+            console.log(
+              `Nombre: ${name}, Usuario: ${user}, Correo: ${email}, Contraseña: ${password}`
+            );
+            alert("Te has registrado exitosamente");
+          } else {
+            console.log(
+              `Nombre: ${name}, Usuario: ${user}, Correo: ${email}, Contraseña: ${password}, Confirmación: ${password2}`
+            );
+            alert("Las contraseñas deben ser iguales");
+          }
+        });
+    </script>
+  </body>
+</html>

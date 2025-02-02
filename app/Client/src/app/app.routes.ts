@@ -14,6 +14,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
@@ -24,5 +25,7 @@ export const routes: Routes = [
   //Ruta para el componente de main
   { path: 'main', component: MainComponent },
   //Ruta para el componente de register
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  //Ruta para el componente de forgot-password
+  {path: 'forgot-password', component: ForgotPasswordComponent}
 ];
