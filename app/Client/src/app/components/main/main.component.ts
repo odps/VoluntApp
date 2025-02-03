@@ -4,9 +4,9 @@ import { Post } from '../../interfaces/post';
 @Component({
   selector: 'app-main',
   standalone: false,
-  
+
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrl: './main.component.scss',
 })
 export class MainComponent {
 

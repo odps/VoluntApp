@@ -1,12 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
+import { environment } from '../../../environment';
+
+interface ProfileResponse {
+  user: User;
+}
 
 @Component({
   selector: 'app-profile',
   standalone: false,
-  
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  user: User | null = null;
+  profilePictureUrl: string = '';
 
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile() {
+    this.userService.getUserProfile().subscribe({
+      next: (response: ProfileResponse) => {
+        this.user = response.user;
+        // Since profile_picture_route is in the response, we can set it directly
+        this.profilePictureUrl = `${environment.baseUrl}/${response.user.profile.profile_picture_route}`;
+      },
+      error: (error) => console.error('Error loading profile:', error),
+    });
+  }
 }

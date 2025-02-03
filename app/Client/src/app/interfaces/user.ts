@@ -1,9 +1,11 @@
-import { Post } from "./post";
-import { Profile } from "./profile";
+import { Profile } from './profile';
 
 export interface User {
-    id: number;
-    name: string;
-    email: string;
-    profile: Profile;
+  id: number;
+  name: string;
+  email: string;
+  email_verified_at: string | null;
+  created_at: string;
+  updated_at: string;
+  profile: Profile;
 }

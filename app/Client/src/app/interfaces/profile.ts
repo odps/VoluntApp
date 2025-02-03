@@ -1,10 +1,10 @@
 export interface Profile {
-    id: number;
-    userId: number; // This references User['id']
-    nickname: string;
-    profilePictureRoute?: string; // Nullable
-    interests?: string; // Nullable
-    rating?: number; // Nullable, with precision 4 and scale 2
-    createdAt: Date;
-    updatedAt: Date;
+  id: number;
+  user_id: number;
+  nickname: string;
+  profile_picture_route: string;
+  interests: string | null;
+  rating: number | null;
+  created_at: string;
+  updated_at: string;
 }

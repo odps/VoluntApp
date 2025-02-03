@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<header id="profile_header">
+  <div id="back">
+    <img src="assets/icons/back-arrow.svg" alt="Go back" />
+  </div>
+  <div id="profile_info" *ngIf="user">
+    <img [src]="profilePictureUrl" [alt]="user.profile.nickname" />
+    <h2 id="nickname">{{ user.profile.nickname }}</h2>
+    <p id="interests" *ngIf="user.profile.interests">
+      {{ user.profile.interests }}
+    </p>
+    <p id="rating" *ngIf="user.profile.rating">
+      Rating: {{ user.profile.rating }}
+    </p>
+    <div id="settings">
+      <img src="assets/icons/settings.svg" alt="settings" />
+    </div>
+  </div>
+</header>
