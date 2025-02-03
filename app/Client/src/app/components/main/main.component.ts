@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../interfaces/post';
 @Component({
   selector: 'app-main',
   standalone: false,
@@ -6,7 +8,44 @@ import { Component } from '@angular/core';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {}
+export class MainComponent {
+
+  posts: Post[] = [];
+
+  constructor(private postService:PostService){ }
+
+  ngOnInit(): void {
+    this.postService.getPosts().subscribe((posts: Post[]) => {
+      console.log('Posts received:', posts); // Debugging line
+      this.posts = posts;
+    },error => {
+      console.error('Error fetching posts:', error); // Debugging line
+    }
+    );
+  }
+
+  botonLike(post: Post): void{
+    let liked =true;
+    if(liked){
+      post.likes--;
+      liked = false;
+    }else{
+      post.likes++;
+      liked = true;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 /*import { Component } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';

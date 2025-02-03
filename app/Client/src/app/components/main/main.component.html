@@ -1,25 +1,31 @@
-<!--<app-header></app-header>
-
-    <form (ngSubmit)="createPost(postForm.value)" #postForm="ngForm">
-        <input type="text" name="content" ngModel placeholder="Contenido" required>
-        <button type="submit">Create Post</button>
-    </form>
-
-
-    <div *ngFor="let post of friendPosts">
-        <div>
-            <p *ngIf="getUser(post.userId)"><strong>{{ getUser(post.userId)?.name }} {{ getUser(post.userId)?.apellido }}</strong></p>
-            <p>{{ post.content }}</p>
-            <small>Creado el: {{ post.createdAt | date }}</small>
-            <div>
-                <span (click)="likePost(post)">&hearts; Like</span>
-                <span (click)="commentPost(post)">Comment</span>
-            </div>
-        </div>
-    </div>
-
-<app-footer></app-footer>-->
-
 <app-header></app-header>
-<app-posts [posts]="[]"></app-posts>
+
+
+
+
+
+<div *ngIf="posts.length > 0"; else noPosts>
+    <div *ngFor="let post of posts">
+        <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
+        <p>{{ post.user.name }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.createdAt | date: 'dd/MM/yyyy' }}</p>
+        <button (click)="botonLike(post)"><span>&hearts;</span><span>{{ post.likes }}</span></button>
+        <!--<button (click)="mostrarComments(post)"><span>&#128172;</span></button>-->
+    </div>
+</div>
+
+<ng-template #noPosts>
+    <p>No hay posts</p>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
 <app-footer></app-footer>
