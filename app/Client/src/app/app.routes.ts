@@ -1,14 +1,3 @@
-/*import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-
-export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta predeterminada
-    { path: 'login', component: LoginComponent } // Ruta de la página de login
-  ];*/
-
-
-
-
 // Importaciones necesarias de Angular
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -28,13 +17,13 @@ export const routes: Routes = [
   //Ruta para el componente de main
   { path: 'main', component: MainComponent },
   //Ruta para el componente de register
-  {path: 'register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent },
   //Ruta para el componente de forgot-password
-  {path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   //Ruta para el componente de amigos
-  {path: 'friends', component: FriendsComponent},
+  { path: 'friends', component: FriendsComponent },
   //Ruta para el componente de amigos
-  {path: 'posts', component: PostsComponent},
+  { path: 'posts', component: PostsComponent },
   //Ruta para el componente de amigos
-  {path: 'profile', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent },
 ];

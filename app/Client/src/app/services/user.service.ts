@@ -1,36 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environment';
 import { User } from '../interfaces/user';
-
+import { Profile } from '../interfaces/profile';
+import { environment } from '../../environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  private currentUser: User | null = null;
-
   constructor(private http: HttpClient) {}
 
-  
-  /*getUserFromToken(token: string): Observable<User> {
-    const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<User>(`${environment.apiUrl}/user`, { headers });
-  }*/
+  getUserProfile(): Observable<{ user: User; profile: Profile }> {
+    return this.http.get<{ user: User; profile: Profile }>(
+      `${environment.apiUrl}/profile`,
+      { headers: environment.headers }
+    );
+  }
 
-      // Método para obtener el usuario autenticado
-  /*getCurrentUser(): User | null {
-    return this.currentUser;
-  }*/
-
-  // Método para establecer el usuario autenticado (ejemplo)
-  /*setCurrentUser(user: User): void {
-    this.currentUser = user;
-  }*/
-
-  /*getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(`${environment.apiUrl}/users/${userId}`);
-  }*/
+  getProfilePictureUrl(userId: number): Observable<{ url: string }> {
+    return this.http.get<{ url: string }>(
+      `${environment.apiUrl}/profile/picture/${userId}`,
+      { headers: environment.headers }
+    );
+  }
 }
