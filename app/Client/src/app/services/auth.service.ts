@@ -1,36 +1,46 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-// Definimos una interfaz para tipar los datos del usuario
-export interface User {
-  id: number;
-  nombre: string;
-  apellido: string;
-  email: string;
-  email_repeat: string;
-  password: string;
-}
+/*import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users'; // URL de JSON Server
+
+  constructor() { }
+}*/
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environment';
+import { User } from '../interfaces/user';
+import { UserService } from './user.service';
+import { jwtDecode } from "jwt-decode";
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AuthService {
+  
 
   constructor(private http: HttpClient) {}
+  
+  login(email: string, password: string): Observable<any> {
+    const loginData = { "email" : email, "password" : password };
+    return this.http.post<any>(`${environment.apiUrl}/login`, loginData, {headers : environment.headers} );
+  }
 
-  /**
-   * Método para iniciar sesión.
-   * @param nombre - Nombre del usuario
-   * @param apellido - Apellido del usuario
-   * @param email - Email del usuario
-   * @param email_repeat - Email repetido del usuario
-   * @param password - Contraseña del usuario
-   * @returns Un Observable con un array de usuarios que coinciden con los datos ingresados.
-   */
-  login(email: string, password: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}?email=${email}&password=${password}`);
-    // Ahora TypeScript sabe que esto devuelve un array de objetos de tipo User.
+  register(name: string, email: string, password: string, password2: string): Observable<any> {
+    const registerData = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "password_confirmation": password2
+    };
+    return this.http.post<any>(`${environment.apiUrl}/register`, registerData, { headers: environment.headers });
+  }
+
+  forgotPassword(email:string):Observable<any>{
+    const dataForgotPassword = {"email":email};
+    return this.http.post<any>(`${environment.apiUrl}/forgot-password`, dataForgotPassword, {headers:environment.headers});
   }
 }

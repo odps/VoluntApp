@@ -1,0 +1,13 @@
+<h2>Posts</h2>
+
+<div *ngIf="posts.length > 0">
+
+    <div *ngFor="let post of posts">
+        <p>{{ post.userId }}</p>
+        <p>{{ post.content }}</p>
+        <small>Created at: {{ post.createdAt | date }}</small>
+    </div>
+</div>
+<ng-template #noPosts>
+    <div>No hay posts</div>
+</ng-template>

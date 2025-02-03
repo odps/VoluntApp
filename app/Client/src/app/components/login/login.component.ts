@@ -1,36 +1,57 @@
+/*import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-login',
+  standalone: false,
+  
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
+})
+export class LoginComponent {
+
+}*/
+
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
+  standalone: false,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string = '';
+  email = '';
+  password = '';
+  error = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  login() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe(users => {
-        if (users.length > 0) {
-          localStorage.setItem('user', JSON.stringify(users[0])); // Guardar usuario en localStorage
-          this.router.navigate(['/dashboard']); // Redirigir a la página principal
+  onSubmit() {
+    // Llamada al servicio de autenticación
+    this.authService.login(this.email, this.password).subscribe(
+      // Manejo de la respuesta exitosa
+      response => {
+        if (response.token) {
+          console.log('Login exitoso, token:', response.token);
+          // Guardar el token JWT en el almacenamiento local
+          localStorage.setItem('token', response.token);
+          /*this.authService.setCurrentUserFromToken(response.token);*/
+          this.router.navigate(['/main']);
         } else {
-          this.errorMessage = 'Credenciales incorrectas';
+          this.error = 'Credenciales incorrectas';
         }
-      });
-    }
+      },
+      // Manejo de errores
+      error => {
+        this.error = 'Error en el inicio de sesión';
+        console.error('Error:', error);
+      }
+    );
   }
 }
+
+
 

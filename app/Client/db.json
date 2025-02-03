@@ -2,10 +2,8 @@
     "users": [
       {
         "id": 1,
-        "nombre": "Diego",
-        "apellido": "Ramirez",
+        "name": "Diego",
         "email": "usuario@example.com",
-        "email_repeat": "usuario@example.com",
         "password": "123456"
       }
     ]

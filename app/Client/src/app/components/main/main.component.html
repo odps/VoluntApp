@@ -1,0 +1,25 @@
+<!--<app-header></app-header>
+
+    <form (ngSubmit)="createPost(postForm.value)" #postForm="ngForm">
+        <input type="text" name="content" ngModel placeholder="Contenido" required>
+        <button type="submit">Create Post</button>
+    </form>
+
+
+    <div *ngFor="let post of friendPosts">
+        <div>
+            <p *ngIf="getUser(post.userId)"><strong>{{ getUser(post.userId)?.name }} {{ getUser(post.userId)?.apellido }}</strong></p>
+            <p>{{ post.content }}</p>
+            <small>Creado el: {{ post.createdAt | date }}</small>
+            <div>
+                <span (click)="likePost(post)">&hearts; Like</span>
+                <span (click)="commentPost(post)">Comment</span>
+            </div>
+        </div>
+    </div>
+
+<app-footer></app-footer>-->
+
+<app-header></app-header>
+<app-posts [posts]="[]"></app-posts>
+<app-footer></app-footer>
