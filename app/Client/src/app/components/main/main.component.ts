@@ -1,6 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';
+
+@Component({
+  selector: 'app-main',
+  standalone: false,
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.scss',
+})
+export class MainComponent implements OnInit {
+
+  posts: Post[] = [];
+
+  constructor(private postService: PostService){ }
+
+  ngOnInit(): void {
+    this.loadPosts();
+  }
+
+  loadPosts(): void {
+    this.postService.getPosts().subscribe({
+      next: (response) => {
+        console.log('Posts received:', response.posts.data); // Debugging line                              //FUNCIONAAAAA!!!!
+        this.posts = response.posts.data;
+      },
+      error: (error) => console.error('Error loading posts:', error),
+    });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../interfaces/post';
+
+interface PostResponse {
+  current_page: number;
+  data: Post[];
+}
+
 @Component({
   selector: 'app-main',
   standalone: false,
@@ -8,23 +59,44 @@ import { Post } from '../../interfaces/post';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+
 
   posts: Post[] = [];
 
-  constructor(private postService:PostService){ }
+  constructor(private postService: PostService){ }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts: Post[]) => {
-      console.log('Posts received:', posts); // Debugging line
-      this.posts = posts;
-    },error => {
-      console.error('Error fetching posts:', error); // Debugging line
+    this.loadPosts();
+  }
+
+
+  //-------------------------DEVUELVE UNDEFINED-------------------------
+  /*loadPosts(): void {
+      this.postService.getPosts().subscribe({
+        next: (response: PostResponse) => {
+          console.log('Posts received:', response.data); // Debugging line
+          this.posts = response.data;
+        },
+        error: (error) => console.error('Error loading posts:', error),
+      });
     }
+  }*/
+/*
+  loadPosts(): void {
+    this.postService.getPosts().subscribe(
+      (posts: Post[]) => {
+      console.log('Posts received:', posts); // Debugging line
+      
+      this.posts = posts;
+      },
+      error => { 
+        console.error('Error fetching posts:', error); // Debugging line
+      }
     );
   }
 
-  botonLike(post: Post): void{
+  /*botonLike(post: Post): void{
     let liked =true;
     if(liked){
       post.likes--;
@@ -33,8 +105,8 @@ export class MainComponent {
       post.likes++;
       liked = true;
     }
-  }
-}
+  }*/
+  /*}
 
 
 
