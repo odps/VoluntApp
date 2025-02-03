@@ -60,17 +60,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts', [PostController::class, 'store']); // Ruta para almacenar un post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']); // Ruta para borrar un post
     Route::put('/posts/{post}', [PostController::class, 'update']); // Ruta para editar un post
-    Route::get('/posts/{post}', [PostController::class, 'show']); // Obtener informacion de UN post
-    Route::get('/posts', [PostController::class, 'index']); // Obtener TODOS los posts en la BB.DD
+    Route::get('/posts/{post}/{id?}', [PostController::class, 'show']); // Obtener informacion de UN post CON comentarios incluidos
+    Route::get('/posts', [PostController::class, 'index']); // Obtener TODOS los posts en la BB.DD, hechos por todo el mundo
     //Likes de los posts
     Route::post(
         '/posts/{post}/likePost',
         [PostLikesController::class, 'likePost']
     );
+
     //Comentarios de los posts
     Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
-
 
     //Rutas de amigos
     Route::post('friends/request/{toUserId}', [FriendRequestController::class, 'sendRequest']); // Envia peticion de amistad
