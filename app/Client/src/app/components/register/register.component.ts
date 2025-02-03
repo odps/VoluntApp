@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   standalone: false,
   
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   name= "";

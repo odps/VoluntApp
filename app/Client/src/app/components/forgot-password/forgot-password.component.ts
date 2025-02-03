@@ -7,7 +7,7 @@ import{ Router } from '@angular/router'
   standalone: false,
   
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.css'
+  styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
   email="";

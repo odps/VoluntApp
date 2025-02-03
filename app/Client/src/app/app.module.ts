@@ -10,6 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     LoginComponent,
     MainComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    FooterComponent,
+    HeaderComponent,
+    FriendsComponent,
+    PostsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

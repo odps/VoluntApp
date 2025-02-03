@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent {
@@ -37,7 +37,8 @@ export class LoginComponent {
         if (response.token) {
           console.log('Login exitoso, token:', response.token);
           // Guardar el token JWT en el almacenamiento local
-          localStorage.setItem('jwtToken', response.token);
+          localStorage.setItem('token', response.token);
+          /*this.authService.setCurrentUserFromToken(response.token);*/
           this.router.navigate(['/main']);
         } else {
           this.error = 'Credenciales incorrectas';

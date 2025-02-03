@@ -11,14 +11,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
+import { User } from '../interfaces/user';
+import { UserService } from './user.service';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+  
 
   constructor(private http: HttpClient) {}
-
+  
   login(email: string, password: string): Observable<any> {
     const loginData = { "email" : email, "password" : password };
     return this.http.post<any>(`${environment.apiUrl}/login`, loginData, {headers : environment.headers} );
