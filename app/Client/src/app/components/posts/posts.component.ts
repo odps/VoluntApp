@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { Post } from '../../interfaces/post';
+import { PostService } from '../../services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -9,5 +11,25 @@ import { Post } from '../../interfaces/post';
   styleUrl: './posts.component.scss'
 })
 export class PostsComponent {
-  //@Input() posts: Post[] = [];
+  
+  postContent: string = '';
+
+  constructor(private postService: PostService, private router: Router) { }
+
+  onSubmit(){
+    this.postService.createPost(this.postContent).subscribe(
+      response =>{
+          console.log('Post created', response);
+          this.resetForm();
+          this.router.navigate(['/posts']);
+      },
+      error => {
+        console.error('Error creating post:', error)
+      }
+    );  
+  }
+
+  resetForm() {
+    this.postContent = '';
+  }
 }
