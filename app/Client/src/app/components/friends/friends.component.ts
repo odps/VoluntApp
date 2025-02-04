@@ -3,6 +3,7 @@ import { FriendService } from '../../services/friend.service';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { Profile } from '../../interfaces/profile';
+import { environment } from '../../../environment';
 
 interface FriendResponse {
   id: number;
@@ -17,18 +18,24 @@ interface FriendResponse {
   styleUrl: './friends.component.scss'
 })
 export class FriendsComponent implements OnInit {
-
-  constructor(private friendService: FriendService, private userService: UserService) { }
-
   user: User | null = null;
-  friendProfiles: Profile[] | null = null;
   friends: any[]| null = null;
+  friendProfiles: Profile[] =[];
+  baseUrl = environment.baseUrl;
+
+  constructor(
+    private friendService: FriendService, 
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
-    this.loadFriends();
+    setTimeout(this.loadFriends.bind(this), 1000);
+    //this.loadFriends();
   }
 
   loadFriends(){
+    this.friendProfiles = [];
+
     this.userService.getUserProfile().subscribe({
       next: (response: {user: User}) => {
         this.user = response.user;
@@ -36,6 +43,7 @@ export class FriendsComponent implements OnInit {
           next: (response: any) => {
             this.friends = response; // Response es un array de objetos con amigos
             console.log(this.friends);
+            this.getFriendInfo();
           },
           error: (error) => console.error('Error loading friends:', error),
         });
@@ -49,21 +57,26 @@ export class FriendsComponent implements OnInit {
       next: (response :{user: User, profile: Profile})=>{
         this.user = response.user;
 
+        if (this.friends) {
+          for (let friend of this.friends){
+            
+              let idAmigo = (this.user.id == friend.user_id_1)? friend.user_id_2 : friend.user_id_1;
 
-        for (let friend of this.friends){
-          if(friend.user_id_1 == this.user.id){
-            friend.userService.getUserProfile().subscribe({
-              next: (response: {user:User, profile: Profile}) =>{
-                this.friendProfiles?.push(response.profile);
-              }
-            })
-          }
+              friend.userService.getUserProfileSpecific(idAmigo).subscribe({
+
+                next: (response: {user:User, profile: Profile}) =>{
+                  if (this.friendProfiles) {
+                    this.friendProfiles.push(response.profile);
+                  }
+                }
+              })
+            
+        }
+      }else{
+        console.log("No hay amigos");
       }
+    }
+  });
 
-
-      //Fin Function
-      }
-    })
-
-    
+  }//Fin Function
 }

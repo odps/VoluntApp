@@ -1,14 +1,17 @@
 
-<div *ngIf="friends && friends.length > 0; else noFriends">
-    <div *ngFor="let friend of friends">
+<div *ngIf="friends && friendProfiles.length > 0; else noFriends">
+    <div *ngFor="let profile of friendProfiles">
         <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
-        <p>{{ friend.user.name }}</p>
-        <p>{{ friend.content }}</p>
+        <p>{{ profile.nickname }}</p>
+        <img [src]="baseUrl+'/'+profile.profile_picture_route" alt="Imagen Perfil">
+        <p>{{ profile.rating }}</p>
         <!--<button (click)="botonLike(post)"><span>&hearts;</span><span>{{ post.likes }}</span></button>-->
         <!--<button (click)="mostrarComments(post)"><span>&#128172;</span></button>-->
     </div>
 </div>
 
 <ng-template #noFriends>
+    ///////////////////////////
     <p>No hay amigos, sal a la calle</p>
+    ///////////////////////////
 </ng-template>
