@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettingsHeaderComponent } from '../settings-header/settings-header.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -8,4 +8,10 @@ import { SettingsHeaderComponent } from '../settings-header/settings-header.comp
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css',
 })
-export class SettingsComponent {}
+export class SettingsComponent {
+  constructor(private auth: AuthService) {}
+
+  logout() {
+    this.auth.logout();
+  }
+}

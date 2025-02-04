@@ -8,6 +8,10 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
+import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
+import { ChangeEmailComponent } from './components/settings-options/change-email/change-email.component';
+import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
@@ -29,4 +33,9 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   //Ruta para el componente de ajustes de usuario.
   { path: 'settings', component: SettingsComponent },
+  //Rutas de cada opcion contenida dentro de users
+  { path: 'settings/change-bio', component: ChangeBioComponent },
+  { path: 'settings/change-email', component: ChangeEmailComponent },
+  { path: 'settings/change-picture', component: ChangeProfilePictureComponent },
+  { path: 'settings/change-username', component: ChangeUsernameComponent },
 ];

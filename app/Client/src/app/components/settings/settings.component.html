@@ -1,8 +1,17 @@
 <app-settings-header></app-settings-header>
 <ul>
-  <li><a>Cambiar nombre de usuario</a></li>
-  <li><a>Cambiar correo elecronico</a></li>
-  <li><a>Cambiar biografia</a></li>
-  <li><a>Cambiar foto de perfil</a></li>
-  <li><a>Cerrar Sesion</a></li>
+  <li>
+    <a [routerLink]="['/settings/change-username']"
+      >Cambiar nombre de usuario</a
+    >
+  </li>
+  <li>
+    <a [routerLink]="['/settings/change-email']">Cambiar correo elecronico</a>
+  </li>
+  <li>
+    <a [routerLink]="['/settings/change-picture']">Cambiar foto de perfil</a>
+  </li>
+  <li><a [routerLink]="['/settings/change-bio']">Cambiar biografia</a></li>
+  <li><a (click)="logout()">Cerrar Sesion</a></li>
 </ul>
+<app-footer></app-footer>

@@ -1,1 +1,8 @@
-<p>change-bio works!</p>
+<app-settings-header></app-settings-header>
+<h1>Cambiar Bio</h1>
+<form (ngSubmit)="onSubmit()" #bioForm="ngForm">
+  <textarea name="bio" [(ngModel)]="bio" required></textarea>
+  <button type="submit" [disabled]="!bioForm.form.valid">Cambiar</button>
+</form>
+<p>{{ message }}</p>
+<app-footer></app-footer>
