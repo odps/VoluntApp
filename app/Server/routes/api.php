@@ -70,7 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //Comentarios de los posts
     Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
-
+    
 
     //Rutas de amigos
     Route::post('friends/request/{toUserId}', [FriendRequestController::class, 'sendRequest']); // Envia peticion de amistad
