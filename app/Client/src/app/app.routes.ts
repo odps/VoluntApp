@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
@@ -26,4 +27,6 @@ export const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   //Ruta para el componente de amigos
   { path: 'profile', component: ProfileComponent },
+  //Ruta para el componente de ajustes de usuario.
+  { path: 'settings', component: SettingsComponent },
 ];

@@ -12,7 +12,11 @@
       Rating: {{ user.profile.rating }}
     </p>
     <div id="settings">
-      <img src="assets/icons/settings.svg" alt="Settings" />
+      <img
+        src="assets/icons/settings.svg"
+        alt="Settings"
+        (click)="toSettings()"
+      />
     </div>
   </div>
 </header>

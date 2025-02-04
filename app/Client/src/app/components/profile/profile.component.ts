@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { environment } from '../../../environment';
+import { Router } from '@angular/router';
 
 interface ProfileResponse {
   user: User;
@@ -18,7 +19,11 @@ export class ProfileComponent implements OnInit {
   user: User | null = null;
   profilePictureUrl: string = '';
 
-  constructor(private userService: UserService, private location: Location) {}
+  constructor(
+    private userService: UserService,
+    private location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loadUserProfile();
@@ -36,5 +41,9 @@ export class ProfileComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  toSettings() {
+    this.router.navigate(['/settings']);
   }
 }
