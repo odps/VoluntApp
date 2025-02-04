@@ -15,6 +15,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsHeaderComponent } from './components/settings-header/settings-header.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +29,12 @@ import { ProfileComponent } from './components/profile/profile.component';
     HeaderComponent,
     FriendsComponent,
     PostsComponent,
-    ProfileComponent
+    ProfileComponent,
+    SettingsComponent,
+    SettingsHeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
