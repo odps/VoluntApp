@@ -14,11 +14,12 @@ export class MainComponent implements OnInit {
 
   constructor(private postService: PostService){ }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.loadPosts();
   }
 
   loadPosts(): void {
+    
     this.postService.getPosts().subscribe({
       next: (response) => {
         console.log('Posts received:', response.posts.data); // Debugging line                              //FUNCIONAAAAA!!!!

@@ -1,7 +1,9 @@
 <app-header></app-header>
 
 
-
+<aside>
+    <app-friends></app-friends>
+</aside>
 
 
 <div *ngIf="posts && posts.length > 0; else noPosts">
@@ -9,9 +11,6 @@
         <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
         <p>{{ post.user.name }}</p>
         <p>{{ post.content }}</p>
-        <p>{{ post.createdAt | date: 'dd/MM/yyyy' }}</p>
-        <!--<button (click)="botonLike(post)"><span>&hearts;</span><span>{{ post.likes }}</span></button>-->
-        <!--<button (click)="mostrarComments(post)"><span>&#128172;</span></button>-->
     </div>
 </div>
 
@@ -20,12 +19,7 @@
 </ng-template>
 
 
-
-
-
-
-
-
+<button style="background-color: red;">Publicar</button>
 
 
 <app-footer></app-footer>
