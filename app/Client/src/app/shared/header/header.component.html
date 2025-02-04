@@ -1,13 +1,23 @@
 
-<button (click)="cerrarSesion()">Cerrar sesión</button>
+<!--<button (click)="cerrarSesion()">Cerrar sesión</button> -->
 
 <header>
-    <nav>
-        <ul>
-            <li><a [routerLink]="['/main']">VoluntApp</a></li>
-            <li>Barra navegación</li>
-            <li><a [routerLink]="['/profile']"><img [src]="baseUrl+'/'+profilePictureUrl" alt="Foto Perfil"></a></li>
+    <nav class="nav container p-3">
+       
+           <h1 class="titulo"><a [routerLink]="['/main']">VoluntApp</a></h1>
+                <!-- BUSCADOR -->
+                <div class="buscador-contenedor">
+                  <input
+                    type="text"
+                    class="buscador form-control"
+                    placeholder="Buscar..."
+                  />
+                  <i class="buscador-icon bi bi-search"></i>
+                </div>
+           
+
+            <a [routerLink]="['/profile']"><img [src]="baseUrl+'/'+profilePictureUrl" alt="Foto Perfil" class="foto-perfil"></a>
     
-        </ul>
+       
     </nav>
 </header>

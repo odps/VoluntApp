@@ -1,0 +1,99 @@
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
+
+// Mixins
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin background-clip-text($color1, $color2) {
+    background: linear-gradient(to right, $color1, $color2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.buscador-icon {
+    position: absolute;
+    color: $white;
+    top: 4%;
+    right: 8%;
+    font-size: $font-size-x-large;
+}
+
+h1 {
+    margin: 20px;
+    @include background-clip-text($primary-color, $white);
+}
+
+.buscador {
+    display: none;
+}
+
+// BARRA NAV
+.nav {
+    @include center-flex;
+    justify-content: space-between; // Ensure space between items
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    flex-direction: row; // Ensure horizontal layout by default
+}
+
+.nav-menu {
+    display: flex; // Make .nav-menu horizontal
+    align-items: center; // Align items vertically in the center
+    gap: 20px; // Add spacing between items
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    h1 {
+        text-align: left;
+    }
+
+    .buscador {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .buscador-contenedor {
+        background-color: $primary-color;
+        border-radius: 30px;
+        z-index: 1;
+        width: 300px;
+    }
+
+    .buscador {
+        background-color: $primary-color;
+        border-radius: 30px;
+        display: flex;
+        border: none;
+    }
+
+    .buscador::placeholder {
+        color: $white;
+    }
+
+    .buscador-icon {
+        display: none;
+    }
+
+    .foto-perfil {
+        display: flex;
+    }
+}
