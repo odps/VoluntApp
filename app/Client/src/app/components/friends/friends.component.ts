@@ -22,7 +22,7 @@ export class FriendsComponent implements OnInit {
   friends: any[]| null = null;
   friendProfiles: Profile[] =[];
   baseUrl = environment.baseUrl;
-
+  
   constructor(
     private friendService: FriendService, 
     private userService: UserService
@@ -32,6 +32,15 @@ export class FriendsComponent implements OnInit {
     setTimeout(this.loadFriends.bind(this), 1000);
     //this.loadFriends();
   }
+
+
+  /*getFriendProfile(idFriend: number){
+    this.userService.getUserProfileSpecific(idFriend).subscribe({
+      next: (response: {user: User, profile: Profile}) => {
+        ret
+    })
+  }*/
+
 
   loadFriends(){
     this.friendProfiles = [];
@@ -62,8 +71,7 @@ export class FriendsComponent implements OnInit {
             
               let idAmigo = (this.user.id == friend.user_id_1)? friend.user_id_2 : friend.user_id_1;
 
-              friend.userService.getUserProfileSpecific(idAmigo).subscribe({
-
+              this.userService.getUserProfileSpecific(idAmigo).subscribe({
                 next: (response: {user:User, profile: Profile}) =>{
                   if (this.friendProfiles) {
                     this.friendProfiles.push(response.profile);
