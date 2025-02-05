@@ -1,4 +1,3 @@
-
 <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
     <ul class="amigos">
     <li><h2>Amigos</h2></li> 
@@ -6,7 +5,8 @@
         <li class="amigo">
         <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
 
-            <img [src]="['/profile', profile.id]" alt="Imagen Perfil" class="foto">
+            <img [src]="baseUrl + '/' + profile.profile_picture_route"
+            alt="Imagen Perfil" class="foto">
             <p class="nombre">{{ profile.nickname }}</p>
         </a>
     </li>
@@ -15,7 +15,6 @@
 </div>
 
 <ng-template #noFriends>
-    ///////////////////////////
-    <p>No hay amigos, sal a la calle</p>
-    ///////////////////////////
+  <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
 </ng-template>
+

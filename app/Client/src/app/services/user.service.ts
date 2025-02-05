@@ -18,7 +18,9 @@ export class UserService {
     );
   }
 
-  getUserProfileSpecific(userId: number): Observable<{ user: User; profile: Profile }> {
+  getUserProfileSpecific(
+    userId: number
+  ): Observable<{ user: User; profile: Profile }> {
     return this.http.get<{ user: User; profile: Profile }>(
       `${environment.apiUrl}/profile/${userId}`,
       { headers: environment.headers }

@@ -21,6 +21,10 @@ import { ChangeEmailComponent } from './components/settings-options/change-email
 import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
+import { EventsComponent } from './components/events/events.component';
+import { LogrosComponent } from './components/logros/logros.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ChangeProfilePictureComponent } from './components/settings-options/cha
     ChangeEmailComponent,
     ChangeBioComponent,
     ChangeProfilePictureComponent,
+    EventsComponent,
+    LogrosComponent,
+    NavbarComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,
