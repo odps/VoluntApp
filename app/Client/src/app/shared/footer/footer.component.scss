@@ -1,27 +1,5 @@
-// VARIABLES
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
-
-// MIXINS
-@mixin center-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin background-clip-text($color1, $color2) {
-  background: linear-gradient(to right, $color1, $color2);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
 
 // GLOBALES
 * {
@@ -53,6 +31,14 @@ footer {
 .redes {
   font-size: $font-size-x-large;
   margin-bottom: 10px;
+}
+
+.redes a {
+  color: $white;
+}
+
+.redes a:hover {
+  color: $red;
 }
 
 .redes i {

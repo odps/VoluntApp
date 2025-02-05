@@ -1,10 +1,11 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
 <!-- CONTENEDOR PRINCIPAL -->
 <div class="container-fluid">
   <!-- LISTA DE AMIGOS -->
-  <ul
-    class="amigos"
-    *ngIf="friends && friendProfiles.length > 0; else noFriends"
-  >
+  <ul class="amigos">
+    <!-- *ngIf="friends && friendProfiles.length > 0; else noFriends" -->
     <li>
       <h2>Amigos</h2>
     </li>
@@ -21,15 +22,27 @@
       <p class="nombre">{{ profile.nickname }}</p>
     </li>
     <li class="amigo">
-      <img class="foto" src="../Imagenes/avatar.png" alt="foto de usuario" />
+      <img
+        class="foto"
+        src="../../../assets/images/avatar.png"
+        alt="foto de usuario"
+      />
       <p class="nombre">Pepe Antonio R</p>
     </li>
     <li class="amigo">
-      <img class="foto" src="../Imagenes/avatar.png" alt="foto de usuario" />
+      <img
+        class="foto"
+        src="../../../assets/images/avatar.png"
+        alt="foto de usuario"
+      />
       <p class="nombre">Juan Márquez</p>
     </li>
     <li class="amigo">
-      <img class="foto" src="../Imagenes/avatar.png" alt="foto de usuario" />
+      <img
+        class="foto"
+        src="../../../assets/images/avatar.png"
+        alt="foto de usuario"
+      />
       <p class="nombre">Rubén García C</p>
     </li>
   </ul>
@@ -40,7 +53,11 @@
     <!-- GRUPO 1... -->
     <li class="grupo">
       <!-- FOTO DEL GRUPO -->
-      <img class="foto" src="../Imagenes/avatar.png" alt="foto de usuario" />
+      <img
+        class="foto"
+        src="../../../assets/images/avatar.png"
+        alt="foto de usuario"
+      />
       <!-- NOMBRE GRUPO -->
       <p class="nombre">Unidos por los animales</p>
       <span
@@ -50,41 +67,63 @@
       <!-- MIEMBROS DEL GRUPO -->
       <ul class="grupos-miembros">
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
       </ul>
     </li>
     <li class="grupo">
-      <img class="foto" src="../Imagenes/avatar.png" alt="foto de usuario" />
+      <img
+        class="foto"
+        src="../../../assets/images/avatar.png"
+        alt="foto de usuario"
+      />
       <p class="nombre">Siempre verdes</p>
       <span></span>
       <ul class="grupos-miembros">
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
         <li class="grupo-miembro">
-          <img src="../Imagenes/avatar.png" alt="miembro del grupo" />
+          <img
+            src="../../../assets/images/avatar.png"
+            alt="miembro del grupo"
+          />
         </li>
       </ul>
     </li>
   </ul>
 
-  <ul>
+  <!-- <ul class="amigos">
     <ng-template #noFriends>
       ///////////////////////////
       <p>No hay amigos, sal a la calle</p>
       ///////////////////////////
     </ng-template>
-  </ul>
+  </ul> -->
 </div>
 
 <!-- <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
@@ -102,3 +141,5 @@
   <p>No hay amigos, sal a la calle</p>
   ///////////////////////////
 </ng-template> -->
+
+<app-footer></app-footer>

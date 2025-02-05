@@ -16,7 +16,6 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,15 +28,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FriendsComponent,
     PostsComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -26,5 +26,4 @@ export const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   //Ruta para el componente de amigos
   { path: 'profile', component: ProfileComponent },
-  
 ];

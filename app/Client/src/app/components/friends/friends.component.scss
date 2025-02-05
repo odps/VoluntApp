@@ -14,6 +14,7 @@
   background-color: $background-color;
   margin: 0;
   padding: 0;
+  color: $white;
 }
 
 // SECCIÓN PRINCIPAL
@@ -29,6 +30,11 @@
 
 // DESKTOP
 @media (min-width: 1024px) {
+  app-header,
+  app-navbar {
+    display: none;
+  }
+
   .sidebar {
     background-color: $grey;
     flex-direction: column;
