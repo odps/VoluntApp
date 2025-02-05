@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GroupResponse, Group } from '../interfaces/group';
+import { GroupResponse, GroupInfoResponse } from '../interfaces/group';
 import { environment } from '../../environment';
 import { Observable } from 'rxjs';
 
@@ -16,8 +16,8 @@ export class GroupService {
     });
   }
 
-  getGroup(groupId: number): Observable<GroupResponse> {
-    return this.http.get<GroupResponse>(
+  getGroup(groupId: number): Observable<GroupInfoResponse> { // <-- Usa GroupInfoResponse
+    return this.http.get<GroupInfoResponse>(
       `${environment.apiUrl}/groups/${groupId}`,
       { headers: environment.headers }
     );
@@ -32,5 +32,17 @@ export class GroupService {
     return this.http.post<any>(`${environment.apiUrl}/groups`, groupData, {
       headers: environment.headers,
     });
+  }
+
+  deleteGroup(groupId: number) {
+    this.http.delete<any>(`${environment.apiUrl}/groups/${groupId}`,{headers:environment.headers});
+    }
+
+  joinGroup(groupId: number) {
+    this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/join`, {headers: environment.headers});
+  }
+
+  leaveGroup(groupId: number) {
+    this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/leave`, {headers: environment.headers});
   }
 }
