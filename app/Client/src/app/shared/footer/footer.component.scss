@@ -1,0 +1,111 @@
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
+
+// Mixins
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin background-clip-text($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+// FOOTER
+footer {
+    border-top: solid 0.5px $light-grey;
+    background-color: $background-color;
+    font-size: $font-size-x-small;
+  }
+  
+  .slogan {
+    font-size: $font-size-small;
+  }
+  
+  .logo {
+    width: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .redes {
+    font-size: $font-size-x-large;
+    margin-bottom: 10px;
+  }
+  
+  .redes i {
+    margin: 10px;
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slogan {
+    width: 100%;
+  }
+
+  .redes-copy-contenedor {
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+  }
+
+  .redes {
+    margin: auto;
+  }
+
+  .copyright {
+    position: absolute;
+    right: 0;
+    width: 20%;
+  }
+}
+
+
+@media (min-width: 1024px) {
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slogan {
+    width: 100%;
+  }
+
+  .redes-copy-contenedor {
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+  }
+
+  .redes {
+    margin: auto;
+  }
+
+  .copyright {
+    position: absolute;
+    right: 0;
+    padding-top: 20px;
+  }
+}

@@ -37,6 +37,7 @@ h1 {
     @include background-clip-text($primary-color, $white);
 }
 
+.foto-perfil,
 .buscador {
     display: none;
 }
@@ -68,6 +69,11 @@ h1 {
     .buscador {
         display: none;
     }
+
+    .nav img {
+        width: 75px;
+      }
+    
 }
 
 @media (min-width: 1024px) {

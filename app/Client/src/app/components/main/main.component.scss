@@ -31,3 +31,75 @@ $font-size-x-large: x-large;
   
   
 
+
+  .posts {
+    max-width: 100%;
+    padding: 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    display: flex;
+    width: 100%;
+  }
+
+  .sidebar {
+    display: none;
+    max-width: 100%;
+  }
+
+
+.post {
+  background-color: $grey;
+  border-radius: 15px;
+  color: $white;
+}
+
+.usuario {
+  @include center-flex;
+  max-width: 100%;
+}
+
+.usuario-perfil {
+  width: 40px;
+}
+
+.usuario-nombre {
+  margin: 0;
+  bottom: 0;
+  margin-left: 10px;
+  font-size: $font-size-medium;
+}
+
+.card-body {
+  padding: 15px;
+  font-weight: light;
+}
+
+.post-contenido {
+  margin-left: 50px;
+  margin-right: 10px;
+  font-size: $font-size-small;
+}
+
+
+.publicar {
+  display: flex;
+}
+
+.publicar button {
+  margin-left: auto;
+  background-color: $primary-color;
+  border-radius: 50%;
+  border: none;
+  color: $white;
+  font-size: $font-size-x-large;
+  width: 40px;
+  height: 40px;
+}
+
+.publicar button::after {
+  content: "+";
+}

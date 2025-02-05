@@ -21,26 +21,36 @@
     <div class="container-fluid">
         <app-header></app-header>
 
-        <aside>
+    <section class="main">
+        <aside class="sidebar">
             <app-friends></app-friends>
         </aside>
 
-        <div *ngIf="posts && posts.length > 0; else noPosts">
+        <ul class="posts container">
+        <div *ngIf="posts && posts.length > 0; else noPosts" class="posts">
             <div *ngFor="let post of posts">
-                <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
-                <p>{{ post.user.name }}</p>
-                <p>{{ post.content }}</p>
+                <li class="post card mb-3">
+                <div class="card-body">
+                    <div class="usuario">
+                         <!--<img [src]="getProfilePicture()" class= "usuario-perfil" alt="Imagen Perfil">-->
+                        <p class="usuario-nombre">{{ post.user.name }}</p>
+                        <p class="post-contenido card-text">{{ post.content }}</p>
+                    </div>
+                </div>
+            </li>
             </div>
         </div>
+    </ul>
+
 
         <ng-template #noPosts>
             <p>No hay posts</p>
         </ng-template>
 
 
-        <button style="background-color: red;">Publicar</button>
+        <button style="background-color: red;" class="publicar">Publicar</button>
 
-
+    </section>
         <app-footer></app-footer>
 
     </div>
