@@ -1,0 +1,57 @@
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
+
+// Mixins
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin background-clip-text($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+  .amigos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .amigos h2 {
+    @include background-clip-text($white, $grey);
+  }
+
+  .amigo {
+    padding: 20px;
+    display: flex;
+    text-align: center;
+  }
+
+  .amigo .foto {
+    height: 50px;
+    margin-left: 20px;
+  }
+
+  .amigo .nombre {
+    white-space: nowrap;
+    max-width: 100%;
+    margin: 15px;
+  }
+
+  .link_amigo{
+    text-decoration: none;
+    color: #ffffff;
+  }

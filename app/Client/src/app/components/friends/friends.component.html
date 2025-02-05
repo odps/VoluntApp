@@ -1,14 +1,17 @@
 
 <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
-    
-    <h2>Amigos</h2> 
+    <ul class="amigos">
+    <li><h2>Amigos</h2></li> 
     <div *ngFor="let profile of friendProfiles">
-        <a [routerLink]="baseUrl + '/profile/' + profile.id">
+        <li class="amigo">
+        <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
 
-            <img  [src]="['/profile', profile.id]" alt="Imagen Perfil">
-            <p >{{ profile.nickname }}</p>
+            <img [src]="['/profile', profile.id]" alt="Imagen Perfil" class="foto">
+            <p class="nombre">{{ profile.nickname }}</p>
         </a>
+    </li>
     </div>
+</ul>
 </div>
 
 <ng-template #noFriends>
