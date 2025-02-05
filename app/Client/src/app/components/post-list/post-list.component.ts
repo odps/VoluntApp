@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
@@ -10,6 +10,7 @@ import { User } from '../../interfaces/user';
   styleUrl: './post-list.component.css',
 })
 export class PostListComponent implements OnInit {
+  @Input() userId: number | undefined;
   posts: any = [];
   user: User | null = null;
   userProfilePictures: Map<number, string> = new Map();
@@ -28,21 +29,34 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPosts();
+    this.loadPosts(this.userId);
   }
 
-  loadPosts(): void {
+  //Carga los posts, si no se pasa un Id como parametro a la clase devuelve todos los posts
+  //disponibles en la BB.DD, caso contrario filtra por id de usuario
+  loadPosts(userId?: number): void {
     this.postService.getPosts().subscribe({
       next: (response) => {
-        console.log('Full Response:', response);
+        // console.log('Full Response:', response);
 
         if (response.posts) {
-          this.posts = (response.posts as unknown as any[]).map(
-            (post: any) => ({
+          let allPosts = response.posts as unknown as any[];
+          // console.log('All posts:', allPosts);
+
+          if (userId) {
+            this.posts = allPosts
+              .filter((post: any) => post.user_id === userId)
+              .map((post: any) => ({
+                ...post,
+                liked: false,
+              }));
+          } else {
+            this.posts = allPosts.map((post: any) => ({
               ...post,
               liked: false,
-            })
-          );
+            }));
+          }
+          // console.log('Filtered posts:', this.posts);
           this.getProfilePictures();
           this.getNicknames();
         } else {
