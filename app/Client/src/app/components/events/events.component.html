@@ -1,0 +1,15 @@
+<div>
+  <header>Events</header>
+  <section *ngIf="events.length > 0; else noEvents">
+    <div *ngFor="let event of events">
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.description }}</p>
+      <span>{{ event.date_time }}</span>
+      <br />
+      <span>{{ event.location }}</span>
+    </div>
+  </section>
+  <ng-template #noEvents>
+    <p>No events available.</p>
+  </ng-template>
+</div>

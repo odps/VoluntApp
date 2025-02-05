@@ -21,6 +21,7 @@ import { ChangeEmailComponent } from './components/settings-options/change-email
 import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
+import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ChangeProfilePictureComponent } from './components/settings-options/cha
     ChangeEmailComponent,
     ChangeBioComponent,
     ChangeProfilePictureComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,

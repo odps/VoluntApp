@@ -6,41 +6,27 @@ import { Post } from '../../interfaces/post';
   selector: 'app-main',
   standalone: false,
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss',
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-
   posts: Post[] = [];
 
-  constructor(private postService: PostService){ }
+  constructor(private postService: PostService) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadPosts();
   }
 
   loadPosts(): void {
-    
     this.postService.getPosts().subscribe({
       next: (response) => {
-        console.log('Posts received:', response.posts.data); // Debugging line                              //FUNCIONAAAAA!!!!
+        console.log('Posts received:', response.posts.data); //FUNCIONAAAAA!!!!
         this.posts = response.posts.data;
       },
       error: (error) => console.error('Error loading posts:', error),
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 
@@ -107,7 +93,7 @@ export class MainComponent implements OnInit {
       liked = true;
     }
   }*/
-  /*}
+/*}
 
 
 
