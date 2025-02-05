@@ -22,6 +22,7 @@ import { ChangeUsernameComponent } from './components/settings-options/change-us
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 import { EventsComponent } from './components/events/events.component';
+import { LogrosComponent } from './components/logros/logros.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EventsComponent } from './components/events/events.component';
     ChangeBioComponent,
     ChangeProfilePictureComponent,
     EventsComponent,
+    LogrosComponent,
   ],
   imports: [
     BrowserModule,

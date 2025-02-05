@@ -18,6 +18,7 @@ interface ProfileResponse {
 export class ProfileComponent implements OnInit {
   user: User | null = null;
   profilePictureUrl: string = '';
+  activeView: string = 'eventos';
 
   constructor(
     private userService: UserService,
@@ -45,5 +46,8 @@ export class ProfileComponent implements OnInit {
 
   toSettings() {
     this.router.navigate(['/settings']);
+  }
+  setActiveView(view: string): void {
+    this.activeView = view;
   }
 }

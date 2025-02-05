@@ -9,7 +9,7 @@
       {{ user.profile.interests }}
     </p>
     <p id="rating" *ngIf="user.profile.rating">
-      Rating: {{ user.profile.rating }}
+      Rating: {{ user.profile.rating }} 🌟
     </p>
     <div id="settings">
       <img
@@ -24,12 +24,44 @@
   <!-- Barrita navegadora con Eventos, Posts y Logros -->
   <nav>
     <ul>
-      <li><a [href]="">Eventos</a></li>
-      <li><a [href]="">Posts</a></li>
-      <li><a [href]="">Logros</a></li>
+      <li>
+        <a
+          [class.active]="activeView === 'eventos'"
+          (click)="setActiveView('eventos')"
+          style="font-weight: bold"
+          >Eventos</a
+        >
+      </li>
+      <li>
+        <a
+          [class.active]="activeView === 'posts'"
+          (click)="setActiveView('posts')"
+          style="font-weight: bold"
+          >Posts</a
+        >
+      </li>
+      <li>
+        <a
+          [class.active]="activeView === 'logros'"
+          (click)="setActiveView('logros')"
+          style="font-weight: bold"
+          >Logros</a
+        >
+      </li>
     </ul>
   </nav>
   <!-- modulo que corresponda segun se pinche en la barrita -->
-  <app-events></app-events>
+  <app-events *ngIf="activeView === 'eventos'"></app-events>
+
+  <div *ngIf="activeView === 'posts'">
+    <h2>Mis Posts</h2>
+    <p>
+      ==============<br />
+      ==============<br />
+      ==============<br />
+    </p>
+  </div>
+
+  <app-logros *ngIf="activeView === 'logros'"></app-logros>
 </main>
 <app-footer></app-footer>
