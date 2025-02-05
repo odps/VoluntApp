@@ -10,114 +10,148 @@ $font-size-medium: medium;
 $font-size-x-small: x-small;
 $font-size-x-large: x-large;
 
-
-
 @mixin center-flex {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-
-
-  * {
-    background-image: url("../../../assets/images/Wallp-Dark.png");
+* {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     color: white;
+}
+
+body{
+  background-image: url("../../../assets/images/Wallp-Dark.png");
+  height: 90vh;
+
+}
+
+html{
+    height: 90vh;
   }
-  
-  
 
 
-  .posts {
+
+.posts {
     max-width: 100%;
     padding: 30px;
     list-style: none;
     display: flex;
     flex-direction: column;
-  }
+    height: 70vh;
+}
 
-  .main {
+.main {
     display: flex;
     width: 100%;
-  }
+}
 
-  .sidebar {
+.sidebar {
     display: none;
+    background-color: $grey;
     max-width: 100%;
-  }
-
+}
 
 .post {
-  background-color: $grey;
-  border-radius: 15px;
-  color: $white;
+    background-color: $grey;
+    border-radius: 15px;
+    color: $white;
 }
 
 .usuario {
-  @include center-flex;
-  max-width: 100%;
+    @include center-flex;
+    max-width: 100%;
 }
 
 .usuario-perfil {
-  width: 40px;
+    width: 40px;
 }
 
 .usuario-nombre {
-  margin: 0;
-  bottom: 0;
-  margin-left: 10px;
-  font-size: $font-size-medium;
+    margin: 0;
+    bottom: 0;
+    margin-left: 10px;
+    font-size: $font-size-medium;
 }
 
 .card-body {
-  padding: 15px;
-  font-weight: light;
+    padding: 15px;
+    font-weight: light;
+    background-color: $grey;
 }
 
 .post-contenido {
-  margin-left: 50px;
-  margin-right: 10px;
-  font-size: $font-size-small;
+    margin-left: 50px;
+    margin-right: 10px;
+    font-size: $font-size-small;
 }
 
 
 .publicar {
-  display: flex;
+    background-color: $primary-color;
+    margin-left: auto;
+    border-radius: 50%;
+    border: none;
+    color: $white;
+    font-size: $font-size-x-large;
+    width: 50px; 
+    height: 50px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
-.publicar button {
-  margin-left: auto;
-  background-color: $primary-color;
-  border-radius: 50%;
-  border: none;
-  color: $white;
-  font-size: $font-size-x-large;
-  width: 40px;
-  height: 40px;
+.publicar button:hover {
+    background-color: darken($primary-color, 10%); 
 }
 
 .publicar button::after {
-  content: "+";
+    content: "+";
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .publicar button {
+        border-radius: 20px;
+        font-size: $font-size-medium;
+        width: 100px; 
+        height: 40px; 
+    }
+
+    .publicar{
+        content: "Publicar";
+    }
+    html,body{
+        height: 90vh;
+      }
 }
 
 @media (min-width: 1024px) {
+    .sidebar {
+        display: flex;
+        background-color: $grey;
+        flex-direction: column;
+        position: relative;
+        text-align: center;
+        left: 0;
+        margin-right: 20px;
+        width: 400px;
+        color: $white;
+        border-radius: 30px;
+        margin-left: -30px;
+        padding: 15px;
+    }
 
-.sidebar {
-  background-color: $grey;
-  flex-direction: column;
-  position: relative;
-  text-align: center;
-  display: flex;
-  left: 0;
-  margin-right: 20px;
-  width: 400px;
-  color: $white;
-  border-radius: 30px;
-  margin-left: -30px;
-  padding: 15px;
-}
+    .publicar {
+        border-radius: 20px;
+        font-size: $font-size-medium;
+        width: 120px; 
+        height: 40px;
+    }
+
+    html,body{
+      height: 90vh;
+    }
 }

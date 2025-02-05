@@ -69,7 +69,7 @@ export class FriendsComponent implements OnInit {
         if (this.friends) {
           for (let friend of this.friends){
             
-              let idAmigo = (this.user.id == friend.user_id_1)? friend.user_id_2 : friend.user_id_1;
+              let idAmigo = (this.user.id == friend.user_id_1) ? friend.user_id_2 : friend.user_id_1;
 
               this.userService.getUserProfileSpecific(idAmigo).subscribe({
                 next: (response: {user:User, profile: Profile}) =>{

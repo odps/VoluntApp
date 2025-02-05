@@ -30,6 +30,7 @@ footer {
     border-top: solid 0.5px $light-grey;
     background-color: $background-color;
     font-size: $font-size-x-small;
+    margin-top: 0;
   }
   
   .slogan {
@@ -87,6 +88,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0;
   }
 
   .slogan {
