@@ -16,6 +16,7 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FriendsComponent,
     PostsComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,
