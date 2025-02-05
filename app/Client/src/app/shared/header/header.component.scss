@@ -10,7 +10,7 @@
 
 html {
   background-color: $background-color;
-  height: 100%;
+  max-height: 50%;
 }
 
 // CONTENEDOR PRINCIPAL
@@ -63,7 +63,7 @@ nav h1 {
 }
 
 // DESKTOP
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .nav {
     margin: 0;
     padding: 0;
