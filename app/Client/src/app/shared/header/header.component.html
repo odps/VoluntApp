@@ -1,13 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoluntApp</title>
+    <!-- LINK BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- LINK SASS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- ICONOS BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!--FUENTE MONTSERRAT-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<button (click)="cerrarSesion()">Cerrar sesión</button>
+  <body>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container-fluid">
+      <header>
+        <!-- NAVEGADOR -->
+        <nav class="nav container p-3">
+          <!-- TITULO -->
+          <h1 class="titulo" [routerLink]="['/main']">VoluntApp</h1>
+          <!-- BUSCADOR -->
+          <div class="buscador-contenedor">
+            <input
+              type="text"
+              class="buscador form-control"
+              placeholder="Buscar..."
+            />
+            <i class="buscador-icon bi bi-search"></i>
+          </div>
 
-<header>
-    <nav>
-        <ul>
-            <li><a [routerLink]="['/main']">VoluntApp</a></li>
-            <li>Barra navegación</li>
-            <li><a [routerLink]="['/profile']"><img [src]="baseUrl+'/'+profilePictureUrl" alt="Foto Perfil"></a></li>
-    
-        </ul>
-    </nav>
-</header>
+          <!-- USUARIO  -->
+          <img
+            [src]="baseUrl + '/' + profilePictureUrl"
+            alt="Foto Perfil"
+            [routerLink]="['/profile']"
+            class="foto-perfil"
+            alt="Foto de Perfil"
+          />
+        </nav>
+        <button (click)="cerrarSesion()">Cerrar sesión</button>
+      </header>

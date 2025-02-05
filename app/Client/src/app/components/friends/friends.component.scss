@@ -1,0 +1,115 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  font-family: $font-family;
+  padding: 0;
+  margin: 0;
+  background-color: $background-color;
+}
+
+// CONTENEDOR PRINCIPAL
+.container-fluid {
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+// SECCIÓN PRINCIPAL
+.main {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  display: none;
+  max-width: 100%;
+}
+
+// DESKTOP
+@media (min-width: 1024px) {
+  .sidebar {
+    background-color: $grey;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    display: flex;
+    left: 0;
+    margin-right: 20px;
+    width: 400px;
+    color: $white;
+    border-radius: 30px;
+    margin-left: -30px;
+    padding: 15px;
+  }
+
+  .amigos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .amigos h2 {
+    @include background-clip-text($white, $grey);
+  }
+
+  .amigo {
+    padding: 20px;
+    display: flex;
+    text-align: center;
+  }
+
+  .amigo .foto {
+    height: 50px;
+    margin-left: 20px;
+  }
+
+  .amigo .nombre {
+    white-space: nowrap;
+    max-width: 100%;
+    margin: 15px;
+  }
+
+  .grupos {
+    margin-top: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .grupos h2 {
+    @include background-clip-text($white, $grey);
+  }
+
+  .grupo {
+    padding: 20px;
+    padding-right: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+
+  .grupo .foto {
+    height: 50px;
+    margin-left: 20px;
+  }
+
+  .grupo .nombre {
+    margin: 0;
+  }
+
+  .grupos-miembros {
+    list-style: none;
+    max-width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-self: end;
+  }
+
+  .grupo-miembro img {
+    height: 20px;
+    margin: 5px;
+  }
+}

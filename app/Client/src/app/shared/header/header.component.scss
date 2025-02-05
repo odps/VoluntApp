@@ -1,0 +1,103 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  font-family: $font-family;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background-color: $background-color;
+  height: 100%;
+}
+
+// CONTENEDOR PRINCIPAL
+.container-fluid {
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+// BARRA NAV
+.nav {
+  @include center-flex;
+  justify-content: center;
+  background-color: $background-color;
+}
+
+nav h1 {
+  margin: 20px;
+  @include background-clip-text($red, $white);
+}
+
+.buscador-icon {
+  position: absolute;
+  color: $white;
+  top: 4%;
+  right: 8%;
+  font-size: $font-size-x-large;
+}
+
+.buscador,
+.foto-perfil {
+  display: none;
+}
+
+// TABLET
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav {
+    margin: 0;
+    padding: 0;
+    justify-content: left;
+  }
+
+  nav h1 {
+    text-align: left;
+  }
+
+  .buscador {
+    display: none;
+  }
+}
+
+// DESKTOP
+@media (min-width: 1024px) {
+  .nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .buscador-contenedor {
+    background-color: $red;
+    border-radius: 30px;
+    z-index: 1;
+    width: 300px;
+  }
+
+  .buscador {
+    background-color: $red;
+    border-radius: 30px;
+    display: flex;
+    border: none;
+  }
+
+  .buscador::placeholder {
+    color: $white;
+  }
+
+  .foto-perfil {
+    display: flex;
+    width: 75px;
+  }
+
+  .menu,
+  .buscador-icon {
+    display: none;
+  }
+}

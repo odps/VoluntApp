@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: false,
-  
+
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
   user: User | null = null;
   profilePictureUrl: string = '';
   baseUrl = environment.baseUrl;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 }
