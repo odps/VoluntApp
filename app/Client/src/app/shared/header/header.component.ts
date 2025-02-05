@@ -27,13 +27,9 @@ export class HeaderComponent implements OnInit {
     this.userService.getUserProfile().subscribe({
       next: (response: { user: User; profile: Profile }) => {
         this.user = response.user;
-        this.profilePictureUrl = `${environment.baseUrl}/${response.profile.profile_picture_route}`;
+        this.user.profile = response.profile;
+        this.profilePictureUrl = `${environment.baseUrl}/${this.user.profile.profile_picture_route}`;
       },
     });
-  }
-
-  cerrarSesion() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
   }
 }
