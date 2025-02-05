@@ -1,0 +1,15 @@
+.event-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.participant-pictures {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.participant-pic {
+  border-radius: 50%;
+  object-fit: cover;
+}

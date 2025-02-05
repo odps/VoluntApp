@@ -4,6 +4,7 @@ import { EventService } from '../../services/event.service';
 import { User } from '../../interfaces/user';
 import { Event } from '../../interfaces/event';
 import { Profile } from '../../interfaces/profile';
+import { Participant } from '../../interfaces/participant';
 
 @Component({
   standalone: false,
@@ -13,21 +14,20 @@ import { Profile } from '../../interfaces/profile';
 })
 export class EventsComponent implements OnInit {
   events: Event[] = [];
-  joinedEvents: Event[] = [];
+  participantsByEvent: Map<number, Participant[]> = new Map();
+  participantPictures: Map<number, string> = new Map();
   currentUserId: number | undefined;
 
   constructor(
     private userService: UserService,
     private eventService: EventService
-  ) {
-    this.getCurrentId();
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.getCurrentId();
     this.getUserEvents();
   }
 
-  //Recoge la Id del usuario
   getCurrentId() {
     this.userService.getUserProfile().subscribe({
       next: (response: { user: User; profile: Profile }) => {
@@ -37,13 +37,39 @@ export class EventsComponent implements OnInit {
     });
   }
 
-  //Muestra los eventos a los que esta unido el usuario
+  getEventParticipants(eventId: number) {
+    this.eventService.getEvent(eventId).subscribe({
+      next: (response: any) => {
+        if (response.participants) {
+          this.participantsByEvent.set(eventId, response.participants);
+          response.participants.forEach((participant: any) => {
+            this.userService.getProfilePictureUrl(participant.id).subscribe({
+              next: (pictureResponse) => {
+                this.participantPictures.set(
+                  participant.id,
+                  pictureResponse.url
+                );
+              },
+              error: (err) => console.error('Error fetching picture:', err),
+            });
+          });
+        }
+      },
+      error: (err) => console.error('Error fetching participants:', err),
+    });
+  }
+
   getUserEvents() {
     this.eventService.getUserEvents().subscribe({
-      next: (res) => {
-        this.events = res.events;
+      next: (response: any) => {
+        if (response.events) {
+          this.events = response.events;
+          this.events.forEach((event) => {
+            this.getEventParticipants(event.id);
+          });
+        }
       },
-      error: (err) => console.error(err),
+      error: (err) => console.error('Error fetching events:', err),
     });
   }
 }

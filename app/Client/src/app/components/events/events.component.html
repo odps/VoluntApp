@@ -2,7 +2,21 @@
   <header>Events</header>
   <section *ngIf="events.length > 0; else noEvents">
     <div *ngFor="let event of events">
-      <h2>{{ event.title }}</h2>
+      <div class="event-header">
+        <h2>{{ event.title }}</h2>
+        <div class="participants" *ngIf="participantsByEvent.get(event.id)">
+          <div class="participant-pictures">
+            <img
+              *ngFor="let participant of participantsByEvent.get(event.id)"
+              [src]="participantPictures.get(participant.id)"
+              [alt]="participant.name"
+              class="participant-pic"
+              width="32"
+              height="32"
+            />
+          </div>
+        </div>
+      </div>
       <p>{{ event.description }}</p>
       <span>{{ event.date_time }}</span>
       <br />
