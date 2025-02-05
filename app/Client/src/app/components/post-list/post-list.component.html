@@ -1,19 +1,19 @@
-<h2>Posts</h2>
-<div *ngIf="posts && posts.length > 0; else noPosts">
-  <div *ngFor="let post of posts" class="post">
-    <div class="post-header">
-      <img
-        [src]="userProfilePictures.get(post.user.id)"
-        [alt]="post.user.name"
-        class="profile-pic"
-        width="32"
-        height="32"
-      />
-      <p>{{ post.user.name }}</p>
-    </div>
-    <p>{{ post.content }}</p>
+<div *ngFor="let post of posts" class="post">
+  <div class="post-header">
+    <img
+      [src]="userProfilePictures.get(post.user.id)"
+      [alt]="post.user.name"
+      class="profile-pic"
+      width="32"
+      height="32"
+    />
+    <p>{{ userNickNames.get(post.user.id) }}</p>
+    <button *ngIf="user?.id === post.user.id" (click)="deletePost(post.id)">
+      Delete
+    </button>
   </div>
+  <p>{{ post.content }}</p>
+  <button (click)="toggleLike(post)">
+    {{ post.liked ? "Dislike" : "Like" }} ({{ post.likes }})
+  </button>
 </div>
-<ng-template #noPosts>
-  <p>No hay posts</p>
-</ng-template>

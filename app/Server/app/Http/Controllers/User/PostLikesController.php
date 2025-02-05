@@ -32,7 +32,8 @@ class PostLikesController extends Controller
 
             return response()->json([
                 'message' => 'Post unliked successfully',
-                'post' => $post
+                'post' => $post,
+                'liked' => false,
             ], 202);
         }
 
@@ -45,7 +46,8 @@ class PostLikesController extends Controller
 
         return response()->json([
             'message' => 'Post liked successfully',
-            'post' => $post
+            'post' => $post,
+            'liked' => true,
         ]);
     }
 }
