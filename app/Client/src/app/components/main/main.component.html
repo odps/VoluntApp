@@ -32,18 +32,9 @@
         <app-groups></app-groups>
       </aside>
 
-      <div *ngIf="posts && posts.length > 0; else noPosts">
-        <h2>Posts</h2>
-        <div *ngFor="let post of posts">
-          <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
-          <p>{{ post.user.name }}</p>
-          <p>{{ post.content }}</p>
-        </div>
-      </div>
-
-      <ng-template #noPosts>
-        <p>No hay posts</p>
-      </ng-template>
+      <main>
+        <app-post-list></app-post-list>
+      </main>
 
       <button
         style="background-color: red; color: white"
