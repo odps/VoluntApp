@@ -1,6 +1,6 @@
 <header id="profile_header">
   <div id="back">
-    <img src="assets/icons/back-arrow.svg" alt="Go back" />
+    <img src="assets/icons/back-arrow.svg" alt="Go back" (click)="goBack()" />
   </div>
   <div id="profile_info" *ngIf="user">
     <img [src]="profilePictureUrl" [alt]="user.profile.nickname" />
@@ -12,7 +12,17 @@
       Rating: {{ user.profile.rating }}
     </p>
     <div id="settings">
-      <img src="assets/icons/settings.svg" alt="settings" />
+      <img
+        src="assets/icons/settings.svg"
+        alt="Settings"
+        (click)="toSettings()"
+      />
     </div>
   </div>
 </header>
+<main>
+  <!-- Barrita navegadora con Eventos, Posts y Logros -->
+
+  <!-- modulo que corresponda segun se pinche en la barrita -->
+</main>
+<app-footer></app-footer>

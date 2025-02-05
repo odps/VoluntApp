@@ -1,0 +1,7 @@
+<app-settings-header></app-settings-header>
+<h1>Cambiar Nickname</h1>
+<form (ngSubmit)="onSubmit()" #usernameForm="ngForm">
+  <input type="text" name="nickname" [(ngModel)]="nickname" required />
+  <button type="submit" [disabled]="!usernameForm.form.valid">Cambiar</button>
+</form>
+<app-footer></app-footer>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,6 +15,12 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsHeaderComponent } from './components/settings-options/settings-header/settings-header.component';
+import { ChangeEmailComponent } from './components/settings-options/change-email/change-email.component';
+import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
+import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
+import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +33,22 @@ import { ProfileComponent } from './components/profile/profile.component';
     HeaderComponent,
     FriendsComponent,
     PostsComponent,
-    ProfileComponent
+    ProfileComponent,
+    SettingsComponent,
+    SettingsHeaderComponent,
+    ChangeUsernameComponent,
+    ChangeEmailComponent,
+    ChangeBioComponent,
+    ChangeProfilePictureComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

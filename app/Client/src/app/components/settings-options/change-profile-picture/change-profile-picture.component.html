@@ -1,0 +1,20 @@
+<app-settings-header></app-settings-header>
+<h1>Cambiar foto de perfil</h1>
+<form (ngSubmit)="onSubmit()" #profilePictureForm="ngForm">
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/*"
+    required
+  />
+  <button
+    type="submit"
+    [disabled]="!selectedFile || selectedFile.size > 2097152"
+  >
+    Subir
+  </button>
+  <div *ngIf="selectedFile && selectedFile.size > 2097152" class="error">
+    Imagen no puede exceder 2MB.
+  </div>
+</form>
+<app-footer></app-footer>
