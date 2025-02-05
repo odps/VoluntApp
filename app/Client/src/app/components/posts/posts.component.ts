@@ -9,5 +9,5 @@ import { Post } from '../../interfaces/post';
   styleUrl: './posts.component.scss'
 })
 export class PostsComponent {
-  @Input() posts: Post[] = [];
+  //@Input() posts: Post[] = [];
 }

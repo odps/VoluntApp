@@ -18,6 +18,13 @@ export class UserService {
     );
   }
 
+  getUserProfileSpecific(userId: number): Observable<{ user: User; profile: Profile }> {
+    return this.http.get<{ user: User; profile: Profile }>(
+      `${environment.apiUrl}/profile/${userId}`,
+      { headers: environment.headers }
+    );
+  }
+
   getProfilePictureUrl(userId: number): Observable<{ url: string }> {
     return this.http.get<{ url: string }>(
       `${environment.apiUrl}/profile/picture/${userId}`,
