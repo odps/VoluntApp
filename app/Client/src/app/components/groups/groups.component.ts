@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Group } from '../../interfaces/group';
 import { GroupService } from '../../services/group.service';
 import { UserService } from '../../services/user.service';
@@ -11,7 +11,7 @@ import { GroupResponse } from '../../interfaces/group';
   templateUrl: './groups.component.html',
   styleUrl: './groups.component.css'
 })
-export class GroupsComponent {
+export class GroupsComponent implements OnInit {
 
   groups: Group[] = [];
   group: any = "";
@@ -23,6 +23,10 @@ export class GroupsComponent {
 
   constructor(private groupService: GroupService) {}
 
+  ngOnInit(): void {
+    this.loadGroups();
+  }
+  
   loadGroups() {
   this.groupService.getAllGroups().subscribe({
     next: (response: GroupResponse) => {
