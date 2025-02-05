@@ -23,6 +23,8 @@ import { ChangeBioComponent } from './components/settings-options/change-bio/cha
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 import { EventsComponent } from './components/events/events.component';
 import { LogrosComponent } from './components/logros/logros.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { LogrosComponent } from './components/logros/logros.component';
     ChangeProfilePictureComponent,
     EventsComponent,
     LogrosComponent,
+    NavbarComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,

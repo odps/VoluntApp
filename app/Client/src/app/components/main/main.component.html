@@ -29,9 +29,19 @@
 
       <aside>
         <app-friends></app-friends>
+        <app-groups></app-groups>
       </aside>
 
       <div *ngIf="posts && posts.length > 0; else noPosts">
+        <div *ngFor="let post of posts">
+          <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
+          <p>{{ post.user.name }}</p>
+          <p>{{ post.content }}</p>
+        </div>
+      </div>
+
+      <div *ngIf="posts && posts.length > 0; else noPosts">
+        <h2>Posts</h2>
         <div *ngFor="let post of posts">
           <!--<img [src]="getProfilePicture()" alt="Imagen Perfil">-->
           <p>{{ post.user.name }}</p>
@@ -43,7 +53,12 @@
         <p>No hay posts</p>
       </ng-template>
 
-      <button style="background-color: red">Publicar</button>
+      <button
+        style="background-color: red; color: white"
+        [routerLink]="['/posts']"
+      >
+        Publicar
+      </button>
 
       <app-footer></app-footer>
     </div>

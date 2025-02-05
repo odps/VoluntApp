@@ -1,1 +1,10 @@
-<p>Hola, estamos en posts</p>
+<form id="panelPost" action="" method="POST" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" placeholder="Escribe algo..." [(ngModel)]="postContent" required>
+    
+    <button type="button" (click)="resetForm()">Descartar</button>
+    <button type="submit">Publicar</button>
+</form>
+
+<button style="background-color: red; color: white;" [routerLink]="['/main']">Volver</button>
+
+

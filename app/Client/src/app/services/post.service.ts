@@ -17,11 +17,14 @@ interface ApiResponse {
 })
 export class PostService {
 
+  
+
   constructor(private http: HttpClient) { }
 
-  createPost(post: Post): Observable<Post> {
-    const postData = {"content": post.content};
-    return this.http.post<Post>(`${environment.apiUrl}/posts`, postData, {headers: environment.headers});
+
+  createPost(content: string): Observable<string> {
+    const postData = { "content": content };
+    return this.http.post<any>(`${environment.apiUrl}/posts`, postData, {headers: environment.headers});
   }
 
   getPosts(): Observable<ApiResponse> {
