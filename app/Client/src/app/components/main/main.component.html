@@ -34,29 +34,19 @@
         <app-friends></app-friends>
       </aside>
 
-      <ul class="posts container">
-        <div *ngIf="posts && posts.length > 0; else noPosts" class="posts">
-          <div *ngFor="let post of posts">
-            <li class="post card mb-3">
-              <div class="card-body">
-                <div class="usuario">
-                  <!--<img [src]="getProfilePicture()" class= "usuario-perfil" alt="Imagen Perfil">-->
-                  <h5 class="usuario-nombre">{{ post.user.name }}</h5>
-                </div>
-                  <p class="post-contenido card-text">{{ post.content }}</p>
-                
-              </div>
-            </li>
-          </div>
-        </div>
+      <main>
+        <app-post-list></app-post-list>
+      </main>
 
-        <ng-template #noPosts>
-          <p>No hay posts</p>
-        </ng-template>
+      <button
+        style="background-color: red; color: white" class="publicar"
+        [routerLink]="['/posts']"
+      >
+        Publicar
+      </button>
 
-        <button [routerLink]="['/posts']" class="publicar">Publicar</button>
-      </ul>
-    </section>
+      <app-footer></app-footer>
+    </div>
   </body>
   <app-footer></app-footer>
 

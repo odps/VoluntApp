@@ -25,6 +25,7 @@ import { EventsComponent } from './components/events/events.component';
 import { LogrosComponent } from './components/logros/logros.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { GroupsComponent } from './components/groups/groups.component';
     LogrosComponent,
     NavbarComponent,
     GroupsComponent,
+    PostListComponent,
   ],
   imports: [
     BrowserModule,
