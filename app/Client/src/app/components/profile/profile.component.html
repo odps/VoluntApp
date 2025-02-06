@@ -1,12 +1,11 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
-
-<header id="profile_header">
-  <div id="back">
+<header class="perfil-cabezera">
+  <!-- <div id="back">
     <img src="assets/icons/back-arrow.svg" alt="Go back" />
-  </div>
+  </div> -->
   <div id="profile_info" *ngIf="user">
-    <img [src]="profilePictureUrl" [alt]="user.profile.nickname" />
+    <!-- [src]="profilePictureUrl"
+    [alt]="user.profile.nickname" -->
+    <img src="../../../assets/images/avatar.png" class="rounded-circle" />
     <h2 id="nickname">{{ user.profile.nickname }}</h2>
     <p id="interests" *ngIf="user.profile.interests">
       {{ user.profile.interests }}
@@ -19,3 +18,59 @@
     </div>
   </div>
 </header>
+
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <!-- Biografía -->
+  <section class="mb-4">
+    <h4>Biografía</h4>
+    <div class="p-3 rounded bg-gradient">
+      Amante del voluntariado y las pequeñas acciones que generan grandes
+      cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
+      increíbles. 🌍
+    </div>
+  </section>
+
+  <!-- Logros -->
+  <section class="mb-4">
+    <h4>Logros</h4>
+    <div class="d-flex justify-content-around">
+      <div class="text-center">
+        <div class="badge bg-secondary p-3">Iniciado</div>
+        <p>1 Voluntariado</p>
+      </div>
+      <div class="text-center">
+        <div class="badge bg-danger p-3">Comprometido</div>
+        <p>10 Voluntariados</p>
+      </div>
+      <div class="text-center">
+        <div class="badge bg-warning text-dark p-3">Leyenda</div>
+        <p>20+ Voluntariados</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eventos -->
+  <section>
+    <h4>Eventos</h4>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="p-3 bg-secondary rounded">
+          🌍 Limpieza de playa<br />
+          📅 12 Ene 2025<br />
+          📍 Valencia
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="p-3 bg-secondary rounded">
+          🍽️ Reparto de comida<br />
+          📅 05 Dic 2024<br />
+          📍 Madrid
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>
