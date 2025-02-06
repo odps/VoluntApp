@@ -55,6 +55,7 @@ export class PostListComponent implements OnInit {
               .map((post: any) => ({
                 ...post,
                 liked: false,
+                showComments: false
               }));
           } else {
             this.posts = allPosts.map((post: any) => ({
@@ -147,6 +148,15 @@ export class PostListComponent implements OnInit {
 
   showCommentInput(postId: number): void {
     this.commentingPostId = postId;
+  }
+
+  hideCommentInput(): void {
+    this.commentingPostId = null;
+  }
+
+  //Metodo para mostrar comentarios
+  toggleComments(post: any) {
+    post.showComments = !post.showComments;
   }
 
   //Metodo para eliminar comentarios

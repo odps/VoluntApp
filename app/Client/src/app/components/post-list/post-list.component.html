@@ -1,23 +1,63 @@
-<div *ngFor="let post of posts" class="post">
-  <div class="post-header">
-    <img
-      [src]="userProfilePictures.get(post.user.id)"
-      [alt]="post.user.name"
-      class="profile-pic"
-      width="32"
-      height="32"
+
+    <!-- LINK BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
     />
-    <p>{{ userNickNames.get(post.user.id) }}</p>
-    <button *ngIf="user?.id === post.user.id" (click)="deletePost(post.id)">
-      Delete
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- LINK SASS -->
+    <link rel="stylesheet" href="post-list.component.scss" />
+    <!-- ICONOS BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!--FUENTE MONTSERRAT-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+ 
+
+<div class="posts container">
+  <div *ngFor="let post of posts" class="post">
+    <div class="card-body">
+    <div class="usuario">
+      <img
+        [src]="userProfilePictures.get(post.user.id)"
+        [alt]="post.user.name"
+        class="profile-pic"
+        width="32"
+        height="32"
+      />
+      <h5 class="usuario-nombre">{{ userNickNames.get(post.user.id) }}</h5>
+      <button *ngIf="user?.id === post.user.id" (click)="deletePost(post.id)">
+        Delete
+      </button>
+    </div>
+    <p class="post-contenido card-text">{{ post.content }}</p>
+    <button class="like-button" (click)="toggleLike(post)">
+      <img 
+        [src]="post.liked ? '../../../assets/images/heart-filled.png' : '../../../assets/images/heart-empty.png'"
+        alt="like"
+        class="heart-icon"
+      />
+      <span class="likes-count">{{ post.likes }}</span>
     </button>
   </div>
-  <p>{{ post.content }}</p>
-  <button (click)="toggleLike(post)">
-    {{ post.liked ? "Dislike" : "Like" }} ({{ post.likes }})
-  </button>
-
-  <div class="comments">
+  
+  <!-- Boton de comentarios -->
+  <button (click)="toggleComments(post)">Show Comments</button>
+  <button (click)="showCommentInput(post.id)">Add Comment</button>
+  
+  <div *ngIf="post.showComments" class="comments">
     <app-comment
       *ngFor="let comment of post.comments"
       [comment]="comment"
@@ -26,12 +66,10 @@
     ></app-comment>
   </div>
 
-  <!-- Boton de comentarios -->
-  <button (click)="showCommentInput(post.id)">Add Comment</button>
-
   <!-- Mostrar area de texto para comentario y boton de enviar. -->
   <div *ngIf="commentingPostId === post.id">
     <textarea [(ngModel)]="newComment" placeholder="Write a comment"></textarea>
     <button (click)="addComment(post.id)">Submit</button>
+    <button (click)="hideCommentInput()">Cancelar</button>
   </div>
 </div>

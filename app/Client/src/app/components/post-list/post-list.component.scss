@@ -66,9 +66,32 @@ $font-size-x-large: x-large;
 }
 
 
-img {
+.profile-pic {
   border-radius: 50px;
   object-fit: cover;
 }
 
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 
+  
+  .heart-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s ease;
+  }
+  
+  &:hover .heart-icon {
+      transform: scale(1.1);
+  }
+  
+  .likes-count {
+      color: $white;
+  }
+}
