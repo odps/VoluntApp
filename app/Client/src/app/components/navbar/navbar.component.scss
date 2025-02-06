@@ -3,7 +3,6 @@
 
 // GLOBALES
 * {
-  background-color: $background-color;
   font-family: $font-family;
   padding: 0;
   margin: 0;
@@ -11,12 +10,13 @@
 
 // CONTENEDOR PRINCIPAL
 .container-fluid {
-  background-color: $background-color;
+  background-color: transparent;
   margin: 0;
   padding: 0;
 }
 
 .menu {
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: space-around;

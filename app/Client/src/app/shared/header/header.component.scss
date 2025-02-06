@@ -1,7 +1,7 @@
 // Variables
 $font-family: "Montserrat", sans-serif;
 $background-color: #1d1d1d;
-$primary-color: #d04b4b;
+$red: #d04b4b;
 $white: #ffffff;
 $grey: #464646;
 $light-grey: #272727;
@@ -34,7 +34,7 @@ $font-size-x-large: x-large;
 
 h1 {
     margin: 20px;
-    @include background-clip-text($primary-color, $white);
+    @include background-clip-text($red, $white);
 }
 
 .foto-perfil,
@@ -78,14 +78,14 @@ h1 {
 
 @media (min-width: 1024px) {
     .buscador-contenedor {
-        background-color: $primary-color;
+        background-color: $red;
         border-radius: 30px;
         z-index: 1;
         width: 300px;
     }
 
     .buscador {
-        background-color: $primary-color;
+        background-color: $red;
         border-radius: 30px;
         display: flex;
         border: none;

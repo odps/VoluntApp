@@ -1,20 +1,32 @@
-<div *ngIf="friends && friendProfiles.length > 0; else noFriends">
-    <ul class="amigos">
-    <li><h2>Amigos</h2></li> 
-    <div *ngFor="let profile of friendProfiles">
-        <li class="amigo">
-        <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
+<body>
+    <app-header></app-header>
+    <app-navbar></app-navbar>
 
-            <img [src]="baseUrl + '/' + profile.profile_picture_route"
-            alt="Imagen Perfil" class="foto">
-            <p class="nombre">{{ profile.nickname }}</p>
-        </a>
-    </li>
+    <div  class="container-fluid">
+        <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
+            <ul class="amigos">
+            <li><h2>Amigos</h2></li> 
+            <div *ngFor="let profile of friendProfiles">
+                <li class="amigo">
+                <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
+    
+                    <img [src]="baseUrl + '/' + profile.profile_picture_route"
+                    alt="Imagen Perfil" class="foto">
+                    <p class="nombre">{{ profile.nickname }}</p>
+                </a>
+                </li>
+            </div>
+            </ul>
+        </div>
+
+        <ng-template #noFriends class="no_amigos">
+            <h2>Amigos</h2>
+        <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
+        </ng-template>
     </div>
-</ul>
-</div>
 
-<ng-template #noFriends>
-  <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
-</ng-template>
+    
 
+<app-footer></app-footer>
+
+</body>

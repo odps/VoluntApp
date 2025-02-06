@@ -24,6 +24,24 @@ $font-size-x-large: x-large;
   -webkit-text-fill-color: transparent;
 }
 
+
+body{
+  background-image: url("../../../assets/images/Wallp-Dark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.container-fluid {
+  padding: 10%;
+  min-height: 100vh;
+  color: $white;
+}
+
   .amigos {
     list-style: none;
     margin: 0;
@@ -53,5 +71,12 @@ $font-size-x-large: x-large;
 
   .link_amigo{
     text-decoration: none;
-    color: #ffffff;
+    color: $white;
+  }
+
+  .no_amigos h2{
+
+    margin-bottom: 60px;
+    @include background-clip-text($white, $grey);
+
   }

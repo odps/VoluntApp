@@ -4,6 +4,7 @@ import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { Profile } from '../../interfaces/profile';
 import { environment } from '../../../environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friends',
@@ -20,17 +21,18 @@ export class FriendsComponent implements OnInit {
 
   constructor(
     private friendService: FriendService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     setTimeout(this.loadFriends.bind(this), 1000);
     //this.loadFriends();
 
-    if (window.innerWidth >= 768) {
-      // Si es escritorio, redirige al componente "Main"
-      this.router.navigate(['/main']);
-    }
+    // if (window.innerWidth >= 768) {
+    //   // Si es escritorio, redirige al componente "Main"
+    //   this.router.navigate(['/main']);
+    // }
   }
 
   loadFriends() {

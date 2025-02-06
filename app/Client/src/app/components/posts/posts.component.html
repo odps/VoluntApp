@@ -1,5 +1,6 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
+<body>
+  <app-header></app-header>
+  <app-navbar></app-navbar>
 
 <!-- CONTENEDOR PRINCIPAL -->
 <div class="container-fluid">
@@ -9,11 +10,14 @@
     <aside class="sidebar">
       <app-friends></app-friends>
     </aside>
+
+    
     <!-- PUBLICAR POST  -->
     <div class="new-post-container container">
-      <form id="panelPost" action="" method="POST" (ngSubmit)="onSubmit()">
+      <form id="panelPost" method="POST" (ngSubmit)="onSubmit()">
         <div class="new-post">
           <textarea
+          type="text"
             class="new-content container"
             name="nuevo-post"
             placeholder="Escribe algo..."
@@ -25,7 +29,6 @@
         <div class="publicar2">
           <button type="button" (click)="resetForm()">Descartar</button>
           <button type="submit" class="bottom-0 end-0">Publicar</button>
-          <!-- <button style="background-color: red; color: white;" [routerLink]="['/main']">Volver</button> -->
         </div>
       </form>
     </div>
@@ -33,3 +36,4 @@
 </div>
 
 <app-footer></app-footer>
+</body>
