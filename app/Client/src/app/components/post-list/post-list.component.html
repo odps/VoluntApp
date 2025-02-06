@@ -21,6 +21,8 @@
     <app-comment
       *ngFor="let comment of post.comments"
       [comment]="comment"
+      [currentUserId]="user?.id"
+      (commentDeleted)="onCommentDeleted(comment.id, post.id)"
     ></app-comment>
   </div>
 

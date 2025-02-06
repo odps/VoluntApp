@@ -3,12 +3,14 @@ import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
 import { CommentService } from '../../services/comment.service';
+import { CommentComponent } from '../comment/comment.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: false,
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.css',
+  standalone: false,
 })
 export class PostListComponent implements OnInit {
   @Input() userId: number | undefined;
@@ -145,5 +147,15 @@ export class PostListComponent implements OnInit {
 
   showCommentInput(postId: number): void {
     this.commentingPostId = postId;
+  }
+
+  //Metodo para eliminar comentarios
+  onCommentDeleted(commentId: number, postId: number): void {
+    const post = this.posts.find((post: { id: number }) => post.id === postId);
+    if (post) {
+      post.comments = post.comments.filter(
+        (comment: { id: number }) => comment.id !== commentId
+      );
+    }
   }
 }
