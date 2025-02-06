@@ -6,22 +6,22 @@ export interface GroupResponse {
 }
 
 export interface Group {
+  id: number;
+  name: string;
+  description: string;
+  reputation_required: number;
+  created_by: number;
+  created_at: string;
+  updated_at: string;
+  creator: {
     id: number;
     name: string;
-    description: string;
-    reputation_required: number;
-    created_by: number;
+    email: string;
+    email_verified_at: string | null;
     created_at: string;
     updated_at: string;
-    creator: {
-      id: number;
-      name: string;
-      email: string;
-      email_verified_at: string | null;
-      created_at: string;
-      updated_at: string;
-    };
-  }
+  };
+}
 
   export interface GroupInfoResponse {
     group: { // <-- Esta es la clave!
@@ -44,6 +44,9 @@ export interface Group {
     };
   }
 
+  //export type GroupMembers = GroupMember[];
+  
+
   export interface GroupMember {
     id: number;
     name: string;
@@ -60,7 +63,10 @@ export interface Group {
     };
   }
   
-  export type GroupMembers = GroupMember[];
+  
+
+
+  
 
   /*export interface GroupMembers {
     members: [
