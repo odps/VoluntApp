@@ -1,18 +1,16 @@
-
 <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
-    
-    <h2>Amigos</h2> 
-    <div *ngFor="let profile of friendProfiles">
-        <a [routerLink]="baseUrl + '/profile/' + profile.id">
-
-            <img  [src]="['/profile', profile.id]" alt="Imagen Perfil">
-            <p >{{ profile.nickname }}</p>
-        </a>
-    </div>
+  <h2>Amigos</h2>
+  <div *ngFor="let profile of friendProfiles">
+    <a [routerLink]="baseUrl + '/profile/' + profile.id">
+      <img
+        [src]="baseUrl + '/' + profile.profile_picture_route"
+        alt="Imagen Perfil"
+      />
+      <p>{{ profile.nickname }}</p>
+    </a>
+  </div>
 </div>
 
 <ng-template #noFriends>
-    ///////////////////////////
-    <p>No hay amigos, sal a la calle</p>
-    ///////////////////////////
+  <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
 </ng-template>

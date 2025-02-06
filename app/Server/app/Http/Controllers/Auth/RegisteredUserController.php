@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
         Profile::create([
             'user_id' => $user['id'],
             'nickname' => $user['name'],
-            'profile_picture_route' => null,
+            'profile_picture_route' => 'storage/profile_pictures/default.png',
             'interests' => null,
             'rating' => null,
         ]);
