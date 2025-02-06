@@ -30,15 +30,16 @@ $font-size-x-large: x-large;
   font-size: $font-size-medium;
 }
 
-.card-body {
+.postContainer {
+  background-color: $grey !important;
   padding: 15px;
   font-weight: light;
-  background-color: $grey;
   width: 80%;
   margin-left: 10px;
 }
 
-.posts {
+.posts{
+  background-color: $grey !important;
   max-width: 100%;
   padding: 30px;
   list-style: none;
@@ -48,7 +49,7 @@ $font-size-x-large: x-large;
 }
 
 .post {
-  background-color: $grey;
+  background-color: $grey !important;
   border-radius: 15px;
   color: $white;
 }
@@ -60,35 +61,9 @@ $font-size-x-large: x-large;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.post {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
 .profile-pic {
   border-radius: 50%;
   object-fit: cover;
 }
+
 

@@ -23,21 +23,33 @@ $font-size-x-large: x-large;
     background-position: center;
     color: white;
 }
-
-body{
-  background-image: url("../../../assets/images/Wallp-Dark.png");
-  height: 90vh;
-
-}
-
-html{
-    height: 90vh;
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
   }
-
+  
+  body {
+    background-image: url("../../../assets/images/Wallp-Dark.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+  
 
 .main {
     display: flex;
+    min-height: 100vh;
     width: 100%;
+    height: 100%;
+    
+
 }
 
 .sidebar {
@@ -46,52 +58,6 @@ html{
     max-width: 100%;
 }
 
-
-
-.usuario {
-    @include center-flex;
-    max-width: 100%;
-}
-
-.usuario-perfil {
-    width: 40px;
-}
-
-.usuario-nombre {
-    margin: 0;
-    bottom: 0;
-    margin-left: 10px;
-    font-size: $font-size-medium;
-}
-
-.card-body {
-    padding: 15px;
-    font-weight: light;
-    background-color: $grey;
-    width: 80%;
-    margin-left: 10px;
-}
-
-.posts {
-    max-width: 100%;
-    padding: 30px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    height: 60vh;
-}
-
-.post {
-    background-color: $grey;
-    border-radius: 15px;
-    color: $white;
-}
-
-.post-contenido {
-    margin-left: 50px;
-    margin-right: 10px;
-    font-size: $font-size-small;
-}
 
 
 .publicar {
@@ -127,43 +93,48 @@ html{
         content: "Publicar";
     }
     html,body{
-        height: 90vh;
+        height: 100vh;
       }
 }
 
 @media (min-width: 1024px) {
-    .sidebar {
-        display: flex;
-        background-color: $grey;
-        flex-direction: column;
-        position: relative;
-        text-align: center;
-        left: 0;
-        margin-right: 20px;
-        width: 400px;
-        color: $white;
-        border-radius: 30px;
-        margin-left: -30px;
-        padding: 15px;
-    }
+
+  main {
+    width: 70%;
+    padding: 20px;
+    min-height: 100vh;
+    margin-left: calc(20% + 20px); // Offset for fixed sidebar
+
+  }
+
+ 
+ 
+  .sidebar {
+    position: fixed; // Make sidebar fixed
+    display: flex;
+    background-color: $grey;
+    flex-direction: column;
+    text-align: center;
+    left: 20px; // Match margin
+    top: 110px; // Match margin
+    width: 20%;
+    color: $white;
+    border-radius: 30px;
+    padding: 15px;
+    height: calc(100vh - 230px);
+    overflow-y: auto;
+  }
 
     .publicar {
         border-radius: 20px;
         font-size: $font-size-medium;
         width: 120px; 
         height: 40px;
+        margin-left: 90%;
     }
 
 
-  .posts {
-    margin: 0;
-    list-style: none;
-    padding-right: 12%;
-    gap: 20px;
-  }
 
 
-    html,body{
-      height: 90vh;
-    }
+   
 }

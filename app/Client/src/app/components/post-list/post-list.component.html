@@ -1,7 +1,7 @@
 
-<div class="posts container">
-  <div *ngFor="let post of posts" class="post card mb-3">
-    <div class="card-body">
+<div class="posts">
+  <div *ngFor="let post of posts" class="post">
+    <div class="postContainer">
     <div class="usuario">
       <img
         [src]="userProfilePictures.get(post.user.id)"
