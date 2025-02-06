@@ -12,7 +12,14 @@
     </div>
 
     <a [routerLink]="['/profile']"
-      ><img [src]="profilePictureUrl" alt="Foto Perfil" class="foto-perfil"
+      ><img
+        [src]="
+          profilePictureUrl
+            ? profilePictureUrl
+            : '../../../assets/images/default_profile.jpg'
+        "
+        alt="Foto Perfil"
+        class="foto-perfil"
     /></a>
   </nav>
 </header>

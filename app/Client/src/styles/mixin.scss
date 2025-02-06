@@ -1,13 +1,19 @@
 // MIXINS
 @mixin center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  @mixin background-clip-text($color1, $color2) {
-    background: linear-gradient(to right, $color1, $color2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin background-clip-text($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin background-clip-element($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+}

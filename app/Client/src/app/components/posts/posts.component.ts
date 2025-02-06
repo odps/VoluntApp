@@ -6,27 +6,29 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-posts',
   standalone: false,
-  
+
   templateUrl: './posts.component.html',
-  styleUrl: './posts.component.scss'
+  styleUrl: './posts.component.scss',
 })
 export class PostsComponent {
-  
   postContent: string = '';
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(
+    private postService: PostService,
+    private router: Router,
+  ) {}
 
-  onSubmit(){
+  onSubmit() {
     this.postService.createPost(this.postContent).subscribe(
-      response =>{
-          console.log('Post created', response);
-          this.resetForm();
-          this.router.navigate(['/posts']);
+      (response) => {
+        console.log('Post created', response);
+        this.resetForm();
+        this.router.navigate(['/main']);
       },
-      error => {
-        console.error('Error creating post:', error)
-      }
-    );  
+      (error) => {
+        console.error('Error creating post:', error);
+      },
+    );
   }
 
   resetForm() {

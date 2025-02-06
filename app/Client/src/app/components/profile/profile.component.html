@@ -1,67 +1,150 @@
-<header id="profile_header">
-  <div id="back">
-    <img src="assets/icons/back-arrow.svg" alt="Go back" (click)="goBack()" />
-  </div>
-  <div id="profile_info" *ngIf="user">
-    <!-- [src]="profilePictureUrl"
-    [alt]="user.profile.nickname" -->
-    <img src="../../../assets/images/avatar.png" class="rounded-circle" />
-    <h2 id="nickname">{{ user.profile.nickname }}</h2>
-    <p id="interests" *ngIf="user.profile.interests">
-      {{ user.profile.interests }}
-    </p>
-    <p id="rating" *ngIf="user.profile.rating">
-      Rating: {{ user.profile.rating }} 🌟
-    </p>
-    <div id="settings">
-      <img
-        src="assets/icons/settings.svg"
-        alt="Settings"
-        (click)="toSettings()"
-      />
+<body>
+  <header>
+    <div class="perfil-cabezera">
+      <div class="back">
+        <a (click)="goBack()"><i class="bi bi-arrow-left"></i></a>
+      </div>
+      <div class="profile_info" *ngIf="user">
+        <img
+          src="../../../assets/images/default_profile.jpg"
+          [alt]="user.profile.nickname"
+          class="foto-perfil rounded-circle"
+        />
+        <!-- [src]="
+        profilePictureUrl
+          ? profilePictureUrl
+          : '../../../assets/images/default_profile.jpg'
+      " -->
+        <h2 id="nickname">{{ user.profile.nickname }}</h2>
+        <p id="interests" *ngIf="user.profile.interests">
+          {{ user.profile.interests }}
+        </p>
+        <p id="rating" *ngIf="user.profile.rating">
+          Rating: {{ user.profile.rating }}
+        </p>
+      </div>
+      <div id="settings">
+        <i class="bi bi-gear"></i>
+      </div>
     </div>
-  </div>
-</header>
-<main>
-  <!-- Barrita navegadora con Eventos, Posts y Logros -->
+    <div class="bio-content-header">
+      <p>
+        Amante del voluntariado y las pequeñas acciones que generan grandes
+        cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
+        increíbles. 🌍
+      </p>
+    </div>
+  </header>
+
+  <app-navbar></app-navbar>
   <nav>
-    <ul>
+    <ul class="menu">
       <li>
         <a
+          class="menu-link"
           [class.active]="activeView === 'eventos'"
           (click)="setActiveView('eventos')"
-          style="font-weight: bold"
           >Eventos</a
         >
       </li>
       <li>
         <a
+          class="menu-link"
           [class.active]="activeView === 'posts'"
           (click)="setActiveView('posts')"
-          style="font-weight: bold"
           >Posts</a
         >
       </li>
       <li>
         <a
+          class="menu-link"
           [class.active]="activeView === 'logros'"
           (click)="setActiveView('logros')"
-          style="font-weight: bold"
           >Logros</a
         >
       </li>
     </ul>
   </nav>
-  <!-- modulo que corresponda segun se pinche en la barrita -->
-  <app-events *ngIf="activeView === 'eventos'"></app-events>
 
-  <div *ngIf="activeView === 'posts'">
-    <h2>Mis Posts</h2>
-    <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
-    nos permite pasar el usuario y filtrar por si hiciera falta -->
-    <app-post-list [userId]="user?.id"></app-post-list>
+  <div class="container-fluid">
+    <!-- Biografía -->
+    <section class="bio">
+      <h4>Biografía</h4>
+      <div class="bio-content">
+        Amante del voluntariado y las pequeñas acciones que generan grandes
+        cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
+        increíbles. 🌍
+      </div>
+    </section>
+
+    <!-- Logros -->
+    <section class="logros">
+      <h4>Logros</h4>
+      <div class="niveles">
+        <div class="nivel text-center">
+          <img src="../../../assets/images/logro1.png" alt="nivel 1" />
+          <div class="nivel-nombre">
+            <p id="n1">Iniciado</p>
+          </div>
+          <p class="info">1 Voluntariado</p>
+        </div>
+        <div class="nivel text-center">
+          <img src="../../../assets/images/logro2.png" alt="nivel 2" />
+          <div class="nivel-nombre">
+            <p id="n2">Comprometido</p>
+          </div>
+          <p class="info">10 Voluntariados</p>
+        </div>
+        <div class="nivel text-center">
+          <img src="../../../assets/images/logro3.png" alt="nivel 3" />
+          <div class="nivel-nombre">
+            <p id="n3">Leyenda</p>
+          </div>
+          <p class="info">20+ Voluntariados</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eventos -->
+    <section class="eventos">
+      <h4>Eventos</h4>
+      <div class="evento-lista">
+        <div class="evento">
+          <div class="">
+            🌍 Limpieza de playa<br />
+            📅 12 Ene 2025<br />
+            📍 Valencia
+          </div>
+        </div>
+        <div class="evento">
+          <div class="">
+            🍽️ Reparto de comida<br />
+            📅 05 Dic 2024<br />
+            📍 Madrid
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mis Posts -->
+    <div>
+      <a href="">Mis posts</a>
+    </div>
   </div>
 
-  <app-logros *ngIf="activeView === 'logros'"></app-logros>
-</main>
-<app-footer></app-footer>
+  <app-footer></app-footer>
+
+  <main>
+    <!-- modulo que corresponda segun se pinche en la barrita -->
+    <app-events *ngIf="activeView === 'eventos'"></app-events>
+
+    <div *ngIf="activeView === 'posts'">
+      <h2>Mis Posts</h2>
+      <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
+      nos permite pasar el usuario y filtrar por si hiciera falta -->
+      <app-post-list [userId]="user?.id"></app-post-list>
+    </div>
+
+    <app-logros *ngIf="activeView === 'logros'"></app-logros>
+  </main>
+</body>
