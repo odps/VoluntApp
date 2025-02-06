@@ -38,6 +38,7 @@ $font-size-x-large: x-large;
     padding: 20px;
     display: flex;
     text-align: center;
+    align-items: center;
   }
 
   .amigo .foto {
@@ -48,10 +49,17 @@ $font-size-x-large: x-large;
   .amigo .nombre {
     white-space: nowrap;
     max-width: 100%;
-    margin: 15px;
+    margin: 0;
   }
 
   .link_amigo{
     text-decoration: none;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .foto{
+    border-radius: 50px;
   }

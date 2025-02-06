@@ -24,11 +24,10 @@ $font-size-x-large: x-large;
     color: white;
 }
 html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     width: 100%;
-    overflow-x: hidden;
   }
   
   body {
@@ -45,7 +44,6 @@ html, body {
 
 .main {
     display: flex;
-    min-height: 100vh;
     width: 100%;
     height: 100%;
     
@@ -62,7 +60,6 @@ html, body {
 
 .publicar {
     background-color: $primary-color;
-    margin-left: auto;
     border-radius: 50%;
     border: none;
     color: $white;
@@ -71,52 +68,64 @@ html, body {
     height: 50px;
     cursor: pointer; 
     transition: background-color 0.3s ease; 
+    margin-bottom: 2%;
+    margin-left: 80%;
+
 }
 
-.publicar button:hover {
+.publicar:hover {
     background-color: darken($primary-color, 10%); 
 }
 
-.publicar button::after {
+.publicar::after{
     content: "+";
 }
 
+
+
 @media (min-width: 481px) and (max-width: 768px) {
-    .publicar button {
+    html,body{
+        height: 100%;
+      }
+
+    .publicar {
         border-radius: 20px;
         font-size: $font-size-medium;
         width: 100px; 
         height: 40px; 
     }
 
-    .publicar{
+    .publicar::after{
         content: "Publicar";
     }
-    html,body{
-        height: 100vh;
-      }
+    main{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
 
-  main {
-    width: 70%;
+  main,html {
+    width: 60%;
+    height: 100%;
     padding: 20px;
-    min-height: 100vh;
-    margin-left: calc(20% + 20px); // Offset for fixed sidebar
+    margin-left: calc(20% + 20px); 
 
   }
 
  
  
   .sidebar {
-    position: fixed; // Make sidebar fixed
+    position: fixed;
     display: flex;
     background-color: $grey;
     flex-direction: column;
     text-align: center;
-    left: 20px; // Match margin
-    top: 110px; // Match margin
+    left: 20px; 
+    top: 110px; 
     width: 20%;
     color: $white;
     border-radius: 30px;
@@ -125,12 +134,16 @@ html, body {
     overflow-y: auto;
   }
 
-    .publicar {
+    .publicar{
         border-radius: 20px;
         font-size: $font-size-medium;
         width: 120px; 
         height: 40px;
-        margin-left: 90%;
+    }
+
+    .publicar::after{
+        content: "Publicar";
+        
     }
 
 
