@@ -26,6 +26,7 @@ import { LogrosComponent } from './components/logros/logros.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
     NavbarComponent,
     GroupsComponent,
     PostListComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

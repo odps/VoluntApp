@@ -1,5 +1,6 @@
 import { Group } from './group';
 import { User } from './user';
+import { Comment } from './comment';
 
 export interface Post {
   id: number;

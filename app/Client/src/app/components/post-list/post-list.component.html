@@ -16,4 +16,20 @@
   <button (click)="toggleLike(post)">
     {{ post.liked ? "Dislike" : "Like" }} ({{ post.likes }})
   </button>
+
+  <div class="comments">
+    <app-comment
+      *ngFor="let comment of post.comments"
+      [comment]="comment"
+    ></app-comment>
+  </div>
+
+  <!-- Boton de comentarios -->
+  <button (click)="showCommentInput(post.id)">Add Comment</button>
+
+  <!-- Mostrar area de texto para comentario y boton de enviar. -->
+  <div *ngIf="commentingPostId === post.id">
+    <textarea [(ngModel)]="newComment" placeholder="Write a comment"></textarea>
+    <button (click)="addComment(post.id)">Submit</button>
+  </div>
 </div>

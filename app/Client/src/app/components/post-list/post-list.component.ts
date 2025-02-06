@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
+import { CommentService } from '../../services/comment.service';
 
 @Component({
   standalone: false,
@@ -15,10 +16,13 @@ export class PostListComponent implements OnInit {
   user: User | null = null;
   userProfilePictures: Map<number, string> = new Map();
   userNickNames: Map<number, string> = new Map();
+  newComment: any;
+  commentingPostId: number | null | undefined;
 
   constructor(
     private postService: PostService,
-    private userService: UserService
+    private userService: UserService,
+    private commentService: CommentService
   ) {
     this.userService.getUserProfile().subscribe({
       next: (resp) => (
@@ -116,5 +120,30 @@ export class PostListComponent implements OnInit {
       },
       error: (err) => console.error('Error liking post:', err),
     });
+  }
+
+  addComment(postId: number): void {
+    if (this.newComment.trim() !== '') {
+      this.commentService.createComment(postId, this.newComment).subscribe(
+        (newComment) => {
+          const post = this.posts.find(
+            (post: { id: number }) => post.id === postId
+          );
+          if (post) {
+            post.comments = post.comments || [];
+            post.comments.push(newComment);
+          }
+          this.newComment = ''; // Clear the input field
+          this.commentingPostId = null; // Hide the comment input
+        },
+        (error) => {
+          console.error('Error creating comment:', error);
+        }
+      );
+    }
+  }
+
+  showCommentInput(postId: number): void {
+    this.commentingPostId = postId;
   }
 }
