@@ -5,13 +5,6 @@ import { UserService } from '../../services/user.service';
 import { Profile } from '../../interfaces/profile';
 import { environment } from '../../../environment';
 
-import { Router } from '@angular/router';
-
-interface FriendResponse {
-  id: number;
-  name: string;
-}
-
 @Component({
   selector: 'app-friends',
   standalone: false,
@@ -27,9 +20,7 @@ export class FriendsComponent implements OnInit {
 
   constructor(
     private friendService: FriendService,
-    private userService: UserService,
-
-    private router: Router
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -41,13 +32,6 @@ export class FriendsComponent implements OnInit {
       this.router.navigate(['/main']);
     }
   }
-
-  /*getFriendProfile(idFriend: number){
-    this.userService.getUserProfileSpecific(idFriend).subscribe({
-      next: (response: {user: User, profile: Profile}) => {
-        ret
-    })
-  }*/
 
   loadFriends() {
     this.friendProfiles = [];

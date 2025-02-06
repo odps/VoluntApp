@@ -1,0 +1,69 @@
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
+
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.usuario {
+  @include center-flex;
+  max-width: 100%;
+}
+
+
+.usuario-nombre {
+  margin: 0;
+  bottom: 0;
+  margin-left: 10px;
+  font-size: $font-size-medium;
+}
+
+.postContainer {
+  background-color: $grey !important;
+  padding: 15px;
+  font-weight: light;
+  width: 80%;
+  margin-left: 10px;
+}
+
+.posts{
+  background-color: $grey !important;
+  max-width: 100%;
+  padding: 30px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+}
+
+.post {
+  background-color: $grey !important;
+  border-radius: 15px;
+  color: $white;
+}
+
+.post-contenido {
+  margin-left: 50px;
+  margin-right: 10px;
+  font-size: $font-size-small;
+}
+
+
+.profile-pic {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+

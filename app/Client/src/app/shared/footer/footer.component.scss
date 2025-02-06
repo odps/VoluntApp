@@ -1,52 +1,58 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixin.scss";
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
 
-// GLOBALES
-* {
-  font-family: $font-family;
-  padding: 0;
-  margin: 0;
+// Mixins
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-html {
-  background-color: $background-color;
+@mixin background-clip-text($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 // FOOTER
 footer {
-  border-top: solid 0.5px #272727;
-  background-color: $background-color;
-  font-size: $font-size-x-small;
-}
-
-.slogan {
-  font-size: $font-size-small;
-}
-
-.logo {
-  width: 30px;
-  margin-bottom: 10px;
-}
-
-.redes {
-  font-size: $font-size-x-large;
-  margin-bottom: 10px;
-}
-
-.redes a {
-  color: $white;
-}
-
-.redes a:hover {
-  color: $red;
-}
-
-.redes i {
-  margin: 10px;
-}
-
-// TABLET
-@media (min-width: 481px) and (max-width: 768px) {
+    border-top: solid 0.5px $light-grey;
+    background-color: $background-color;
+    font-size: $font-size-x-small;
+    margin-top: 0;
+  }
+  
+  .slogan {
+    font-size: $font-size-small;
+  }
+  
+  .logo {
+    width: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .redes {
+    font-size: $font-size-x-large;
+    margin-bottom: 10px;
+  }
+  
+  .redes i {
+    margin: 10px;
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    
   footer {
     display: flex;
     flex-direction: column;
@@ -74,14 +80,15 @@ footer {
   }
 }
 
-// DESKTOP
-@media (min-width: 769px) {
-  // FOOTER
 
-  footer {
+@media (min-width: 1024px) {
+
+
+footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0;
   }
 
   .slogan {

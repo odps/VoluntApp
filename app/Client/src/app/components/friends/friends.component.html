@@ -1,145 +1,20 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
+<div *ngIf="friends && friendProfiles.length > 0; else noFriends">
+    <ul class="amigos">
+    <li><h2>Amigos</h2></li> 
+    <div *ngFor="let profile of friendProfiles">
+        <li class="amigo">
+        <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
 
-<!-- CONTENEDOR PRINCIPAL -->
-<div class="container-fluid">
-  <!-- LISTA DE AMIGOS -->
-  <ul class="amigos">
-    <!-- *ngIf="friends && friendProfiles.length > 0; else noFriends" -->
-    <li>
-      <h2>Amigos</h2>
+            <img [src]="baseUrl + '/' + profile.profile_picture_route"
+            alt="Imagen Perfil" class="foto">
+            <p class="nombre">{{ profile.nickname }}</p>
+        </a>
     </li>
-    <!-- AMIGO 1... -->
-    <li class="amigo" *ngFor="let profile of friendProfiles">
-      <!-- FOTO DEL AMIGO -->
-      <img
-        class="foto"
-        [src]="['/profile', profile.id]"
-        alt="foto de usuario"
-        [routerLink]="baseUrl + '/profile/' + profile.id"
-      />
-      <!-- NOMBRE DEL AMIGO -->
-      <p class="nombre">{{ profile.nickname }}</p>
-    </li>
-    <li class="amigo">
-      <img
-        class="foto"
-        src="../../../assets/images/avatar.png"
-        alt="foto de usuario"
-      />
-      <p class="nombre">Pepe Antonio R</p>
-    </li>
-    <li class="amigo">
-      <img
-        class="foto"
-        src="../../../assets/images/avatar.png"
-        alt="foto de usuario"
-      />
-      <p class="nombre">Juan Márquez</p>
-    </li>
-    <li class="amigo">
-      <img
-        class="foto"
-        src="../../../assets/images/avatar.png"
-        alt="foto de usuario"
-      />
-      <p class="nombre">Rubén García C</p>
-    </li>
-  </ul>
-
-  <!-- LISTA DE GRUPOS -->
-  <ul class="grupos">
-    <li><h2>Grupos</h2></li>
-    <!-- GRUPO 1... -->
-    <li class="grupo">
-      <!-- FOTO DEL GRUPO -->
-      <img
-        class="foto"
-        src="../../../assets/images/avatar.png"
-        alt="foto de usuario"
-      />
-      <!-- NOMBRE GRUPO -->
-      <p class="nombre">Unidos por los animales</p>
-      <span
-        ><!-- AJUSTAR EL GRID (Hace que los miembros del grupo se situen a la derecha)--></span
-      >
-
-      <!-- MIEMBROS DEL GRUPO -->
-      <ul class="grupos-miembros">
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-      </ul>
-    </li>
-    <li class="grupo">
-      <img
-        class="foto"
-        src="../../../assets/images/avatar.png"
-        alt="foto de usuario"
-      />
-      <p class="nombre">Siempre verdes</p>
-      <span></span>
-      <ul class="grupos-miembros">
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-        <li class="grupo-miembro">
-          <img
-            src="../../../assets/images/avatar.png"
-            alt="miembro del grupo"
-          />
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-  <!-- <ul class="amigos">
-    <ng-template #noFriends>
-      ///////////////////////////
-      <p>No hay amigos, sal a la calle</p>
-      ///////////////////////////
-    </ng-template>
-  </ul> -->
-</div>
-
-<!-- <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
-  <h2>Amigos</h2>
-  <div *ngFor="let profile of friendProfiles">
-    <a [routerLink]="baseUrl + '/profile/' + profile.id">
-      <img [src]="['/profile', profile.id]" alt="Imagen Perfil" />
-      <p>{{ profile.nickname }}</p>
-    </a>
-  </div>
+    </div>
+</ul>
 </div>
 
 <ng-template #noFriends>
-  ///////////////////////////
-  <p>No hay amigos, sal a la calle</p>
-  ///////////////////////////
-</ng-template> -->
+  <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
+</ng-template>
 
-<app-footer></app-footer>

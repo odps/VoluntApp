@@ -1,110 +1,30 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixin.scss";
+// Variables
+$font-family: "Montserrat", sans-serif;
+$background-color: #1d1d1d;
+$primary-color: #d04b4b;
+$white: #ffffff;
+$grey: #464646;
+$light-grey: #272727;
+$font-size-small: small;
+$font-size-medium: medium;
+$font-size-x-small: x-small;
+$font-size-x-large: x-large;
 
-// GLOBALES
-* {
-  font-family: $font-family;
-  padding: 0;
-  margin: 0;
-  background-color: $background-color;
-}
-
-// CONTENEDOR PRINCIPAL
-.container-fluid {
-  background-color: $background-color;
-  margin: 0;
-  padding: 0;
-  color: $white;
-  display: flex-inline;
-}
-
-.amigos {
-  background-color: $background-color;
-  list-style: none;
-  margin: 0;
-  padding: 5%;
-}
-
-.amigos h2 {
-  display: none;
-}
-
-.amigo {
-  padding: 20px;
+// Mixins
+@mixin center-flex {
   display: flex;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.amigo .foto {
-  height: 50px;
-  margin-left: 20px;
+@mixin background-clip-text($color1, $color2) {
+  background: linear-gradient(to right, $color1, $color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-.amigo .nombre {
-  white-space: nowrap;
-  max-width: 100%;
-  margin: 15px;
-}
-
-.grupos {
-  margin-top: 15px;
-  list-style: none;
-  margin: 0;
-  padding: 5%;
-}
-
-.grupos h2 {
-  display: none;
-}
-
-.grupo {
-  padding: 20px;
-  padding-right: 30px;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 85px 70%;
-}
-
-.grupo .foto {
-  height: 50px;
-  margin-left: 20px;
-}
-
-.grupo .nombre {
-  margin: 0;
-  margin-right: auto;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.grupos-miembros {
-  list-style: none;
-  max-width: 100%;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  justify-self: end;
-}
-
-.grupo-miembro img {
-  height: 20px;
-  margin: 5px;
-}
-
-// DESKTOP
-@media (min-width: 769px) {
-  app-header,
-  app-navbar,
-  app-footer {
-    display: none;
-  }
-
-  * {
-    background-color: $grey;
-  }
 
   .amigos {
-    background-color: $background-color;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -131,45 +51,7 @@
     margin: 15px;
   }
 
-  .grupos {
-    margin-top: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .link_amigo{
+    text-decoration: none;
+    color: #ffffff;
   }
-
-  .grupos h2 {
-    @include background-clip-text($white, $grey);
-  }
-
-  .grupo {
-    padding: 20px;
-    padding-right: 30px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 30% 70%;
-  }
-
-  .grupo .foto {
-    height: 50px;
-    margin-left: 20px;
-  }
-
-  .grupo .nombre {
-    margin: 0;
-  }
-
-  .grupos-miembros {
-    list-style: none;
-    max-width: 100%;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-self: end;
-  }
-
-  .grupo-miembro img {
-    height: 20px;
-    margin: 5px;
-  }
-}

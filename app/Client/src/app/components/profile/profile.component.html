@@ -1,7 +1,7 @@
-<header class="perfil-cabezera">
-  <!-- <div id="back">
-    <img src="assets/icons/back-arrow.svg" alt="Go back" />
-  </div> -->
+<header id="profile_header">
+  <div id="back">
+    <img src="assets/icons/back-arrow.svg" alt="Go back" (click)="goBack()" />
+  </div>
   <div id="profile_info" *ngIf="user">
     <!-- [src]="profilePictureUrl"
     [alt]="user.profile.nickname" -->
@@ -11,66 +11,57 @@
       {{ user.profile.interests }}
     </p>
     <p id="rating" *ngIf="user.profile.rating">
-      Rating: {{ user.profile.rating }}
+      Rating: {{ user.profile.rating }} 🌟
     </p>
     <div id="settings">
-      <img src="assets/icons/settings.svg" alt="settings" />
+      <img
+        src="assets/icons/settings.svg"
+        alt="Settings"
+        (click)="toSettings()"
+      />
     </div>
   </div>
 </header>
+<main>
+  <!-- Barrita navegadora con Eventos, Posts y Logros -->
+  <nav>
+    <ul>
+      <li>
+        <a
+          [class.active]="activeView === 'eventos'"
+          (click)="setActiveView('eventos')"
+          style="font-weight: bold"
+          >Eventos</a
+        >
+      </li>
+      <li>
+        <a
+          [class.active]="activeView === 'posts'"
+          (click)="setActiveView('posts')"
+          style="font-weight: bold"
+          >Posts</a
+        >
+      </li>
+      <li>
+        <a
+          [class.active]="activeView === 'logros'"
+          (click)="setActiveView('logros')"
+          style="font-weight: bold"
+          >Logros</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <!-- modulo que corresponda segun se pinche en la barrita -->
+  <app-events *ngIf="activeView === 'eventos'"></app-events>
 
-<app-navbar></app-navbar>
+  <div *ngIf="activeView === 'posts'">
+    <h2>Mis Posts</h2>
+    <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
+    nos permite pasar el usuario y filtrar por si hiciera falta -->
+    <app-post-list [userId]="user?.id"></app-post-list>
+  </div>
 
-<div class="container-fluid">
-  <!-- Biografía -->
-  <section class="mb-4">
-    <h4>Biografía</h4>
-    <div class="p-3 rounded bg-gradient">
-      Amante del voluntariado y las pequeñas acciones que generan grandes
-      cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
-      increíbles. 🌍
-    </div>
-  </section>
-
-  <!-- Logros -->
-  <section class="mb-4">
-    <h4>Logros</h4>
-    <div class="d-flex justify-content-around">
-      <div class="text-center">
-        <div class="badge bg-secondary p-3">Iniciado</div>
-        <p>1 Voluntariado</p>
-      </div>
-      <div class="text-center">
-        <div class="badge bg-danger p-3">Comprometido</div>
-        <p>10 Voluntariados</p>
-      </div>
-      <div class="text-center">
-        <div class="badge bg-warning text-dark p-3">Leyenda</div>
-        <p>20+ Voluntariados</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Eventos -->
-  <section>
-    <h4>Eventos</h4>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <div class="p-3 bg-secondary rounded">
-          🌍 Limpieza de playa<br />
-          📅 12 Ene 2025<br />
-          📍 Valencia
-        </div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <div class="p-3 bg-secondary rounded">
-          🍽️ Reparto de comida<br />
-          📅 05 Dic 2024<br />
-          📍 Madrid
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
+  <app-logros *ngIf="activeView === 'logros'"></app-logros>
+</main>
 <app-footer></app-footer>

@@ -1,30 +1,18 @@
-<!-- CONTENEDOR PRINCIPAL -->
-<div class="container-fluid">
-  <header>
-    <!-- NAVEGADOR -->
-    <nav class="nav container p-3">
-      <!-- TITULO -->
-      <h1 class="titulo" [routerLink]="['/main']">VoluntApp</h1>
-      <!-- BUSCADOR -->
-      <div class="buscador-contenedor">
-        <input
-          type="text"
-          class="buscador form-control"
-          placeholder="Buscar..."
-        />
-        <i class="buscador-icon bi bi-search"></i>
-      </div>
-
-      <!-- USUARIO  -->
-      <img
-        src="../../../assets/images/avatar.png"
-        alt="Foto Perfil"
-        [routerLink]="['/profile']"
-        class="foto-perfil"
-        alt="Foto de Perfil"
+<header>
+  <nav class="nav container p-3">
+    <h1 class="titulo"><a [routerLink]="['/main']">VoluntApp</a></h1>
+    <!-- BUSCADOR -->
+    <div class="buscador-contenedor">
+      <input
+        type="text"
+        class="buscador form-control"
+        placeholder="Buscar..."
       />
-      <!-- [src]="baseUrl + '/' + profilePictureUrl" -->
-    </nav>
-    <!-- <button (click)="cerrarSesion()">Cerrar sesión</button> -->
-  </header>
-</div>
+      <i class="buscador-icon bi bi-search"></i>
+    </div>
+
+    <a [routerLink]="['/profile']"
+      ><img [src]="profilePictureUrl" alt="Foto Perfil" class="foto-perfil"
+    /></a>
+  </nav>
+</header>
