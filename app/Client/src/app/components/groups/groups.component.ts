@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Group, GroupInfoResponse, GroupMember, GroupMembers } from '../../interfaces/group';
+import { Group, GroupInfoResponse, GroupResponse } from '../../interfaces/group';
 import { GroupService } from '../../services/group.service';
 import { UserService } from '../../services/user.service';
-import { GroupResponse } from '../../interfaces/group';
 import { User } from '../../interfaces/user';
-import { Profile } from '../../interfaces/profile';
 import { environment } from '../../../environment';
+import { Profile } from '../../interfaces/profile';
 
 
 @Component({
@@ -16,7 +15,118 @@ import { environment } from '../../../environment';
   styleUrl: './groups.component.css'
 })
 export class GroupsComponent implements OnInit {
+  baseUrl = environment.baseUrl;
+
+  /*User login*/
   user: User | null = null;
+
+  /*Grupos*/
+  groups: GroupResponse |null = null;
+  /*Valores input formulario crearGrupo()*/
+  groupNameForm: string ="";
+  groupDescriptionForm: string = "";
+  groupReputationForm: number = 0;
+
+  /*Interacción con desplegables*/
+  expandedGroupId: number | null = null; // Para rastrear el grupo expandido
+  formClicked: boolean = false;
+
+
+  constructor(private userService: UserService, private groupService: GroupService){}
+
+
+ ngOnInit(): void {
+   this.cargarGrupos();
+ }
+
+ onSubmit(event: Event){
+  event.preventDefault();
+  this.crearGrupo();
+ }
+
+ identificarUser(){
+  this.userService.getUserProfile().subscribe({
+    next:(response: {user: User, profile: Profile})=>{
+      this.user = response.user;
+    },
+    error: (error) => console.error('Error loading user profile:', error)
+  });
+}
+
+conseguirProfileNickname(userId: number){
+  this.userService.getUserProfileSpecific(userId).subscribe({
+    next:(response: {user: User, profile: Profile})=>{
+      return response.profile.nickname;
+    }
+  })
+}
+conseguirProfilePicture(userId: number){
+  this.userService.getUserProfileSpecific(userId).subscribe({
+    next:(response: {user: User, profile: Profile})=>{
+      return response.profile.nickname;
+    }
+  })
+}
+
+cargarGrupos(){
+  this.groupService.getAllGroups().subscribe({
+    next:(response:GroupResponse)=>{
+      console.log('Grupos cargados:', response.groups);
+      this.groups = response;
+      console.log('this.groups dentro del subscribe:', this.groups.groups);
+    },
+    error: (error) => console.error('Error cargando los grupos:', error)
+  });
+}
+
+crearGrupo(){
+  this.groupService.postGroup(this.groupNameForm, this.groupDescriptionForm, this.groupReputationForm).subscribe({
+    next:(response)=>{
+      console.log('Grupo creado correctamente', response);
+      this.cargarGrupos();
+    },
+    error: (error) => console.error('Error loading user profile:', error)
+  });
+}
+
+borrarGrupo(groupId: number){
+  this.groupService.deleteGroup(groupId).subscribe({
+    next:(response)=>{
+      console.log('Grupo eliminado correctamente', response);
+    },
+    error: (error) => console.error('Error loading user profile:', error)
+  });
+}
+
+unirseGrupo(groupId: number){
+  this.groupService.joinGroup(groupId).subscribe({
+    next:(response)=>{
+      console.log('Te has unido al grupo correctamente', response);
+    },
+    error: (error) => console.error('Error loading user profile:', error)
+  });
+
+}
+
+abandonarGrupo(groupId: number){
+  this.groupService.leaveGroup(groupId).subscribe({
+    next:(response)=>{
+      console.log('Has abandonado el grupo correctamente', response);
+    },
+    error: (error) => console.error('Error loading user profile:', error)
+  });
+}
+
+openFormGroup(){
+    this.formClicked = !this.formClicked;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+  /* user: User | null = null;
   profile: Profile | null = null;
   baseUrl = environment.baseUrl;
   creador: User | null = null;
@@ -127,21 +237,27 @@ getGroupInfo(groupId: number) {
   }
 
   borrarGrupo(group: Group){
-    for(let i = 0; i < this.groups.length; i++){
+
+    if(this.user?.id == group.creator.id){
+      this.groupService.deleteGroup(group.id);
+    }
+    /*for(let i = 0; i < this.groups.length; i++){
       if(this.groups[i].creator.id === group.creator.id){
         this.groupService.deleteGroup(group.id);
       }
-    }
+    }*//*
   }
 
   entrarGrupo(group: Group){
     this.groupService.joinGroup(group.id);
+    this.getGroupInfo(group.id);
   }
 
   salirGrupo(group: Group){
     this.groupService.leaveGroup(group.id);
+    this.getGroupInfo(group.id);
   }
 
 }
-
-  
+*/
+}
