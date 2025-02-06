@@ -3,6 +3,7 @@
   <div *ngFor="let profile of friendProfiles">
     <a [routerLink]="baseUrl + '/profile/' + profile.id">
       <img
+      style="width: 100px;"
         [src]="baseUrl + '/' + profile.profile_picture_route"
         alt="Imagen Perfil"
       />

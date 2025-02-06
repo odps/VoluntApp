@@ -38,11 +38,11 @@ export class GroupService {
     return this.http.delete<any>(`${environment.apiUrl}/groups/${groupId}`,{headers:environment.headers});
     }
 
-  joinGroup(groupId: number) {
-    return this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/join`, {headers: environment.headers});
+  joinGroup(groupId: number):Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/join`, "", {headers: environment.headers});
   }
 
-  leaveGroup(groupId: number) {
-    return this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/leave`, {headers: environment.headers});
+  leaveGroup(groupId: number):Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/groups/${groupId}/leave`, "", {headers: environment.headers});
   }
 }

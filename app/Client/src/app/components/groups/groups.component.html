@@ -2,16 +2,9 @@
 
 <h2>GRUPOS</h2>
 
-<div *ngFor="let group of groups?.groups ">
-  <h3>{{group.name}}</h3>
-  <p>{{group}}</p>
-  <!-- <p>{{conseguirProfileNickname()}}</p> -->
-</div>
-
-
-
+<!-- Form para crear un grupo -->
 <div *ngIf="!formClicked; else formGroup">
-  <p>¿Quieres crear un grupo?</p>
+  
   <button (click)="openFormGroup()">¿Quieres crear un grupo?</button>
 </div>
 
@@ -20,13 +13,61 @@
     <input type="text"  [(ngModel)]="groupNameForm" name="groupName" placeholder="Nombre del grupo">
     <input type="text"  [(ngModel)]="groupDescriptionForm" name="groupDescription" placeholder="Descripción">
     <input type="text"  [(ngModel)]="groupReputationForm" name="groupReputation" placeholder="Reputación requerida">
-    <button type="submit">Crear Grupo</button>
+    <button (click)="openFormGroup()" (click)="crearGrupo()" type="submit">Crear Grupo</button>
     <button (click)="openFormGroup()">Cancelar</button>
   </form>
 </ng-template>
 
 
 
+<!-- Lista de grupos -->
+<div *ngFor="let group of groups">
+  <h3>{{ group.name }}</h3>
+
+  <!-- Botón de borrar para admins -->
+  <button *ngIf="user?.id === group.creator.id" 
+          (click)="borrarGrupo(group.id)">
+    Eliminar Grupo
+  </button>
+
+  <button (click)="getGroupDetalles(group.id); cargarMiembros(group.id)">
+    {{ expandedGroupId === group.id ? 'Cerrar' : 'Abrir' }}
+  </button>
+
+  <div *ngIf="expandedGroupId === group.id">
+    <p><strong>Descripción:</strong> {{ group.description }}</p>
+    <p><strong>Creado por:</strong> {{ group.creator.name }}</p>
+    <p><strong>Fecha de creación:</strong> {{ group.created_at | date }}</p>
+    
+
+    
+
+    <!-- Lista de miembros -->
+    <p><strong>Miembros:</strong></p>
+    <div *ngFor="let member of members">
+      <p>{{ profileData[member.id]?.nickname }}</p>
+      <img 
+        style="width: 50px;" 
+        [src]="baseUrl + '/' + profileData[member.id]?.profilePicture" 
+        [alt]="'Imagen de ' + profileData[member.id]?.nickname"
+      >
+    </div>
+    
+    <!-- Botones de unirse/salirse (fuera del loop de miembros) -->
+    <div *ngIf="user?.id !== group.creator.id">
+      <button *ngIf="!esMiembro()" 
+              (click)="unirseGrupo(group.id)">
+        Unirse al Grupo
+      </button>
+      
+      <button *ngIf="esMiembro()" 
+              (click)="abandonarGrupo(group.id)">
+        Salirse del Grupo
+      </button>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
 
 
 
@@ -52,6 +93,54 @@
 
 
 
+<!--Funciona pero se crea un boton de unirse y salirse por cada miembro (SOLO QUEREMOS UN BOTON EN TODO EL GRUPO)-->
+
+<!-- 
+<div *ngFor="let group of groups">
+  <h3>{{ group.name }}</h3>
+
+
+ 
+  <button *ngIf="user?.id == group.creator.id" 
+          (click)="borrarGrupo(group.id)"
+          class="btn-danger">
+    Eliminar Grupo
+  </button>  
+
+  <button (click)="getGroupDetalles(group.id); cargarMiembros(group.id)">
+    {{ expandedGroupId === group.id ? 'Cerrar' : 'Abrir' }}
+  </button>
+
+  <div *ngIf="expandedGroupId === group.id">
+    <p><strong>Descripción:</strong> {{ group.description }}</p>
+    <p><strong>Creado por:</strong> {{ group.creator.name }}</p>
+    <p><strong>Fecha de creación:</strong> {{ group.created_at | date }}</p>
+    <p><strong>Miembros:</strong></p>
+
+    <div *ngFor="let member of members">
+      <p>{{ profileData[member.id]?.nickname }}</p>
+
+      <img 
+        style="width: 50px;" 
+        [src]="baseUrl + '/' + profileData[member.id]?.profilePicture" 
+        [alt]="'Imagen de ' + profileData[member.id]?.nickname"
+      >
+
+      <div *ngIf="user?.id == member.id && user?.id !=group.creator.id">
+        <button (click)="abandonarGrupo(group.id)">
+          Salirse
+        </button>
+      </div>
+
+      <div *ngIf="user?.id != member.id && user?.id !=group.creator.id">
+        <button (click)="unirseGrupo(group.id)">
+          Unirse
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div> -->
 
 
 
@@ -62,6 +151,40 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!--NO FUNCIONA POR EL TEMA ASÍNCRONO DE LLAMAR FUNCIONES, SERVIDOR Y DEMÁS-->
+<!-- <div *ngFor="let group of groups ">
+    <h3>{{group.name}}</h3>
+
+    <button (click)="getGroupDetalles(group.id)" (click)="cargarMiembros(group.id)">
+      {{ expandedGroupId == group.id ? 'Cerrar' : 'Abrir'}}
+    </button>
+
+    <div *ngIf="expandedGroupId == group.id">
+      <p><strong>Descripción:</strong> {{ group.description }}</p>
+      <p><strong>Creado por:</strong> {{ group.creator.name }}</p>
+      <p><strong>Fecha de creación:</strong> {{ group.created_at | date }}</p>
+      <p><strong>Miembros:</strong></p>
+        
+        <div *ngFor="let member of members">
+          <p>{{conseguirProfileNickname(member.id)}}</p>
+          <img style="width: 50px;" [src]="baseUrl+'/'+conseguirProfilePicture(member.id) " [alt]="('Imagen de '+ conseguirProfileNickname(member.id))">
+        </div>
+
+    </div>
+
+</div> -->
 
 
 
