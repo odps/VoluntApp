@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+html{
+  background-color: #1d1d1d;
+}
+
 /* RECTÁNGULOS DE FONDO */
 .contenedor-fondo {
   transform: translate(-50%, -50%);
@@ -19,7 +23,6 @@
   left: 50%;
   top: 50%;
 
-  display: none;
 }
 
 .fondo1,
@@ -52,6 +55,7 @@
 /* BARRA NAV */
 .nav {
   display: flex;
+  justify-content: center;
 }
 
 .nav-menu {
@@ -65,7 +69,6 @@ nav h1 {
   background-clip: text; /* Propiedad estándar */
   -webkit-background-clip: text; /* Aplica el fondo solo al texto */
   -webkit-text-fill-color: transparent; /* Hace el texto transparente para mostrar el fondo */
-  text-align: center;
 }
 
 .buscador-icon {
@@ -104,11 +107,12 @@ nav h1 {
 }
 
 /* POSTS  */
+
 #posts {
   color: #ff6060;
 }
 
-.posts {
+.posts { /*seleionado en el menú */
   padding: 30px;
   list-style: none;
 }
@@ -119,9 +123,65 @@ nav h1 {
   color: #ffffff;
 }
 
+.usuario{
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+}
+
+.usuario-perfil{
+  width: 40px;
+}
+
+.usuario-nombre{
+  margin: 0;
+  bottom: 0;
+  margin-left: 10px;
+  font-size: medium;
+}
+
 .card-body {
-  padding: 20px;
+  padding: 15px;
   font-weight: light;
+}
+
+.post-contenido{
+  margin-left: 50px;
+  margin-right: 10px;
+  font-size: small;
+}
+
+.actions{
+  display: flex;
+  margin-left: 50px;
+  max-width: 100%;
+}
+
+.actions button{
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.unirme{
+  margin-left: auto;
+  margin-right: 10px;
+  background-color: #D04B4B;
+  border: none;
+}
+
+.publicar{
+  position: fixed;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  background-color: #D04B4B;
+  border-radius: 50%;
+  border: none;
+  color: #ffffff;
+  font-size: x-large;
+  width: 40px;
+  height: 40px;
 }
 
 /* FOOTER  */
@@ -167,6 +227,12 @@ footer {
   }
 
   /* Fin de contenedor fondo */
+
+  .nav{
+    margin: 0;
+    padding: 0;
+    justify-content: left;
+  }
 
   nav h1 {
     text-align: left;
@@ -237,7 +303,7 @@ footer {
     border-radius: 30px;
     z-index: 1;
     width: 300px;
-    margin-right: 50px;
+
   }
 
   .buscador {
@@ -258,6 +324,10 @@ footer {
   .menu,
   .buscador-icon {
     display: none;
+  }
+
+  .foto-perfil {
+    display: flex;
   }
 
   /* MAIN */
@@ -354,32 +424,28 @@ footer {
   }
 
   /* POSTS  */
+
   .posts {
     margin: 0;
     list-style: none;
     padding-right: 15%;
   }
 
-  .usuario {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .usuario-nombre {
-    max-width: 20px;
-    flex-grow: 0;
-  }
-
   /* FOOTER */
+  footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slogan{
+    width: 100%;
+  }
+
   .copyright-contendor {
     text-align: right;
     width: 100%;
     z-index: 1;
-    display: flex;
-  }
-
-  .copyright {
     width: 30%;
     margin-left: auto;
   }
