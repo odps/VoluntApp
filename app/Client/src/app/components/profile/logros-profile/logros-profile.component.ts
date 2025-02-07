@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: false,
   
   templateUrl: './logros-profile.component.html',
-  styleUrl: './logros-profile.component.css'
+  styleUrl: './logros-profile.component.scss'
 })
 export class LogrosProfileComponent {
 

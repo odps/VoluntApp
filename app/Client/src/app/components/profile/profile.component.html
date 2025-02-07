@@ -1,62 +1,9 @@
 <body>
 
   <app-header-profile></app-header-profile>
-  <!-- <header *ngIf="user">
-    <div class="perfil-cabezera">
-      <div class="back">
-        <a (click)="goBack()"><i class="bi bi-arrow-left"></i></a>
-      </div>
-      <div class="profile_info" >
-        <img
-          [src]="profilePictureUrl"
-          [alt]="user.profile.nickname"
-          class="foto-perfil rounded-circle"
-        />
-        <h2 id="nickname">{{ user.profile.nickname }}</h2>
-        <p id="rating" *ngIf="user.profile.rating">
-          Rating: {{ user.profile.rating }}
-        </p>
-      </div>
-      <div id="settings">
-        <i class="bi bi-gear"></i>
-      </div>
-    </div>
-    <div class="bio-content-header">
-      <p id="interests" *ngIf="user.profile.interests">
-        {{ user.profile.interests }}
-      </p>
-    </div>
-  </header> -->
 
   <app-navbar></app-navbar>
-  <nav>
-    <ul class="menu">
-      <li>
-        <a
-          class="menu-link"
-          [class.active]="activeView === 'eventos'"
-          (click)="setActiveView('eventos')"
-          >Eventos</a
-        >
-      </li>
-      <li>
-        <a
-          class="menu-link"
-          [class.active]="activeView === 'posts'"
-          (click)="setActiveView('posts')"
-          >Posts</a
-        >
-      </li>
-      <li>
-        <a
-          class="menu-link"
-          [class.active]="activeView === 'logros'"
-          (click)="setActiveView('logros')"
-          >Logros</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <app-navbar-profile></app-navbar-profile>
 
   <div class="container-fluid">
     <!-- Biografía -->
@@ -70,7 +17,8 @@
     </section>
 
     <!-- Logros -->
-    <section class="logros">
+    <app-logros-profile></app-logros-profile>
+    <!-- <section class="logros">
       <h4>Logros</h4>
       <div class="niveles">
         <div class="nivel text-center">
@@ -95,7 +43,7 @@
           <p class="info">20+ Voluntariados</p>
         </div>
       </div>
-    </section>
+    </section> -->
 
 
 

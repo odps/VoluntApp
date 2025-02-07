@@ -14,6 +14,7 @@ import { ChangeEmailComponent } from './components/settings-options/change-email
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 import { GroupsComponent } from './components/groups/groups.component';
 
+
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
   // Ruta predeterminada que redirige a la página de login
@@ -40,5 +41,5 @@ export const routes: Routes = [
   { path: 'settings/change-picture', component: ChangeProfilePictureComponent },
   { path: 'settings/change-username', component: ChangeUsernameComponent },
   //Ruta para el componente de grupos
-  { path: 'groups', component: GroupsComponent },
+  { path: 'groups', component: GroupsComponent }
 ];

@@ -31,6 +31,7 @@ body {
   margin: 0;
   padding: 9%;
 }
+
 .perfil-cabezera {
   justify-content: space-between;
   display: flex;
@@ -70,99 +71,8 @@ body {
   }
 }
 
-// Escondemos el menú exclusivo para desktop
-nav,
-.bio-content-header {
-  display: none;
-}
-
-.bio {
-  h4 {
-    @include background-clip-text($white, $grey);
-    margin-bottom: 20px;
-  }
-
-  .bio-content {
-    @include background-clip-element(#ff6060, #ffb000);
-    border-radius: 15px;
-    padding: 15px;
-    background-color: red;
-  }
-}
-
-.logros {
-  width: 100%;
-
-  h4 {
-    @include background-clip-text($white, $grey);
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-
-  img {
-    width: 100px;
-  }
-
-  .niveles {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 100%;
-    flex-wrap: wrap;
-
-    .nivel {
-      width: 120px;
-    }
-
-    .nivel-nombre {
-      background-color: #292929;
-      border-radius: 20px;
-      padding: 5px;
-      font-weight: bold;
-      font-size: smaller;
-
-      #n1 {
-        @include background-clip-text($white, #4a4a4a);
-      }
-
-      #n2 {
-        @include background-clip-text($white, #d04b4b);
-      }
-
-      #n3 {
-        @include background-clip-text($white, #edac1b);
-      }
-
-      .info {
-        font-size: smaller;
-        word-wrap: break-word;
-        text-align: center;
-        width: 100%;
-        overflow: hidden;
-      }
-    }
-  }
-}
-
-.eventos {
-  h4 {
-    @include background-clip-text($white, $grey);
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-
-  .evento-lista {
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-    .evento {
-      background-color: $grey;
-      border-radius: 15px;
-    }
-  }
+#interests{
+    display: none;
 }
 
 @media (min-width: 769px) {
@@ -170,40 +80,15 @@ nav,
     display: none;
   }
 
-  // MENÚ
-  nav {
-    display: flex;
-
-    .menu {
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      max-width: 100%;
-      width: 100%;
-      flex-wrap: wrap;
-      list-style: none;
-    }
-
-    .menu-link {
-      color: $white;
-      border-bottom: solid 1px $white;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      text-decoration: none;
-    }
-
-    .menu-link.active {
-      color: $red;
-    }
-  }
-
-  .profile_info {
-    display: block;
-    text-align: center;
+  .profile_info h2 {
+    margin-right: 80px;
   }
 
   .bio-content-header {
+    #interests{
+        display: block;
+    }
+
     display: flex;
     width: 100%;
     padding-left: 25%;
@@ -212,84 +97,4 @@ nav,
     text-align: center;
     justify-content: center;
   }
-
-  .logros,
-  .bio,
-  .eventos {
-    display: none;
-  }
 }
-
-// .profile-container {
-//   max-width: 800px;
-//   margin: 2rem auto;
-//   padding: 2rem;
-//   background-color: #1e1e1e;
-//   border-radius: 20px;
-//   color: #fff;
-// }
-
-// .profile-header {
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 2rem;
-
-//   .profile-avatar {
-//     img {
-//       width: 120px;
-//       height: 120px;
-//       border-radius: 50%;
-//       border: 3px solid #ff4d4d;
-//     }
-//   }
-
-//   .profile-info {
-//     margin-left: 2rem;
-
-//     h2 {
-//       margin-bottom: 0.5rem;
-//       font-weight: lighter;
-//     }
-//   }
-// }
-
-// .profile-section {
-//   background-color: #2e2e2e;
-//   padding: 2rem;
-//   border-radius: 15px;
-//   margin-bottom: 2rem;
-
-//   h3 {
-//     margin-bottom: 1.5rem;
-//     font-weight: lighter;
-//   }
-
-//   .form-group {
-//     margin-bottom: 1.5rem;
-
-//     label {
-//       display: block;
-//       margin-bottom: 0.5rem;
-//     }
-
-//     input {
-//       width: 100%;
-//       padding: 0.5rem;
-//       border-radius: 8px;
-//       border: 1px solid #fff;
-//       background-color: #2e2e2e;
-//       color: #fff;
-//     }
-//   }
-
-//   .btn-primary {
-//     background-color: #ff4d4d;
-//     border: none;
-//     padding: 0.5rem 2rem;
-//     border-radius: 25px;
-
-//     &:hover {
-//       background-color: #ff6666;
-//     }
-//   }
-// }

@@ -1,1 +1,29 @@
-<p>navbar-profile works!</p>
+<nav>
+    <ul class="menu">
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'eventos'"
+          (click)="setActiveView('eventos')"
+          [routerLink]="['/eventos']"
+          >Eventos</a
+        >
+      </li>
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'posts'"
+          (click)="setActiveView('posts')"
+          >Posts</a
+        >
+      </li>
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'logros'"
+          (click)="setActiveView('logros')"
+          >Logros</a
+        >
+      </li>
+    </ul>
+  </nav>

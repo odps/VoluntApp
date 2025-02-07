@@ -53,4 +53,3 @@ export class HeaderProfileComponent implements OnInit {
     this.activeView = view;
   }
 }
-
