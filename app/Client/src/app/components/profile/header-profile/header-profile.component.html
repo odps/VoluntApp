@@ -1,0 +1,26 @@
+<header *ngIf="user">
+    <div class="perfil-cabezera">
+      <div class="back">
+        <a (click)="goBack()"><i class="bi bi-arrow-left"></i></a>
+      </div>
+      <div class="profile_info" >
+        <img
+          [src]="profilePictureUrl"
+          [alt]="user.profile.nickname"
+          class="foto-perfil rounded-circle"
+        />
+        <h2 id="nickname">{{ user.profile.nickname }}</h2>
+        <p id="rating" *ngIf="user.profile.rating">
+          Rating: {{ user.profile.rating }}
+        </p>
+      </div>
+      <div id="settings">
+        <i class="bi bi-gear"></i>
+      </div>
+    </div>
+    <div class="bio-content-header">
+      <p id="interests" *ngIf="user.profile.interests">
+        {{ user.profile.interests }}
+      </p>
+    </div>
+  </header>
