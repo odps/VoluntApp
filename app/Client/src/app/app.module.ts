@@ -27,7 +27,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { EventosComponent } from './components/profile/eventos/eventos.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { EventosComponent } from './components/profile/eventos/eventos.component
     GroupsComponent,
     PostListComponent,
     CommentComponent,
-    EventosComponent,
   ],
   imports: [
     BrowserModule,

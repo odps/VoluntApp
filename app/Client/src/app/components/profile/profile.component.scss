@@ -58,7 +58,6 @@ body {
     width: 100%;
     max-width: 100%;
     flex-wrap: wrap;
-    margin-right: 80px;
   }
 
   // iconos de back y settings
@@ -148,7 +147,23 @@ nav,
   }
 }
 
+.eventos {
+  h4 {
+    @include background-clip-text($white, $grey);
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
 
+  .evento-lista {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .evento {
+      background-color: $grey;
+      border-radius: 15px;
+    }
+  }
+}
 
 @media (min-width: 769px) {
   app-navbar {
@@ -199,7 +214,8 @@ nav,
   }
 
   .logros,
-  .bio{
+  .bio,
+  .eventos {
     display: none;
   }
 }

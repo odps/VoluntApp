@@ -7,7 +7,6 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { FriendsComponent } from './components/friends/friends.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { EventosComponent } from './components/profile/eventos/eventos.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
@@ -33,8 +32,6 @@ export const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   //Ruta para el componente de amigos
   { path: 'profile', component: ProfileComponent },
-  //Ruta para el componente de amigos
-  { path: 'events', component: EventosComponent },
   //Ruta para el componente de ajustes de usuario.
   { path: 'settings', component: SettingsComponent },
   //Rutas de cada opcion contenida dentro de users
