@@ -1,24 +1,16 @@
 <body>
-  <header>
+  <header *ngIf="user">
     <div class="perfil-cabezera">
       <div class="back">
         <a (click)="goBack()"><i class="bi bi-arrow-left"></i></a>
       </div>
-      <div class="profile_info" *ngIf="user">
+      <div class="profile_info" >
         <img
-          src="../../../assets/images/default_profile.jpg"
+          [src]="profilePictureUrl"
           [alt]="user.profile.nickname"
           class="foto-perfil rounded-circle"
         />
-        <!-- [src]="
-        profilePictureUrl
-          ? profilePictureUrl
-          : '../../../assets/images/default_profile.jpg'
-      " -->
         <h2 id="nickname">{{ user.profile.nickname }}</h2>
-        <p id="interests" *ngIf="user.profile.interests">
-          {{ user.profile.interests }}
-        </p>
         <p id="rating" *ngIf="user.profile.rating">
           Rating: {{ user.profile.rating }}
         </p>
@@ -28,10 +20,8 @@
       </div>
     </div>
     <div class="bio-content-header">
-      <p>
-        Amante del voluntariado y las pequeñas acciones que generan grandes
-        cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
-        increíbles. 🌍
+      <p id="interests" *ngIf="user.profile.interests">
+        {{ user.profile.interests }}
       </p>
     </div>
   </header>
@@ -68,12 +58,12 @@
 
   <div class="container-fluid">
     <!-- Biografía -->
-    <section class="bio">
+    <section class="bio" *ngIf="user">
       <h4>Biografía</h4>
       <div class="bio-content">
-        Amante del voluntariado y las pequeñas acciones que generan grandes
-        cambios. 💚 Siempre buscando formas de ayudar y conectar con personas
-        increíbles. 🌍
+        <p id="interests" *ngIf="user.profile.interests">
+          {{ user.profile.interests }}
+        </p>
       </div>
     </section>
 
@@ -105,26 +95,7 @@
       </div>
     </section>
 
-    <!-- Eventos -->
-    <section class="eventos">
-      <h4>Eventos</h4>
-      <div class="evento-lista">
-        <div class="evento">
-          <div class="">
-            🌍 Limpieza de playa<br />
-            📅 12 Ene 2025<br />
-            📍 Valencia
-          </div>
-        </div>
-        <div class="evento">
-          <div class="">
-            🍽️ Reparto de comida<br />
-            📅 05 Dic 2024<br />
-            📍 Madrid
-          </div>
-        </div>
-      </div>
-    </section>
+    <app-eventos></app-eventos>
 
     <!-- Mis Posts -->
     <div>
