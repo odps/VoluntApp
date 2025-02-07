@@ -27,6 +27,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { HeaderProfileComponent } from './components/profile/header-profile/header-profile.component';
+import { NavbarProfileComponent } from './components/profile/navbar-profile/navbar-profile.component';
+import { EventosProfileComponent } from './components/profile/eventos-profile/eventos-profile.component';
+import { LogrosProfileComponent } from './components/profile/logros-profile/logros-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { CommentComponent } from './components/comment/comment.component';
     GroupsComponent,
     PostListComponent,
     CommentComponent,
+    HeaderProfileComponent,
+    NavbarProfileComponent,
+    EventosProfileComponent,
+    LogrosProfileComponent,
   ],
   imports: [
     BrowserModule,
