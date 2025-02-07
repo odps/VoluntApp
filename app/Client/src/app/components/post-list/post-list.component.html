@@ -1,7 +1,34 @@
 
-<div class="posts">
+    <!-- LINK BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- LINK SASS -->
+    <link rel="stylesheet" href="post-list.component.scss" />
+    <!-- ICONOS BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!--FUENTE MONTSERRAT-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+ 
+
+<div class="posts container">
   <div *ngFor="let post of posts" class="post">
-    <div class="postContainer">
+    <div class="card-body">
     <div class="usuario">
       <img
         [src]="userProfilePictures.get(post.user.id)"
@@ -16,9 +43,33 @@
       </button>
     </div>
     <p class="post-contenido card-text">{{ post.content }}</p>
-    <button (click)="toggleLike(post)">
-      {{ post.liked ? "Dislike" : "Like" }} ({{ post.likes }})
+    <button class="like-button" (click)="toggleLike(post)">
+      <img 
+        [src]="post.liked ? '../../../assets/images/heart-filled.png' : '../../../assets/images/heart-empty.png'"
+        alt="like"
+        class="heart-icon"
+      />
+      <span class="likes-count">{{ post.likes }}</span>
     </button>
   </div>
+  
+  <!-- Boton de comentarios -->
+  <button (click)="toggleComments(post)">Show Comments</button>
+  <button (click)="showCommentInput(post.id)">Add Comment</button>
+  
+  <div *ngIf="post.showComments" class="comments">
+    <app-comment
+      *ngFor="let comment of post.comments"
+      [comment]="comment"
+      [currentUserId]="user?.id"
+      (commentDeleted)="onCommentDeleted(comment.id, post.id)"
+    ></app-comment>
+  </div>
+
+  <!-- Mostrar area de texto para comentario y boton de enviar. -->
+  <div *ngIf="commentingPostId === post.id">
+    <textarea [(ngModel)]="newComment" placeholder="Write a comment"></textarea>
+    <button (click)="addComment(post.id)">Submit</button>
+    <button (click)="hideCommentInput()">Cancelar</button>
   </div>
 </div>
