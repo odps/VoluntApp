@@ -1,0 +1,38 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+.settings-header {
+  text-align: center;
+  padding: 5%;
+
+  .back {
+    font-size: xx-large;
+    position: fixed;
+    left: 20px;
+    top: 15px;
+  }
+
+  h1 {
+    @include degradado-horizontal-texto($white, $grey);
+  }
+}
+
+// MEDIA DESKTOP
+@media (min-width: 769px) {
+  .settings-header {
+    .back {
+      font-size: 45px;
+      left: 5%;
+      top: 4%;
+    }
+  }
+}

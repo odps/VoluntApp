@@ -1,21 +1,39 @@
-<app-settings-header></app-settings-header>
-<h1>Cambiar Email</h1>
-<form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
-  <input type="email" formControlName="email" required />
-  <div
-    *ngIf="
-      emailForm.controls['email'].invalid &&
-      (emailForm.controls['email'].dirty || emailForm.controls['email'].touched)
-    "
-  >
-    <div *ngIf="emailForm.controls['email'].errors?.['required']">
-      Email es requerido.
-    </div>
-    <div *ngIf="emailForm.controls['email'].errors?.['email']">
-      Email no es válido.
+<body>
+  <!-- HEADER DE SETTINGS -->
+  <app-settings-header></app-settings-header>
+
+  <div class="container-fluid">
+    <div class="caja">
+      <h2>Cambiar Email</h2>
+      <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+        <div class="ajustar-input">
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Introduce tu correo"
+            required
+          />
+        </div>
+        <div
+          *ngIf="
+            emailForm.controls['email'].invalid &&
+            (emailForm.controls['email'].dirty ||
+              emailForm.controls['email'].touched)
+          "
+        >
+          <div *ngIf="emailForm.controls['email'].errors?.['required']">
+            Email es requerido.
+          </div>
+          <div *ngIf="emailForm.controls['email'].errors?.['email']">
+            Email no es válido.
+          </div>
+        </div>
+        <button type="submit" [disabled]="emailForm.invalid">Cambiar</button>
+      </form>
+      <p>{{ message }}</p>
     </div>
   </div>
-  <button type="submit" [disabled]="emailForm.invalid">Cambiar</button>
-</form>
-<p>{{ message }}</p>
-<app-footer></app-footer>
+
+  <app-footer></app-footer>
+</body>

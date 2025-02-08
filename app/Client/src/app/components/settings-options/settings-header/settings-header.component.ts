@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
   standalone: false,
 
   templateUrl: './settings-header.component.html',
-  styleUrl: './settings-header.component.css',
+  styleUrl: './settings-header.component.scss',
 })
 export class SettingsHeaderComponent {
   constructor(private location: Location) {}

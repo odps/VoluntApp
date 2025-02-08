@@ -1,17 +1,37 @@
-<app-settings-header></app-settings-header>
-<ul>
-  <li>
-    <a [routerLink]="['/settings/change-username']"
-      >Cambiar nombre de usuario</a
-    >
-  </li>
-  <li>
-    <a [routerLink]="['/settings/change-email']">Cambiar correo elecronico</a>
-  </li>
-  <li>
-    <a [routerLink]="['/settings/change-picture']">Cambiar foto de perfil</a>
-  </li>
-  <li><a [routerLink]="['/settings/change-bio']">Cambiar biografia</a></li>
-  <li><a (click)="logout()">Cerrar Sesion</a></li>
-</ul>
-<app-footer></app-footer>
+<body>
+  <!-- HEADER DE SETTINGS -->
+  <app-settings-header></app-settings-header>
+
+  <!-- OPCIONES -->
+  <div class="container-fluid">
+    <ul class="opciones">
+      <li class="opcion">
+        <a [routerLink]="['/settings/change-username']">
+          <p>Cambiar nombre de usuario</p>
+        </a>
+      </li>
+      <li class="opcion">
+        <a [routerLink]="['/settings/change-email']">
+          <p>Cambiar correo elecronico</p>
+        </a>
+      </li>
+      <li class="opcion">
+        <a [routerLink]="['/settings/change-picture']">
+          <p>Cambiar foto de perfil</p>
+        </a>
+      </li>
+      <li class="opcion">
+        <a [routerLink]="['/settings/change-bio']">
+          <p>Cambiar biografia</p>
+        </a>
+      </li>
+      <li class="opcion">
+        <a (click)="logout()">
+          <p>Cerrar Sesion</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <app-footer></app-footer>
+</body>

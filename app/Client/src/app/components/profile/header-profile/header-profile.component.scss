@@ -5,33 +5,12 @@
 * {
   background-color: transparent;
   font-family: $font-family;
+  color: $white;
   padding: 0;
   margin: 0;
-  color: $white;
 }
 
 // CONTENEDOR PRINCIPAL
-
-html {
-  width: 100%;
-}
-
-body {
-  background-image: url("../../../../assets/images/Wallp-Dark.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-}
-
-.container-fluid {
-  margin: 0;
-  padding: 9%;
-}
-
 .perfil-cabezera {
   justify-content: space-between;
   display: flex;
@@ -43,7 +22,7 @@ body {
     width: 60px;
   }
 
-  .profile_info {
+  .perfil-info {
     align-items: center;
     text-align: center;
     display: flex;
@@ -53,7 +32,7 @@ body {
     gap: 20px;
   }
 
-  .profile_info h2 {
+  .perfil-info h2 {
     padding: auto;
     justify-content: baseline;
     width: 100%;
@@ -71,8 +50,9 @@ body {
   }
 }
 
-#interests{
-    display: none;
+// OCULTAMOS BIOGRAFÍA DE LA PARA MOBILE
+#interests {
+  display: none;
 }
 
 @media (min-width: 769px) {
@@ -80,20 +60,19 @@ body {
     display: none;
   }
 
-  .profile_info h2 {
+  .perfil-info h2 {
     margin-right: 80px;
   }
 
   .bio-content-header {
-    #interests{
-        display: block;
+    #interests {
+      display: block;
     }
 
     display: flex;
     width: 100%;
     padding-left: 25%;
     padding-right: 25%;
-    margin-bottom: 5%;
     text-align: center;
     justify-content: center;
   }

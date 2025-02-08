@@ -1,0 +1,62 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  @include fondo-voluntapp;
+  min-height: 100vh;
+}
+
+//CONTENEDOR PRINCIPAL
+.container-fluid {
+  padding-inline: 15%;
+
+  .opciones {
+    list-style: none;
+    margin-top: 30px;
+
+    .opcion {
+      @include degradado-horizontal(#484848, #883f3f);
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 50px;
+
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        p {
+          padding: 15px;
+        }
+      }
+
+      &:hover {
+        @include degradado-horizontal(#883f3f, #484848);
+        font-size: larger;
+      }
+    }
+  }
+}
+
+// MEDIA DESKTOP
+@media (min-width: 769px) {
+  .container-fluid {
+    padding-inline: 30%;
+
+    .opciones {
+      margin: 0;
+    }
+  }
+}

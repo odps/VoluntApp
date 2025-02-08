@@ -1,8 +1,24 @@
-<app-settings-header></app-settings-header>
-<h1>Cambiar Bio</h1>
-<form (ngSubmit)="onSubmit()" #bioForm="ngForm">
-  <textarea name="bio" [(ngModel)]="bio" required></textarea>
-  <button type="submit" [disabled]="!bioForm.form.valid">Cambiar</button>
-</form>
-<p>{{ message }}</p>
-<app-footer></app-footer>
+<body>
+  <!-- HEADER DE SETTINGS -->
+  <app-settings-header></app-settings-header>
+
+  <div class="container-fluid">
+    <div class="caja">
+      <h2>Cambiar Biografía</h2>
+      <form (ngSubmit)="onSubmit()" #bioForm="ngForm">
+        <div class="ajustar-textarea">
+          <textarea
+            name="bio"
+            [(ngModel)]="bio"
+            placeholder="Cuéntanos sobre ti..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit" [disabled]="!bioForm.form.valid">Cambiar</button>
+      </form>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</body>

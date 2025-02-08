@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   standalone: false,
   selector: 'app-change-username',
   templateUrl: './change-username.component.html',
-  styleUrls: ['./change-username.component.css'],
+  styleUrls: ['./change-username.component.scss'],
 })
 export class ChangeUsernameComponent {
   nickname: string = '';
@@ -16,7 +16,7 @@ export class ChangeUsernameComponent {
   constructor(
     private userService: UserService,
     private forms: FormsModule,
-    private location: Location
+    private location: Location,
   ) {}
 
   onSubmit() {
@@ -31,7 +31,7 @@ export class ChangeUsernameComponent {
       },
       (error) => {
         this.message = 'Error al cambiar nickname: ' + error.message;
-      }
+      },
     );
   }
 }

@@ -13,16 +13,17 @@ import { Location } from '@angular/common';
   standalone: false,
 
   templateUrl: './change-email.component.html',
-  styleUrl: './change-email.component.css',
+  styleUrl: './change-email.component.scss',
 })
 export class ChangeEmailComponent {
   emailForm: FormGroup;
   message: string = '';
+  submitted: boolean = false;
 
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private location: Location
+    private location: Location,
   ) {
     this.emailForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,6 +31,8 @@ export class ChangeEmailComponent {
   }
 
   onSubmit() {
+    this.submitted = true;
+
     if (this.emailForm.valid) {
       this.changeEmail();
       this.location.back();
@@ -43,7 +46,7 @@ export class ChangeEmailComponent {
       },
       (error) => {
         this.message = 'Error al cambiar Email: ' + error.message;
-      }
+      },
     );
   }
 }

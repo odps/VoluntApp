@@ -28,65 +28,92 @@ body {
 }
 
 .logros {
-    width: 100%;
+  width: 100%;
 
-    h4 {
-      @include background-clip-text($white, $grey);
-      margin-bottom: 20px;
-      margin-top: 20px;
+  h4 {
+    @include degradado-horizontal-texto($white, $grey);
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  h3 {
+    display: none;
+  }
+
+  img {
+    width: 65%;
+  }
+
+  .niveles {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+
+    .nivel {
+      width: 120px;
     }
-  
-    img {
-      width: 100px;
-    }
-  
-    .niveles {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 100%;
-      flex-wrap: wrap;
-  
-      .nivel {
-        width: 120px;
+
+    .nivel-nombre {
+      background-color: #292929;
+      border-radius: 20px;
+      padding: 5px;
+      font-weight: bold;
+      font-size: smaller;
+
+      #n1 {
+        @include degradado-horizontal-texto($white, #4a4a4a);
       }
-  
-      .nivel-nombre {
-        background-color: #292929;
-        border-radius: 20px;
-        padding: 5px;
-        font-weight: bold;
+
+      #n2 {
+        @include degradado-horizontal-texto($white, #d04b4b);
+      }
+
+      #n3 {
+        @include degradado-horizontal-texto($white, #edac1b);
+      }
+
+      .info {
         font-size: smaller;
-  
-        #n1 {
-          @include background-clip-text($white, #4a4a4a);
-        }
-  
-        #n2 {
-          @include background-clip-text($white, #d04b4b);
-        }
-  
-        #n3 {
-          @include background-clip-text($white, #edac1b);
-        }
-  
-        .info {
-          font-size: smaller;
-          word-wrap: break-word;
-          text-align: center;
-          width: 100%;
-          overflow: hidden;
-        }
+        word-wrap: break-word;
+        text-align: center;
+        width: 100%;
+        overflow: hidden;
       }
     }
+  }
 }
 
 @media (min-width: 769px) {
-    .logros{
-        padding-left: 20%;
-        padding-right: 20%;
+  .logros {
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 35px;
+
+    h4 {
+      display: none;
     }
+
+    h3 {
+      @include degradado-vertical(#993a3a, #ff6060);
+      display: block;
+      background-color: $red;
+      text-align: center;
+      border-radius: 15px;
+      padding: 2%;
+      margin-bottom: 45px;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    .nivel {
+      min-width: 30%;
+    }
+  }
 }

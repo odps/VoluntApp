@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   selector: 'app-change-bio',
   standalone: false,
   templateUrl: './change-bio.component.html',
-  styleUrls: ['./change-bio.component.css'],
+  styleUrls: ['./change-bio.component.scss'],
 })
 export class ChangeBioComponent {
   bio: string = '';
@@ -16,7 +16,7 @@ export class ChangeBioComponent {
   constructor(
     private userService: UserService,
     private forms: FormsModule,
-    private location: Location
+    private location: Location,
   ) {}
 
   onSubmit() {
@@ -31,7 +31,7 @@ export class ChangeBioComponent {
       },
       (error) => {
         this.message = 'Error al cambiar bio: ' + error.message;
-      }
+      },
     );
   }
 }

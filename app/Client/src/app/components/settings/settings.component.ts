@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   standalone: false,
 
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css',
+  styleUrl: './settings.component.scss',
 })
 export class SettingsComponent {
   constructor(private auth: AuthService) {}

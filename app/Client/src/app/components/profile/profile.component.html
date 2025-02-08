@@ -1,12 +1,14 @@
 <body>
-
   <app-header-profile></app-header-profile>
 
+  <!-- NAVBAR -->
   <app-navbar></app-navbar>
+
+  <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
   <app-navbar-profile></app-navbar-profile>
 
   <div class="container-fluid">
-    <!-- Biografía -->
+    <!-- BIOGRAFÍA (USO EXCLUSIVO EN MOBILE)-->
     <section class="bio" *ngIf="user">
       <h4>Biografía</h4>
       <div class="bio-content">
@@ -16,56 +18,17 @@
       </div>
     </section>
 
-    <!-- Logros -->
+    <!-- LOGROS -->
     <app-logros-profile></app-logros-profile>
-    <!-- <section class="logros">
-      <h4>Logros</h4>
-      <div class="niveles">
-        <div class="nivel text-center">
-          <img src="../../../assets/images/logro1.png" alt="nivel 1" />
-          <div class="nivel-nombre">
-            <p id="n1">Iniciado</p>
-          </div>
-          <p class="info">1 Voluntariado</p>
-        </div>
-        <div class="nivel text-center">
-          <img src="../../../assets/images/logro2.png" alt="nivel 2" />
-          <div class="nivel-nombre">
-            <p id="n2">Comprometido</p>
-          </div>
-          <p class="info">10 Voluntariados</p>
-        </div>
-        <div class="nivel text-center">
-          <img src="../../../assets/images/logro3.png" alt="nivel 3" />
-          <div class="nivel-nombre">
-            <p id="n3">Leyenda</p>
-          </div>
-          <p class="info">20+ Voluntariados</p>
-        </div>
-      </div>
-    </section> -->
 
+    <!-- EVENTOS -->
+    <app-eventos-profile></app-eventos-profile>
 
-
-    <!-- Mis Posts -->
+    <!-- VER MIS POSTS -->
     <div>
-      <a href="">Mis posts</a>
+      <a class="mis-posts" href="">Mis posts</a>
     </div>
   </div>
 
   <app-footer></app-footer>
-
-  <main>
-    <!-- modulo que corresponda segun se pinche en la barrita -->
-    <app-events *ngIf="activeView === 'eventos'"></app-events>
-
-    <div *ngIf="activeView === 'posts'">
-      <h2>Mis Posts</h2>
-      <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
-      nos permite pasar el usuario y filtrar por si hiciera falta -->
-      <app-post-list [userId]="user?.id"></app-post-list>
-    </div>
-
-    <app-logros *ngIf="activeView === 'logros'"></app-logros>
-  </main>
 </body>

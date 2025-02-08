@@ -1,0 +1,86 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  @include fondo-voluntapp;
+  min-height: 100vh;
+}
+
+//CONTENEDOR PRINCIPAL
+.container-fluid {
+  justify-content: center;
+  text-align: center;
+  padding: 15%;
+  padding-bottom: 18%;
+
+  .caja {
+    @include degradado-horizontal(#484848, #883f3f);
+    justify-content: space-evenly;
+    flex-direction: column;
+    display: flex;
+    border: solid 3px $grey;
+    padding-inline: 25px;
+    padding-block: 60px;
+    border-radius: 15px;
+
+    form {
+      margin-top: 20px;
+
+      .ajustar-textarea {
+        padding-inline: 20px;
+
+        textarea {
+          border-radius: 15px;
+          padding-left: 10px;
+          padding-top: 10px;
+          resize: none;
+          height: 150px;
+          width: 90%;
+
+          &::placeholder {
+            color: $white;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 10px 2px $grey;
+          }
+        }
+      }
+
+      button {
+        background-color: $grey;
+        margin-top: 10px;
+        border-radius: 15px;
+        padding-block: 5px;
+        padding-inline: 15px;
+
+        &:hover {
+          border-color: $background-color;
+        }
+      }
+    }
+  }
+}
+
+// MEDIA DESKTOP
+@media (min-width: 769px) {
+  .container-fluid {
+    padding-inline: 30%;
+    padding-top: 1%;
+    padding-bottom: 10%;
+
+    .caja {
+      padding-inline: 50px;
+    }
+  }
+}
