@@ -3,13 +3,13 @@
     <li><h2>Amigos</h2></li> 
     <div *ngFor="let profile of friendProfiles">
         <li class="amigo">
-        <a [routerLink]="baseUrl + '/profile/' + profile.id" class="link_amigo">
+        <a [routerLink]="['/friend-profile', profile.id]" class="link_amigo">
         
             <img [src]="baseUrl + '/' + profile.profile_picture_route"
             alt="Imagen Perfil" class="foto">
             <p class="nombre">{{ profile.nickname }}</p>
         </a>
-    </li>
+
     </div>
 </ul>
 </div>

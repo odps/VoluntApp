@@ -8,3 +8,12 @@ export interface Friendship {
     requestedAt: Date;  
     updatedAt?: Date; 
 }
+
+
+export interface FriendshipRequest{
+    id: number,
+    fromUserId: number,
+    toUserId: number,
+    status: 'pending',
+    sender: User,
+}

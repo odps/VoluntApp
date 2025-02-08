@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Post } from '../interfaces/post';
+import { AllPostsResponse, Post } from '../interfaces/post';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
 
@@ -14,6 +14,7 @@ interface ApiResponse {
     // Otras propiedades si las necesitas
   };
 }
+
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,10 @@ export class PostService {
     return this.http.get<ApiResponse>(`${environment.apiUrl}/posts`, {
       headers: environment.headers,
     });
+  }
+
+  getAllPosts(): Observable<AllPostsResponse> {
+    return this.http.get<AllPostsResponse>(`${environment.apiUrl}/posts`, {headers: environment.headers});
   }
 
   //Borra un post en especifico

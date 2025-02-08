@@ -14,3 +14,7 @@ export interface Post {
   group: Group; // Group to which the post belongs
   liked?: boolean;
 }
+
+export interface AllPostsResponse{
+  posts: Post [];
+}

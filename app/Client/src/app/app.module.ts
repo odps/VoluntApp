@@ -27,6 +27,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { FriendProfileComponent } from './components/friend-profile/friend-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CommentComponent } from './components/comment/comment.component';
     GroupsComponent,
     PostListComponent,
     CommentComponent,
+    FriendProfileComponent,
   ],
   imports: [
     BrowserModule,
