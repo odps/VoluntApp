@@ -20,6 +20,59 @@
     </div>
   </div>
 </header>
+
+
+<!-- INICIO SEGUNDA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
+<!-- Sección de solicitudes de amistad pendientes -->
+<div class="friendship-requests" *ngIf="friendshipRequests.length > 0">
+  <h3>Solicitudes de Amistad Pendientes</h3>
+  <ul>
+    <li *ngFor="let request of friendshipRequests">
+      <div class="friend-info">
+       <!-- Imagen de perfil del remitente  -->
+        <p>{{request.sender.email}}</p>
+        
+        <img 
+          [src]="request.sender.profile.profile_picture_route" 
+          alt="Imagen de {{ request.sender.profile.nickname }}"
+        >
+        <span>{{sender?.profile?.nickname}}</span>
+      </div>
+      <div class="actions">
+        <button (click)="acceptFriendshipRequest(request)">Aceptar</button>
+        <button (click)="rejectFriendshipRequest(request)">Rechazar</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- FIN SEGUNDA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
+
+
+<!-- INICIO TERCERA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
+<!-- Sección de solicitudes de amistad pendientes -->
+<!--<div class="friendship-requests" *ngIf="friendshipRequests.length > 0">
+  <h3>Solicitudes de Amistad Pendientes</h3>
+  <ul>
+    <li *ngFor="let request of friendshipRequests">
+      <div class="friend-info">
+         Imagen de perfil del remitente 
+        <img 
+          [src]=" request.sender?.profile?.profile_picture_route" 
+          alt="Imagen de {{ request.sender?.name }}"
+        >
+        <span>{{ request.sender?.profile?.nickname }}</span>
+      </div>
+      <div class="actions">
+        <button (click)="acceptFriendshipRequest(request)">Aceptar</button>
+        <button (click)="rejectFriendshipRequest(request)">Rechazar</button>
+      </div>
+    </li>
+  </ul>
+</div>-->
+<!-- FIN TERCERA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
+
+
 <main>
   <!-- Barrita navegadora con Eventos, Posts y Logros -->
   <nav>

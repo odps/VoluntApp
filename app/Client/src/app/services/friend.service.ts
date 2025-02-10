@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environment';
 import { User } from '../interfaces/user';
 import { UserService } from './user.service';
-import { FriendshipRequest } from '../interfaces/friendship';
+import { Friendship, FriendshipRequest } from '../interfaces/friendship';
 
 interface FriendResponse {
     id: number;
@@ -23,21 +23,22 @@ export class FriendService {
 
   constructor(private http: HttpClient) { }
 
-  getFriends(userId: number): Observable<any>{
-    return this.http.get<any>(`${environment.apiUrl}/friends/${userId}`, {headers: environment.headers});
+  getFriends(userId: number): Observable</*any*/Friendship[]>{
+    return this.http.get</*any*/Friendship[]>(`${environment.apiUrl}/friends/${userId}`, {headers: environment.headers});
   }
 
-  getFriendshipRequest():Observable<FriendshipRequest>{
-    return this.http.get<FriendshipRequest>(`${environment.apiUrl}/friend-requests-pending`, 
+  getFriendshipRequests():Observable<FriendshipRequest[]>{
+    return this.http.get<FriendshipRequest[]>(`${environment.apiUrl}/friend-requests-pending`, 
       {headers: environment.headers});
   }
 
-  sendFriendshipRequest(userId: number):Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/friends/request/${userId}`, "",{headers: environment.headers});
+  sendFriendshipRequest(friendId: number):Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/friends/request/${friendId}`, {},{headers: environment.headers});
   }
 
-  respondFriendshipRequest(userId: number, status: "accepted" | "rejected"):Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/friends/request/${userId}/respond`, status, {headers: environment.headers});
+  respondFriendshipRequest(requestId: number, status: "accepted" | "rejected"):Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/friends/request/${requestId}/respond`,
+      { 'status': status }, {headers: environment.headers});
   }
 
   deleteFriendship(userId: Number): Observable<any>{

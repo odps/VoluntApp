@@ -11,9 +11,9 @@ export interface Friendship {
 
 
 export interface FriendshipRequest{
-    id: number,
-    fromUserId: number,
-    toUserId: number,
-    status: 'pending',
-    sender: User,
+    id: number;
+    from_user_id: number;
+    to_user_id: number;
+    status: 'pending';
+    sender: User;
 }

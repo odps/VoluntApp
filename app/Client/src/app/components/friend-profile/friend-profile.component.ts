@@ -53,6 +53,8 @@ export class FriendProfileComponent implements OnInit{
                 });
               }
 
+              
+
 
 //////////                   CODIGO DIEGO
 // ngOnInit(): void {
@@ -96,7 +98,7 @@ export class FriendProfileComponent implements OnInit{
         this.loadFriends();
       },
       error:(error)=>{
-        console.log(error);
+        console.log('Error al enviar la solicitud de amistad: ',error);
       }
     });
   }
