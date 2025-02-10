@@ -44,7 +44,7 @@ $font-size-x-large: x-large;
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 125%;
+  width: 100%;
 }
 
 .post {
@@ -52,7 +52,7 @@ $font-size-x-large: x-large;
   border-radius: 30px;
   color: $white;
   margin-bottom: 20px;
-  width: 150%;
+  width: 100%;
 }
 
 .post-contenido {
@@ -95,25 +95,42 @@ $font-size-x-large: x-large;
   align-items: center;
   gap: 5px;
 
-  
   .heart-icon {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.2s ease;
+    font-size: 20px;
+    color: $white;
+    transition: transform 0.2s ease, color 0.2s ease;
   }
-  
+
   &:hover .heart-icon {
-      transform: scale(1.1);
+    color: $primary-color;
+    transform: scale(1.1);
   }
-  
+
   .likes-count {
-      color: $white;
+    color: $white;
   }
+}
+
+.bi-heart-fill {
+  color: $primary-color !important;
 }
 
 .post-actions {
   display: flex;
   align-items: center;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 5px;
+
+  &:hover {
+    color: $primary-color;
+    transform: scale(1.1);
+  }
 }
 
 .icon-button {.comment {
@@ -130,10 +147,16 @@ $font-size-x-large: x-large;
 }
 
 .icon-button i {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
   padding-right: 5px;
+
+  &:hover{
+    color: $primary-color;
+  }
 }
+
+
 
 
 .comment-textarea {
@@ -223,26 +246,3 @@ $font-size-x-large: x-large;
   margin-top: 5px;
 }
 
-.comment .comment-actions .icon-button {
-  font-size: 1rem;
-  color: $white;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    color: $primary-color;
-    transform: scale(1.1);
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .posts{
-      width: 90%;
-    }
-}
-
-@media (min-width: 768px) {
-  .posts{
-    width: 90%;
-  }
-}

@@ -47,17 +47,16 @@
       <p class="post-contenido card-text">{{ post.content }}</p>
       <div class="post-actions">
         <button class="like-button" (click)="toggleLike(post)">
-          <img
-            [src]="
-              post.liked
-                ? '../../../assets/images/heart-filled.png'
-                : '../../../assets/images/heart-empty.png'
-            "
-            alt="like"
+          <i
+            [ngClass]="{
+              'bi-heart-fill': post.liked,
+              'bi-heart': !post.liked
+            }"
             class="heart-icon"
-          />
+          ></i>
           <span class="likes-count">{{ post.likes }}</span>
         </button>
+        
 
         <!-- Boton de comentarios -->
         <button (click)="toggleComments(post)" class="icon-button">
