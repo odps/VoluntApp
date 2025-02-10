@@ -12,19 +12,8 @@
 
 // CONTENEDOR PRINCIPAL
 
-html {
-  width: 100%;
-}
-
 body {
-  background-image: url("../../../../assets/images/Wallp-Dark.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  @include fondo-voluntapp;
 }
 
 .logros {
@@ -77,13 +66,15 @@ body {
         @include degradado-horizontal-texto($white, #edac1b);
       }
 
-      .info {
-        font-size: smaller;
-        word-wrap: break-word;
-        text-align: center;
-        width: 100%;
-        overflow: hidden;
-      }
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 10px;
+      word-wrap: break-word;
+      text-align: center;
+      width: 100%;
+      overflow: hidden;
     }
   }
 }

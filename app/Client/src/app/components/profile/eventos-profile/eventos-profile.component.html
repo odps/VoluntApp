@@ -1,13 +1,75 @@
-<main class="eventos">
+<section class="container-fluid">
+  <h4>Eventos</h4>
+  <section class="eventos" lang="events.length > 0; else noEvents">
+    <div class="evento" *ngFor="let event of events">
+      <div class="evento-header">
+        <img
+        *ngFor="let participant of participantsByEvent.get(event.id)"
+        [src]="participantPictures.get(participant.id)"
+        [alt]="participant.name"
+        class="participant-pic"
+        width="32"
+        height="32"
+        />
+        <h5>{{ event.title }}</h5>
+        <div class="participants" *ngIf="participantsByEvent.get(event.id)">
+          <div class="participant-pictures">
+
+          </div>
+        </div>
+      </div>
+      <div class="evento-body">
+        <p>{{ event.description }}</p>
+        <p>
+          <i class="bi bi-calendar"></i>{{ event.date_time }}
+        </p>
+        <p>
+          <i class="bi bi-geo-alt"></i>{{ event.location }}
+        </p>
+      </div>
+    </div>
+    <!-- <div class="evento" *ngFor="let event of events">
+      <div class="event-header">
+        <h5>{{ event.title }}</h5>
+        <div class="participants" *ngIf="participantsByEvent.get(event.id)">
+          <div class="participant-pictures">
+            <img
+              *ngFor="let participant of participantsByEvent.get(event.id)"
+              [src]="participantPictures.get(participant.id)"
+              [alt]="participant.name"
+              class="participant-pic"
+              width="32"
+              height="32"
+            />
+          </div>
+        </div>
+      </div>
+      <p>{{ event.description }}</p>
+      <i class="bi bi-calendar"></i><span>{{ event.date_time }}</span>
+      <br />
+      <i class="bi bi-geo-alt"></i><span>{{ event.location }}</span>
+    </div> -->
+  </section>
+  <ng-template #noEvents>
+    <p>No events available.</p>
+  </ng-template>
+</section>
+
+
+
+
+
+
+<!-- <main class="eventos"> -->
     <!-- modulo que corresponda segun se pinche en la barrita -->
-    <app-events *ngIf="activeView === 'eventos'"></app-events>
+    <!-- <app-events *ngIf="activeView === 'eventos'"></app-events>
 
     <div *ngIf="activeView === 'posts'">
-      <h2>Mis Posts</h2>
+      <h2>Mis Posts</h2> -->
       <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
       nos permite pasar el usuario y filtrar por si hiciera falta -->
-      <app-post-list [userId]="user?.id"></app-post-list>
+      <!-- <app-post-list [userId]="user?.id"></app-post-list>
     </div>
 
     <app-logros *ngIf="activeView === 'logros'"></app-logros>
-  </main>
+  </main> -->

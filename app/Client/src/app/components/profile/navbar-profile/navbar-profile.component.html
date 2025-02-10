@@ -3,15 +3,16 @@
       <li>
         <a
           class="menu-link"
+          (click)="changeSection('eventos')"
           [class.active]="activeView === 'eventos'"
           (click)="setActiveView('eventos')"
-          [routerLink]="['/eventos']"
           >Eventos</a
         >
       </li>
       <li>
         <a
           class="menu-link"
+          (click)="changeSection('posts')"
           [class.active]="activeView === 'posts'"
           (click)="setActiveView('posts')"
           >Posts</a
@@ -20,6 +21,7 @@
       <li>
         <a
           class="menu-link"
+          (click)="changeSection('logros')"
           [class.active]="activeView === 'logros'"
           (click)="setActiveView('logros')"
           >Logros</a

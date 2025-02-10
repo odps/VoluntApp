@@ -1,9 +1,9 @@
-<div>
-  <header>Events</header>
+<section class="eventos">
+  <h4>Eventos</h4>
   <section *ngIf="events.length > 0; else noEvents">
-    <div *ngFor="let event of events">
+    <div class="evento" *ngFor="let event of events">
       <div class="event-header">
-        <h2>{{ event.title }}</h2>
+        <h5>{{ event.title }}</h5>
         <div class="participants" *ngIf="participantsByEvent.get(event.id)">
           <div class="participant-pictures">
             <img
@@ -18,12 +18,12 @@
         </div>
       </div>
       <p>{{ event.description }}</p>
-      <span>{{ event.date_time }}</span>
+      <i class="bi bi-calendar"></i><span>{{ event.date_time }}</span>
       <br />
-      <span>{{ event.location }}</span>
+      <i class="bi bi-geo-alt"></i><span>{{ event.location }}</span>
     </div>
   </section>
   <ng-template #noEvents>
     <p>No events available.</p>
   </ng-template>
-</div>
+</section>
