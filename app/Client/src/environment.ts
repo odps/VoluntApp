@@ -9,7 +9,7 @@ if (token) {
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/VoluntApp/app/Server/public/api',
-  baseUrl: 'http://localhost/VoluntApp/app/Server/public',
+  apiUrl: 'http://35.170.203.230/api',
+  baseUrl: 'http://35.170.203.230',
   headers: headers,
 };
