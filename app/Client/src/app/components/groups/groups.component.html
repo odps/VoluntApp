@@ -1,28 +1,29 @@
 
 
-<h2>GRUPOS</h2>
-
-<!-- Form para crear un grupo -->
-<div *ngIf="!formClicked; else formGroup">
-  
-  <button (click)="openFormGroup()">¿Quieres crear un grupo?</button>
-</div>
+<h2 class="tituloGrupos">Grupos</h2>
 
 <ng-template #formGroup>
-  <form  method="POST" (ngSubmit)="onSubmit($event)">
+  <form class="formGroup"  method="POST" (ngSubmit)="onSubmit($event)">
     <input type="text"  [(ngModel)]="groupNameForm" name="groupName" placeholder="Nombre del grupo">
     <input type="text"  [(ngModel)]="groupDescriptionForm" name="groupDescription" placeholder="Descripción">
     <input type="text"  [(ngModel)]="groupReputationForm" name="groupReputation" placeholder="Reputación requerida">
+    <br>
     <button (click)="openFormGroup()" (click)="crearGrupo()" type="submit">Crear Grupo</button>
+    <br><br>
     <button (click)="openFormGroup()">Cancelar</button>
   </form>
 </ng-template>
 
 
-
+ 
 <!-- Lista de grupos -->
 <div *ngFor="let group of groups">
-  <h3>{{ group.name }}</h3>
+  <h5 class="nombreGrupo">
+    {{ group.name }}
+    <i class="arrow-icon" (click)="getGroupDetalles(group.id); cargarMiembros(group.id)">
+      {{ expandedGroupId === group.id ? '▲' : '▼' }}
+    </i>
+  </h5>
 
   <!-- Botón de borrar para admins -->
   <button *ngIf="user?.id === group.creator.id" 
@@ -30,11 +31,9 @@
     Eliminar Grupo
   </button>
 
-  <button (click)="getGroupDetalles(group.id); cargarMiembros(group.id)">
-    {{ expandedGroupId === group.id ? 'Cerrar' : 'Abrir' }}
-  </button>
 
-  <div *ngIf="expandedGroupId === group.id">
+
+  <div class="descripcionGrupo" *ngIf="expandedGroupId === group.id">
     <p><strong>Descripción:</strong> {{ group.description }}</p>
     <p><strong>Creado por:</strong> {{ group.creator.name }}</p>
     <p><strong>Fecha de creación:</strong> {{ group.created_at | date }}</p>
@@ -55,8 +54,10 @@
     
     <!-- Botones de unirse/salirse (fuera del loop de miembros) -->
     <div *ngIf="user?.id !== group.creator.id">
+      <br>
       <button *ngIf="!esMiembro()" 
-              (click)="unirseGrupo(group.id)">
+              (click)="unirseGrupo(group.id)"
+              class="unirseGrupoBtn">
         Unirse al Grupo
       </button>
       
@@ -66,6 +67,13 @@
       </button>
     </div>
   </div>
+  <br>
+</div>
+<!-- Form para crear un grupo -->
+ 
+<div *ngIf="!formClicked; else formGroup">
+  
+  <button class="crearGrupoBtn" (click)="openFormGroup()">¿Quieres crear un grupo?</button>
 </div>
 <br><br><br><br>
 
