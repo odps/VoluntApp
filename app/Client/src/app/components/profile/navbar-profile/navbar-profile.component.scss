@@ -29,29 +29,32 @@ body {
 
 // MENÚ
 nav {
+  display: flex;
+  width: 100%;
+  margin-block: 20px;
+  justify-content: center;
+  align-items: center;
+
+  .menu {
+    background-color: transparent;
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 60%;
+    flex-wrap: wrap;
+    list-style: none;
+  }
 
-    .menu {
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        max-width: 100%;
-        width: 100%;
-        flex-wrap: wrap;
-        list-style: none;
-    }
+  .menu-link {
+    color: $white;
+    border-bottom: solid 1px $white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-decoration: none;
+  }
 
-    .menu-link {
-        color: $white;
-        border-bottom: solid 1px $white;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        text-decoration: none;
-    }
-
-    .menu-link.active {
-        color: $red;
-    }
+  .menu-link.active {
+    color: $red;
+  }
 }

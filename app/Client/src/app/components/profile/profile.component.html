@@ -19,15 +19,19 @@
     </section>
 
     <!-- LOGROS -->
-    <app-logros-profile *ngIf="isDesktop ? activeSection === 'logros' : true"></app-logros-profile>
+    <app-logros-profile
+      *ngIf="isDesktop ? activeSection === 'logros' : true"
+    ></app-logros-profile>
 
     <!-- EVENTOS -->
-    <app-eventos-profile *ngIf="isDesktop ? activeSection === 'eventos' : true"></app-eventos-profile>
+    <app-eventos-profile
+      *ngIf="isDesktop ? activeSection === 'eventos' : true"
+    ></app-eventos-profile>
 
-    <!-- VER MIS POSTS -->
-    <div>
-      <a class="mis-posts" href="">Mis posts</a>
-    </div>
+    <!-- VER MIS POSTS (MOBILE)-->
+    <app-mis-posts-profile
+      *ngIf="isDesktop ? activeSection === 'posts' : true"
+    ></app-mis-posts-profile>
   </div>
 
   <app-footer></app-footer>

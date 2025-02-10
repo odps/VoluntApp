@@ -46,7 +46,7 @@
   }
 
   .back .bi {
-    color: transparent;
+    // color: transparent;
   }
 }
 
@@ -58,6 +58,10 @@
 @media (min-width: 769px) {
   app-navbar {
     display: none;
+  }
+
+  .back .bi {
+    color: $white;
   }
 
   .perfil-info h2 {

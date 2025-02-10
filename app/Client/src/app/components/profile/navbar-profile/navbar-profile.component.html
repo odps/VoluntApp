@@ -1,31 +1,31 @@
 <nav>
-    <ul class="menu">
-      <li>
-        <a
-          class="menu-link"
-          (click)="changeSection('eventos')"
-          [class.active]="activeView === 'eventos'"
-          (click)="setActiveView('eventos')"
-          >Eventos</a
-        >
-      </li>
-      <li>
-        <a
-          class="menu-link"
-          (click)="changeSection('posts')"
-          [class.active]="activeView === 'posts'"
-          (click)="setActiveView('posts')"
-          >Posts</a
-        >
-      </li>
-      <li>
-        <a
-          class="menu-link"
-          (click)="changeSection('logros')"
-          [class.active]="activeView === 'logros'"
-          (click)="setActiveView('logros')"
-          >Logros</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <ul class="menu">
+    <li>
+      <a
+        class="menu-link"
+        [class.active]="activeView === 'eventos'"
+        (click)="changeSection('eventos')"
+        (click)="setActiveView('eventos')"
+        >Eventos</a
+      >
+    </li>
+    <li>
+      <a
+        class="menu-link"
+        [class.active]="activeView === 'posts'"
+        (click)="changeSection('posts')"
+        (click)="setActiveView('posts')"
+        >Posts</a
+      >
+    </li>
+    <li>
+      <a
+        class="menu-link"
+        [class.active]="activeView === 'logros'"
+        (click)="changeSection('logros')"
+        (click)="setActiveView('logros')"
+        >Logros</a
+      >
+    </li>
+  </ul>
+</nav>

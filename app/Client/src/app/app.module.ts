@@ -31,6 +31,7 @@ import { HeaderProfileComponent } from './components/profile/header-profile/head
 import { NavbarProfileComponent } from './components/profile/navbar-profile/navbar-profile.component';
 import { EventosProfileComponent } from './components/profile/eventos-profile/eventos-profile.component';
 import { LogrosProfileComponent } from './components/profile/logros-profile/logros-profile.component';
+import { MisPostsProfileComponent } from './components/profile/mis-posts-profile/mis-posts-profile.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { LogrosProfileComponent } from './components/profile/logros-profile/logr
     NavbarProfileComponent,
     EventosProfileComponent,
     LogrosProfileComponent,
+    MisPostsProfileComponent,
   ],
   imports: [
     BrowserModule,

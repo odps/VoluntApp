@@ -37,6 +37,18 @@ app-navbar-profile {
       background-color: red;
     }
   }
+
+  .mis-posts {
+    display: flex;
+    a {
+      margin-left: auto;
+      text-decoration: none;
+
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 // MEDIA DESKTOP

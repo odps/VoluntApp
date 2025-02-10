@@ -18,41 +18,41 @@
     margin-bottom: 20px;
     margin-top: 20px;
   }
-  
-  .eventos{
+
+  .eventos {
     display: grid;
     grid-template-columns: 45% 45%;
     gap: 10%;
-    
-    .evento{
+
+    .evento {
       background-color: $grey;
       border-radius: 15px;
       padding: 10px;
 
-      .evento-header{
+      .evento-header {
         display: flex;
 
-        img{
+        img {
           width: 20px;
           height: 20px;
           border-radius: 50%;
         }
 
-        h5{
+        h5 {
           font-size: 12px;
           margin-top: auto;
           margin-left: 5px;
         }
       }
-  
-      .evento-body{
+
+      .evento-body {
         margin-top: 10px;
 
-        p{
+        p {
           font-size: 10px;
           margin-block: 5px;
 
-          i{
+          i {
             margin-right: 5px;
           }
         }
@@ -61,3 +61,20 @@
   }
 }
 
+@media (min-width: 769px) {
+  h4 {
+    display: none;
+  }
+
+  .eventos {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .evento {
+      width: 60%;
+      max-width: 600px;
+    }
+  }
+}

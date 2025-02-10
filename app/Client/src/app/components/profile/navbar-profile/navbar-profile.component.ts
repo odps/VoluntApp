@@ -14,21 +14,20 @@ interface ProfileResponse {
 @Component({
   selector: 'app-navbar-profile',
   standalone: false,
-  
-  templateUrl: './navbar-profile.component.html',
-  styleUrl: './navbar-profile.component.scss'
-})
 
+  templateUrl: './navbar-profile.component.html',
+  styleUrl: './navbar-profile.component.scss',
+})
 export class NavbarProfileComponent implements OnInit {
   user: User | null = null;
   profilePictureUrl: string = '';
-  activeView: string = 'eventos';
+  activeView: string = 'posts';
 
   constructor(
     private userService: UserService,
     private location: Location,
     private router: Router,
-    private profileService: ProfileService
+    private profileService: ProfileService,
   ) {}
 
   ngOnInit() {
