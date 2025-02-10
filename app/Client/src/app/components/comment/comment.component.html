@@ -1,6 +1,6 @@
 <div class="comment">
   <p>{{ comment.content }}</p>
-  <button *ngIf="isCommentAuthor()" (click)="deleteComment(comment.id)">
-    Delete
+  <button *ngIf="isCommentAuthor()" (click)="deleteComment(comment.id)" class="delete-button">
+    <i class="bi bi-trash"></i>
   </button>
 </div>

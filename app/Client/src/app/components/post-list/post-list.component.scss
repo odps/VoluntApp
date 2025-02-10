@@ -39,24 +39,20 @@ $font-size-x-large: x-large;
 }
 
 .posts{
-  max-width: 100%;
   padding: 30px;
   list-style: none;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 125%;
 }
 
 .post {
   background-color: $grey;
   border-radius: 30px;
   color: $white;
-  margin-bottom: 20px
-}
-
-.usuario {
-  max-width: 100%;
-  
+  margin-bottom: 20px;
+  width: 150%;
 }
 
 .post-contenido {
@@ -65,6 +61,25 @@ $font-size-x-large: x-large;
   font-size: $font-size-small;
 }
 
+
+.usuario {
+  max-width: 100%;
+}
+
+
+.delete-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: red;
+    transform: scale(1.1);
+  }
+}
 
 .profile-pic {
   border-radius: 50px;
@@ -93,5 +108,141 @@ $font-size-x-large: x-large;
   
   .likes-count {
       color: $white;
+  }
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+}
+
+.icon-button {.comment {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 5px;
+}
+
+.icon-button i {
+  font-size: 1.5rem;
+  color: white;
+  padding-right: 5px;
+}
+
+
+.comment-textarea {
+  background-color: $grey;
+  border: none;
+  border-radius: 20px;
+  color: $white;
+  padding: 10px;
+  width: 100%;
+  resize: none;
+  font-size: $font-size-small;
+}
+
+.comment-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.comment-button {
+  background-color: $primary-color;
+  border: none;
+  border-radius: 20px;
+  color: $white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: scale(1.05);
+  }
+}
+
+.cancel-button {
+  background-color: $light-grey;
+  &:hover {
+    background-color: darken($light-grey, 10%);
+  }
+}
+
+
+.comments {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: $light-grey;
+  border-radius: 10px;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+}
+
+.comment .profile-pic {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.comment .comment-content {
+  background-color: $grey;
+  border-radius: 10px;
+  padding: 10px;
+  color: $white;
+  width: 100%;
+}
+
+.comment .comment-content .comment-author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment .comment-content .comment-text {
+  font-size: $font-size-small;
+}
+
+.comment .comment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.comment .comment-actions .icon-button {
+  font-size: 1rem;
+  color: $white;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: $primary-color;
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .posts{
+      width: 90%;
+    }
+}
+
+@media (min-width: 768px) {
+  .posts{
+    width: 90%;
   }
 }
