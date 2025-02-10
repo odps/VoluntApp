@@ -10,6 +10,54 @@
   margin: 0;
 }
 
-.eventos{
-  background-color: red;
+.container-fluid {
+  width: 100%;
+
+  h4 {
+    @include degradado-horizontal-texto($white, $grey);
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .eventos{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap: 10%;
+    
+    .evento{
+      background-color: $grey;
+      border-radius: 15px;
+      padding: 10px;
+
+      .evento-header{
+        display: flex;
+
+        img{
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+        }
+
+        h5{
+          font-size: 12px;
+          margin-top: auto;
+          margin-left: 5px;
+        }
+      }
+  
+      .evento-body{
+        margin-top: 10px;
+
+        p{
+          font-size: 10px;
+          margin-block: 5px;
+
+          i{
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
 }
+

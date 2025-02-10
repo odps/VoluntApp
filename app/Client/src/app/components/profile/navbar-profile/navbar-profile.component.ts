@@ -5,6 +5,8 @@ import { UserService } from '../../../services/user.service';
 import { environment } from '../../../../environment';
 import { Router } from '@angular/router';
 
+import { ProfileService } from '../profile.component';
+
 interface ProfileResponse {
   user: User;
 }
@@ -25,7 +27,8 @@ export class NavbarProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit() {
@@ -51,5 +54,9 @@ export class NavbarProfileComponent implements OnInit {
   }
   setActiveView(view: string): void {
     this.activeView = view;
+  }
+
+  changeSection(section: string) {
+    this.profileService.setActiveSection(section);
   }
 }
