@@ -1,0 +1,15 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+.eventos{
+  background-color: red;
+}
