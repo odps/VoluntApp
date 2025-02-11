@@ -46,9 +46,10 @@ $font-size-x-large: x-large;
 
 .arrow-icon {
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 10%;
     font-size: $font-size-x-large;
     color: $white;
+    font-style: normal !important;
   }
   
   .group-details {
@@ -93,8 +94,11 @@ $font-size-x-large: x-large;
   .nombreGrupo {
     font-size: $font-size-medium;
     font-weight: bold;
-    color: $white;
-    margin-bottom: 10px;
+    color: $primary-color;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   
   .unirseGrupoBtn {
@@ -145,3 +149,28 @@ $font-size-x-large: x-large;
       }
     }
   }
+
+
+
+
+  .grupos-button {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 20px;
+    color: $white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: scale(1.05);
+    }
+  }
+  
+  .eliminar-button {
+    &:hover {
+      background-color: darken($light-grey, 10%);
+    }
+  }
+  
