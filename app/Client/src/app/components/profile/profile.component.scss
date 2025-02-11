@@ -15,8 +15,8 @@ body {
   min-height: 100vh;
 }
 
-// OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP
-app-navbar-profile {
+// OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
+app-navbar-profile, app-post-list{
   display: none;
 }
 
@@ -24,6 +24,7 @@ app-navbar-profile {
 .container-fluid {
   padding: 9%;
   min-height: 58vh;
+
   .bio {
     h4 {
       @include degradado-horizontal-texto($white, $grey);
@@ -64,8 +65,8 @@ app-navbar-profile {
     }
   }
 
-  // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP
-  app-navbar-profile {
+  // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP Y LISTADO DE POSTS
+  app-navbar-profile, app-post-list{
     display: flex;
   }
 }

@@ -14,12 +14,12 @@
   text-align: center;
   padding: 5%;
 
-  .back {
-    font-size: xx-large;
-    position: fixed;
-    left: 20px;
-    top: 15px;
-  }
+  // .back {
+  //   font-size: xx-large;
+  //   position: fixed;
+  //   left: 20px;
+  //   top: 15px;
+  // }
 
   h1 {
     @include degradado-horizontal-texto($white, $grey);
@@ -30,7 +30,8 @@
 @media (min-width: 769px) {
   .settings-header {
     .back {
-      font-size: 45px;
+      position: fixed;
+      font-size: 35px;
       left: 5%;
       top: 4%;
     }

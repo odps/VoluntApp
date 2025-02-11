@@ -25,7 +25,7 @@
 />
 <div class="posts container">
   <div *ngIf="posts.length === 0" class="no-posts">
-    <p>No hay publicaciones</p>
+    <p>No hay Publicaciones</p>
   </div>
   <div *ngFor="let post of posts" class="post">
     <div class="card-body">
@@ -52,13 +52,12 @@
           <i
             [ngClass]="{
               'bi-heart-fill': post.liked,
-              'bi-heart': !post.liked
+              'bi-heart': !post.liked,
             }"
             class="heart-icon"
           ></i>
           <span class="likes-count">{{ post.likes }}</span>
         </button>
-        
 
         <!-- Boton de comentarios -->
         <button (click)="toggleComments(post)" class="icon-button">
@@ -86,8 +85,15 @@
           class="comment-textarea"
         ></textarea>
         <div class="comment-buttons">
-          <button (click)="addComment(post.id)" class="comment-button">Submit</button>
-          <button (click)="hideCommentInput()" class="comment-button cancel-button">Cancelar</button>
+          <button (click)="addComment(post.id)" class="comment-button">
+            Submit
+          </button>
+          <button
+            (click)="hideCommentInput()"
+            class="comment-button cancel-button"
+          >
+            Cancelar
+          </button>
         </div>
       </div>
     </div>

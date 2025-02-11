@@ -5,9 +5,9 @@
 * {
   background-color: transparent;
   font-family: $font-family;
+  color: $white;
   padding: 0;
   margin: 0;
-  color: $white;
 }
 
 // CONTENEDOR PRINCIPAL
@@ -17,6 +17,7 @@ body {
 }
 
 .logros {
+  margin-top: 35px;
   width: 100%;
 
   h4 {

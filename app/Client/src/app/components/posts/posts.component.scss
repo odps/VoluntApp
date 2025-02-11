@@ -8,7 +8,7 @@
   margin: 0;
 }
 
-body{
+body {
   background-image: url("../../../assets/images/Wallp-Dark.png");
   background-size: cover;
   background-position: center;
@@ -69,26 +69,34 @@ body{
   resize: none;
   margin: 10%;
   max-width: 80%;
-  height: 500px;
+  height: 400px;
+
+  &::placeholder {
+    color: $white;
+  }
 }
 
-.new-content::placeholder {
-  color: $white;
-}
-
-.publicar2 {
+.publicar {
   display: flex;
-}
 
-.publicar2 button {
-  margin-left: auto;
-  background-color: $red;
-  border: none;
-  color: $white;
-  border-radius: 20px;
-  font-size: $font-size-medium;
-  width: 80px;
-  height: 35px;
+  button {
+    background-color: $red;
+    border: none;
+    color: $white;
+    border-radius: 20px;
+    font-size: $font-size-medium;
+    width: 90px;
+    height: 35px;
+  }
+
+  #descartar {
+    margin-right: auto;
+    margin-left: 20%;
+  }
+
+  #publicar {
+    margin-right: 20%;
+  }
 }
 
 .new-content:focus {
