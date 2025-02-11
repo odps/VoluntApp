@@ -6,6 +6,7 @@ import { Post } from '../../interfaces/post';
 import { PostService } from '../../services/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FriendService } from '../../services/friend.service';
+import { FriendshipRequest } from '../../interfaces/friendship';
 
 @Component({
   selector: 'app-friend-profile',
@@ -33,6 +34,8 @@ export class FriendProfileComponent implements OnInit{
 
   esAmigo: boolean = false;
 
+  solicitudPendiente: boolean = false;
+
   constructor(private userService: UserService,
               private friendService: FriendService,
               private postService: PostService,
@@ -48,29 +51,46 @@ export class FriendProfileComponent implements OnInit{
                     this.getUserProfileFriend(this.friendId);
                     this.getFriendPosts(this.friendId);
                     this.loadFriends(); // Al final, la lista de amigos se carga y se verifica la amistad
+                  ///////
+                  this.checkFriendshipRequest();
                   },
                   error: (error) => console.error("Error al conseguir el friendId de la ruta", error)
                 });
               }
 
-              
-
-
-//////////                   CODIGO DIEGO
-// ngOnInit(): void {
-//     this.loadFriends();
-    
-//     this.conseguirIdFriend();
+           ///////////////////////////
+           checkFriendshipRequest() {
+            this.friendService.getFriendshipRequests().subscribe({
+              next: (requests: FriendshipRequest[]) => {
+                const request = requests.find(req => req.to_user_id == this.friendId);
                 
-//     this.getUserProfileFriend(this.friendId);
-//     this.getFriendPosts(this.friendId);
-    
-//   }
+                if (request) {
+                  console.log(request.status);
+                  this.solicitudPendiente = request.status == 'pending';
+                  
+                }
+              },
+              error: (error) => console.error('Error checking friendship requests:', error)
+            });
+          }
+           ///////////////////////////
+
+
+
+
 
   comprobarAmistad(friendId: number) {
     // Verificar si el friendId está en la lista de amigos
-    this.esAmigo = this.userFriends.some(friend => friend.id == friendId);
-    console.log("¿Son amigos?", this.esAmigo);
+
+    this.userFriends.forEach(friend => {
+      if (friend.id == friendId) {
+        this.esAmigo = true;
+      }else{
+        this.esAmigo = false;
+      }
+      console.log("¿Son amigos?", this.esAmigo);
+    });
+    
   }
 
   loadFriends() {
@@ -94,7 +114,7 @@ export class FriendProfileComponent implements OnInit{
     this.friendService.sendFriendshipRequest(friendId).subscribe({
       next:(response)=>{
         console.log("Solicitud de amistad enviada: "+response);
-        this.esAmigo = true; // Actualizar el estado de la amistad
+        this.solicitudPendiente = true;
         this.loadFriends();
       },
       error:(error)=>{
@@ -120,6 +140,16 @@ export class FriendProfileComponent implements OnInit{
     this.friendService.respondFriendshipRequest(friendId, status).subscribe({
       next:(response)=>{
         console.log("Ha respondido a la peticion de amistad con: "+status+"  "+response);
+        if (status == "accepted") {
+          this.esAmigo = true; // Actualizar el estado de la amistad
+        this.solicitudPendiente = false; // La solicitud ya no está pendiente
+        this.loadFriends(); 
+        }else if(status == "rejected"){
+          this.esAmigo = false;
+          this.solicitudPendiente = false;
+          this.loadFriends();
+        }
+        
       },
       error:(error)=>{
         console.log("Error en el proceso de respuesta "+error);
@@ -128,15 +158,6 @@ export class FriendProfileComponent implements OnInit{
   }
     
 
-
-    // identificarUser(){
-    //   this.userService.getUserProfile().subscribe({
-    //     next:(response: {user: User, profile: Profile})=>{
-    //       this.user = response.user;
-    //     },
-    //     error: (error) => console.error('Error loading user profile:', error)
-    //   });
-    // }
 
   conseguirIdFriend(){
     this.route.params.subscribe({

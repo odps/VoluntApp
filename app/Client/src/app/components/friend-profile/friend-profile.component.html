@@ -17,9 +17,22 @@
     <br><br><br>
     
     <!-- Botón para solicitar amistad o dejar de ser amigos -->
-  <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+  <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
     <button *ngIf="!esAmigo" (click)="solicitarAmistad(friendProfile!.friend.id)">
       Solicitar amistad
+    </button>
+    <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
+      Dejar de ser amigos
+    </button>
+  </div> -->
+
+  <!-- Botón para solicitar amistad o dejar de ser amigos -->
+  <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+    <button *ngIf="!esAmigo && !solicitudPendiente" (click)="solicitarAmistad(friendProfile!.friend!.id)">
+      Solicitar amistad
+    </button>
+    <button *ngIf="solicitudPendiente" disabled>
+      Solicitud enviada
     </button>
     <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
       Dejar de ser amigos
