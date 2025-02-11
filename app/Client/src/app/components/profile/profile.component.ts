@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.loadUserProfile();
     ///////
-    this.loadFriendshipRequests();
+    //this.loadFriendshipRequests();
     ///////
   }
 
@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserProfileSpecific(friendshipRequest.from_user_id).subscribe({
       next:(response)=>{
         friendshipRequest.sender = response.user;
-        console.log('hola');
+        
       },
       error: (error) => console.error('Error al obtener los datos del remitente:', error)
       });
@@ -89,24 +89,26 @@ export class ProfileComponent implements OnInit {
   this.friendService.getFriendshipRequests().subscribe({
     next: (requests: FriendshipRequest[]) => {
       this.friendshipRequests = requests;
-      console.log(this.friendshipRequests[0].sender);
+      console.log(this.friendshipRequests);
+      console.log(this.friendshipRequests[1].sender);
 
 
       for (let i = 0; i < this.friendshipRequests.length; i++) {
-        
-        this.userService.getUserProfileSpecific(this.friendshipRequests[i].sender.id).subscribe({
+          console.log(this.friendshipRequests[0].sender);
+
+        this.userService.getUserProfileSpecific(this.friendshipRequests[i].sender.id).subscribe({  
           next:(response)=>{
             this.friendshipRequests[i].sender = response.user;
-            console.log('hola');
+            console.log(this.friendshipRequests[0].sender);
           },
           error: (error) => console.error('Error al obtener los datos del remitente:', error)
           });
         
       }
-      //  this.friendshipRequests.forEach(request => {
-      //    this.identificarSender(request);
-      //    console.log("adios");
-      //  });
+       this.friendshipRequests.forEach(request => {
+         this.identificarSender(request);
+         console.log("adios");
+       });
 
     },
     error: (error) => console.error('Error loading friendship requests:', error)

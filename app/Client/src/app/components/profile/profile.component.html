@@ -24,16 +24,16 @@
 
 <!-- INICIO SEGUNDA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
 <!-- Sección de solicitudes de amistad pendientes -->
-<div class="friendship-requests" *ngIf="friendshipRequests.length > 0">
+<!-- <div class="friendship-requests" *ngIf="friendshipRequests.length > 0">
   <h3>Solicitudes de Amistad Pendientes</h3>
   <ul>
     <li *ngFor="let request of friendshipRequests">
       <div class="friend-info">
-       <!-- Imagen de perfil del remitente  -->
-        <p>{{request.sender.email}}</p>
+        Imagen de perfil del remitente 
+        <p>{{request.sender.profile.nickname}}</p>
         
         <img 
-          [src]="request.sender.profile.profile_picture_route" 
+          [src]="baseUrl+'/'+sender!.profile!.profile_picture_route" 
           alt="Imagen de {{ request.sender.profile.nickname }}"
         >
         <span>{{sender?.profile?.nickname}}</span>
@@ -44,7 +44,7 @@
       </div>
     </li>
   </ul>
-</div>
+</div> -->
 
 <!-- FIN SEGUNDA PRUEBA INTERACCION SOLICITUDES DE AMISTAD -->
 
@@ -101,6 +101,14 @@
           >Logros</a
         >
       </li>
+      <li>
+        <a
+          [class.active]="activeView === 'friendRequests'"
+          (click)="setActiveView('friendRequests')"
+          style="font-weight: bold"
+          >Solicitudes de Amistad</a
+        >
+      </li>
     </ul>
   </nav>
   <!-- modulo que corresponda segun se pinche en la barrita -->
@@ -114,5 +122,8 @@
   </div>
 
   <app-logros *ngIf="activeView === 'logros'"></app-logros>
+
+  <app-friend-requests *ngIf="activeView === 'friendRequests'"></app-friend-requests>
+  
 </main>
 <app-footer></app-footer>
