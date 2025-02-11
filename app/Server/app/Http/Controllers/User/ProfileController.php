@@ -83,8 +83,10 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+        $user->name = $request->input('nickname');
         $user->profile['nickname'] = $request->input('nickname');
         $user->profile->save();
+        $user->save();
 
         return response()->json(['message' => 'Nickname updated successfully']);
     }
@@ -94,14 +96,14 @@ class ProfileController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
-    
+
         $image = $request->file('image');
         $filename = 'profile_' . $request->user()->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-        
+
         // Guarda el fichero en el servidor dentro de storage/app/public/profile_pictures
         // Usando php artisan storage:link, se pueden guardar de forma segura y ser accesidos usando storage/profile_pictures/{fichero}
         $path = $request->file('image')->storeAs('profile_pictures', $filename, 'public');
-    
+
         $user = $request->user();
 
         // Borra la imagen antigua, en caso de que esta exista.
@@ -111,29 +113,29 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($oldPath);
             }
         }
-        
+
         $user->profile->profile_picture_route = 'storage/' . $path;
         $user->profile->save();
-    
+
         return response()->json(['message' => 'Profile picture updated successfully']);
     }
 
     //Funcion que devuelve la url de la foto de perfil del usuario solicitado
-    public function getProfilePicture(Request $request, $id = null): JsonResponse 
-{
-    $profile = $id ? Profile::findOrFail($id) : $request->user()->profile;
-    
-    if (!$profile->profile_picture_route) {
+    public function getProfilePicture(Request $request, $id = null): JsonResponse
+    {
+        $profile = $id ? Profile::findOrFail($id) : $request->user()->profile;
+
+        if (!$profile->profile_picture_route) {
+            return response()->json([
+                'url' => '/storage/profile_pictures/default.png'
+            ]);
+        }
+
         return response()->json([
-            'url' => '/storage/profile_pictures/default.png'
+            'url' => asset($profile->profile_picture_route)
         ]);
     }
-    
-    return response()->json([
-        'url' => asset($profile->profile_picture_route)
-    ]);
-}
-    
+
     public function setInterests(Request $request): JsonResponse
     {
         $request->validate([
