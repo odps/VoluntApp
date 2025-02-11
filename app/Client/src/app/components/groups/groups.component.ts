@@ -12,7 +12,7 @@ import { Profile } from '../../interfaces/profile';
   standalone: false,
   
   templateUrl: './groups.component.html',
-  styleUrl: './groups.component.css'
+  styleUrl: './groups.component.scss'
 })
 export class GroupsComponent implements OnInit {
   baseUrl = environment.baseUrl;

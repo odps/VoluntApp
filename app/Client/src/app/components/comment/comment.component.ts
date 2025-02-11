@@ -7,7 +7,7 @@ import { User } from '../../interfaces/user';
   standalone: false,
 
   templateUrl: './comment.component.html',
-  styleUrl: './comment.component.css',
+  styleUrl: './comment.component.scss',
 })
 export class CommentComponent implements OnInit {
   @Input() comment: any;
