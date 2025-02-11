@@ -35,6 +35,10 @@ export class FriendsComponent implements OnInit {
     // }
   }
 
+  redirectToProfile(userId: number) {
+    this.router.navigate([environment.baseUrl+'/profile/'+ userId]);
+  }
+
   loadFriends() {
     this.friendProfiles = [];
 

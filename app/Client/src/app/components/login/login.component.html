@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -44,65 +44,72 @@
         src="../../../assets/images/logo3.png"
         alt="Segundo Logo de VoluntApp con diferente altura"
       />
-      <img class="img1" src="../../../assets/images/logo1.png" alt="Logo de VoluntApp" />
 
-      <!-- Contenedor del formulario -->
-      <div class="caja text-center">
-        <h2>Iniciar Sesion</h2>
-        <!-- Formulario -->
-        <form id="formulario" method="POST" (ngSubmit)="onSubmit()">
-          <!--Correo-->
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo</label>
-            <div class="input-group">
-              <!--Icono de Correo en Bootstrap-->
-              <span class="iconos input-group-text">
-                <i class="bi bi-envelope"></i>
-              </span>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="Introduce tu correo"
-                [(ngModel)]="email"
-                name="email"
-                required
-              />
+      <div class="main-components">
+        <img
+          class="img1"
+          src="../../../assets/images/logo1.png"
+          alt="Logo de VoluntApp"
+        />
+
+        <!-- Contenedor del formulario -->
+        <div class="caja text-center">
+          <h2>Iniciar Sesion</h2>
+          <!-- Formulario -->
+          <form id="formulario" method="POST" (ngSubmit)="onSubmit()">
+            <!--Correo-->
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <div class="input-group">
+                <!--Icono de Correo en Bootstrap-->
+                <span class="iconos input-group-text">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Introduce tu correo"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <!--Contraseña-->
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <div class="input-group">
-              <!--Icono de Contraseña en Bootstrap-->
-              <span class="iconos input-group-text">
-                <i class="bi bi-lock"></i>
-              </span>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Introduce tu contraseña"
-                [(ngModel)]="password"
-                name="password"
-                required
-              />
+            <!--Contraseña-->
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <!--Icono de Contraseña en Bootstrap-->
+                <span class="iconos input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Introduce tu contraseña"
+                  [(ngModel)]="password"
+                  name="password"
+                  required
+                />
+              </div>
             </div>
-          </div>
 
-          <!--Enlaces de contraseña y Registro-->
-          <div>
-            <a [routerLink]="['/forgot-password']" class="link"
-              >¿Has olvidado tu contraseña?</a
-            >
-            <a [routerLink]="['/register']" class="link"
-              >¿Es tu primera vez con nosotros?</a
-            >
-          </div>
+            <!--Enlaces de contraseña y Registro-->
+            <div>
+              <a [routerLink]="['/forgot-password']" class="link"
+                >¿Has olvidado tu contraseña?</a
+              >
+              <a [routerLink]="['/register']" class="link"
+                >¿Es tu primera vez con nosotros?</a
+              >
+            </div>
 
-          <button type="submit" class="btn btn-primary w-100">Entrar</button>
-        </form>
-        <p *ngIf="error">{{ error }}</p>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+          </form>
+          <p *ngIf="error">{{ error }}</p>
+        </div>
       </div>
     </div>
   </body>
