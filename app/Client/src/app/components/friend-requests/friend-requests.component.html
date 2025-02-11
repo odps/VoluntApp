@@ -4,7 +4,7 @@
         <li *ngFor="let request of friendshipRequests">
         
             <div>
-                <p>{{request?.sender?.profile?.nickname}}</p>
+                <p>{{request?.sender?.name}}</p>
 
                 <img [src]="baseUrl+'/'+request?.sender?.profile?.profile_picture_route" 
                 alt="Imagen de {{request.sender.profile.nickname}}">

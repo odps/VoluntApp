@@ -42,7 +42,7 @@ export const routes: Routes = [
   { path: 'settings/change-picture', component: ChangeProfilePictureComponent },
   { path: 'settings/change-username', component: ChangeUsernameComponent },
   //Ruta para el componente de grupos
-  { path: 'groups', component: GroupsComponent }
+  { path: 'groups', component: GroupsComponent },
   //Ruta para el componente friend-profile 
   { path: 'friend-profile/:friendId', component: FriendProfileComponent}
 ];

@@ -67,6 +67,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     EventosProfileComponent,
     LogrosProfileComponent,
     MisPostsProfileComponent,
+    FriendProfileComponent,
+    FriendRequestsComponent,
   ],
   imports: [
     BrowserModule,
