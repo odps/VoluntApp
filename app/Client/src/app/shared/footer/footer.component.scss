@@ -24,6 +24,9 @@ $font-size-x-large: x-large;
   -webkit-text-fill-color: transparent;
 }
 
+p{
+  margin-bottom: 0;
+}
 
 // FOOTER
 footer {
@@ -64,7 +67,6 @@ footer {
   }
 
   .redes-copy-contenedor {
-    display: flex;
     justify-content: baseline;
     align-items: baseline;
   }
@@ -74,9 +76,10 @@ footer {
   }
 
   .copyright {
-    position: absolute;
+    position: relative;
     right: 0;
     width: 20%;
+    margin-bottom: 0;
   }
 }
 
@@ -96,7 +99,6 @@ footer {
   }
 
   .redes-copy-contenedor {
-    display: flex;
     justify-content: baseline;
     align-items: baseline;
   }
@@ -106,8 +108,9 @@ footer {
   }
 
   .copyright {
-    position: absolute;
+    position: relative;
     right: 0;
     padding-top: 20px;
+ 
   }
 }
