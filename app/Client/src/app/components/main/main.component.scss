@@ -130,6 +130,26 @@ main{
     padding: 15px;
     height: calc(100vh - 230px);
     overflow-y: auto;
+    scrollbar-width: none; 
+        
+        // Personalización para navegadores basados en WebKit
+
+        &::-webkit-scrollbar-track {
+            background-color: $grey; // Color del fondo del track (trayectoria)
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $primary-color; // Color del "pulgar" (barra que se mueve)
+        }
+        
+        &::-webkit-scrollbar {
+            width: 6px; // Grosor de la barra vertical
+          }
+
+          // Personalización para Firefox
+        scrollbar-width: thin; // Hacer el scroll más fino
+        scrollbar-color: $light-grey $grey; // Color del "pulgar" y el track    
+
   }
 
     .publicar{
@@ -143,9 +163,4 @@ main{
         content: "Publicar";
         
     }
-
-
-
-
-   
 }
