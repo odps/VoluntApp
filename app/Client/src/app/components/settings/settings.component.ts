@@ -4,9 +4,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-settings',
   standalone: false,
-
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.scss',
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent {
   constructor(private auth: AuthService) {}

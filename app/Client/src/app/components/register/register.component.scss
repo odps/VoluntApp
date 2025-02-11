@@ -80,6 +80,10 @@ body {
     &:focus {
       box-shadow: none;
     }
+
+    &::placeholder {
+      color: $white;
+    }
   }
 
   .iconos {
