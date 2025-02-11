@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './post-list.component.css',
   standalone: false,
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, OnChanges{
   @Input() userId: number | undefined;
   posts: any = [];
   user: User | null = null;
@@ -35,7 +35,13 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPosts(this.userId);
+    // this.loadPosts(this.userId); // Remove this line
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userId'] && changes['userId'].currentValue !== undefined) {
+      this.loadPosts(this.userId);
+    }
   }
 
   //Carga los posts, si no se pasa un Id como parametro a la clase devuelve todos los posts
