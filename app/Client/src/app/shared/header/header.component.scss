@@ -34,7 +34,7 @@ $font-size-x-large: x-large;
 
 h1 {
     margin: 20px;
-    @include background-clip-text($primary-color, $white);
+    @include background-clip-text($red, $white);
 
     a{
         text-decoration: none;

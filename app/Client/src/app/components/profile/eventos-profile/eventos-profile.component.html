@@ -1,6 +1,9 @@
 <section class="container-fluid">
   <h4>Eventos</h4>
-  <section class="eventos" lang="events.length > 0; else noEvents">
+  <div *ngIf="events.length === 0" class="no-events">
+    <p>No has publicado nada</p>
+  </div>
+  <section class="eventos" *ngIf="events.length > 0;">
     <div class="evento" *ngFor="let event of events">
       <div class="evento-header">
         <img
@@ -23,9 +26,6 @@
       </div>
     </div>
   </section>
-  <ng-template #noEvents>
-    <p>No events available.</p>
-  </ng-template>
 </section>
 
 <!-- <main class="eventos"> -->

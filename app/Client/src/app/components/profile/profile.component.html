@@ -29,9 +29,11 @@
     ></app-eventos-profile>
 
     <!-- VER MIS POSTS (MOBILE)-->
-    <app-mis-posts-profile
-      *ngIf="isDesktop ? activeSection === 'posts' : true"
-    ></app-mis-posts-profile>
+    <app-post-list
+    [userId]="user?.id"
+    *ngIf="isDesktop ? activeSection === 'posts' : true"
+  ></app-post-list>
+
   </div>
 
   <app-footer></app-footer>
