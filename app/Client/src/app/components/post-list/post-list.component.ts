@@ -10,7 +10,7 @@ import { CommentService } from '../../services/comment.service';
   styleUrl: './post-list.component.css',
   standalone: false,
 })
-export class PostListComponent implements OnInit, OnChanges {
+export class PostListComponent implements OnInit, OnChanges{
   @Input() userId: number | undefined;
   posts: any = [];
   user: User | null = null;
@@ -38,7 +38,7 @@ export class PostListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['userId'] && !changes['userId'].isFirstChange()) {
+    if (changes['userId'] && changes['userId'].currentValue !== undefined) {
       this.loadPosts(this.userId);
     }
   }

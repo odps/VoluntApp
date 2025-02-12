@@ -53,13 +53,12 @@ body {
 
 .amigo {
   padding: 20px;
-  display: flex;
-  text-align: center;
+
 }
 
 .amigo .foto {
   height: 50px;
-  margin-left: 20px;
+  border-radius: 50%;
 }
 
 .amigo .nombre {
@@ -71,6 +70,7 @@ body {
 .link_amigo {
   text-decoration: none;
   color: $white;
+  display: flex;
 }
 
 .no_amigos h2 {

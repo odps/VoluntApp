@@ -60,6 +60,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
   loadUserProfile() {
     this.userService.getUserProfile().subscribe({
       next: (response: ProfileResponse) => {
