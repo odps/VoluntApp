@@ -35,7 +35,7 @@ export class PostListComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    // this.loadPosts(this.userId); // Remove this line
+    this.loadPosts(this.userId);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
