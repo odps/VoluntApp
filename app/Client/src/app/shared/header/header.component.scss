@@ -1,112 +1,101 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$red: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
-
-// Mixins
-@mixin center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@mixin background-clip-text($color1, $color2) {
-    background: linear-gradient(to right, $color1, $color2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+@import "../../../styles/animaciones.scss";
 
 .buscador-icon {
-    position: absolute;
-    color: $white;
-    top: 4%;
-    right: 8%;
-    font-size: $font-size-x-large;
+  position: absolute;
+  color: $white;
+  top: 4%;
+  right: 8%;
+  font-size: $font-size-x-large;
 }
 
 h1 {
-    margin: 20px;
-    @include background-clip-text($red, $white);
+  color: $white;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, $red, $white, $white);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    gradient 3s ease,
+    float 6s ease-in-out,
+    glow 3s ease-in-out;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
 
-    a{
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
 }
 
 .foto-perfil,
 .buscador {
-    display: none;
+  display: none;
 }
 
 // BARRA NAV
 .nav {
-    @include center-flex;
-    justify-content: space-between; // Ensure space between items
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    max-width: 100%;
-    align-items: center;
-    flex-direction: row; // Ensure horizontal layout by default
+  @include center-flex;
+  justify-content: space-between; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  flex-direction: row; 
 }
 
 .nav-menu {
-    display: flex; // Make .nav-menu horizontal
-    align-items: center; // Align items vertically in the center
-    gap: 20px; // Add spacing between items
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    h1 {
-        text-align: left;
-    }
+  h1 {
+    text-align: left;
+  }
 
-    .buscador {
-        display: none;
-    }
+  .buscador {
+    display: none;
+  }
 
-    .nav img {
-        width: 75px;
-      }
-    
+  .nav img {
+    width: 75px;
+  }
 }
 
 @media (min-width: 769px) {
-    .buscador-contenedor {
-        background-color: $red;
-        border-radius: 30px;
-        z-index: 1;
-        width: 300px;
-    }
+  .buscador-contenedor {
+    background-color: $red;
+    border-radius: 30px;
+    z-index: 1;
+    width: 300px;
+  }
 
-    .buscador {
-        background-color: $red;
-        border-radius: 30px;
-        display: flex;
-        border: none;
-    }
+  .buscador {
+    background-color: $red;
+    border-radius: 30px;
+    display: flex;
+    border: none;
+  }
 
-    .buscador::placeholder {
-        color: $white;
-    }
+  .buscador::placeholder {
+    color: $white;
+  }
 
-    .buscador-icon {
-        display: none;
-    }
+  .buscador-icon {
+    display: none;
+  }
 
-    .foto-perfil {
-        display: flex;
-        width: 50px;
-        border-radius: 50px;
-        right: 5%;
-    }
+  .foto-perfil {
+    display: flex;
+    width: 50px;
+    border-radius: 50px;
+    right: 5%;
+  }
 }
