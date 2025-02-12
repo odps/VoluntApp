@@ -1,20 +1,26 @@
 <div class="comment">
   <div class="comment-header">
-    <img
-      *ngIf="userProfile?.profile?.profile_picture_route"
-      [src]="baseUrl + '/' + userProfile?.profile?.profile_picture_route"
-      alt="Profile Picture"
-      class="profile-picture"
-    />
-    <img
-      *ngIf="!userProfile?.profile?.profile_picture_route"
-      alt="No Profile Picture"
-      class="profile-picture"
-    />
-    <h5>{{ userProfile?.profile?.nickname }}</h5>
+    <div class="profile-info">
+      <img
+        *ngIf="userProfile?.profile?.profile_picture_route"
+        [src]="baseUrl + '/' + userProfile?.profile?.profile_picture_route"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <img
+        *ngIf="!userProfile?.profile?.profile_picture_route"
+        alt="No Profile Picture"
+        class="profile-picture"
+      />
+      <h5>{{ userProfile?.profile?.nickname }}</h5>
+    </div>
   </div>
   <p>{{ comment.content }}</p>
-  <button *ngIf="isCommentAuthor()" (click)="deleteComment(comment.id)" class="delete-button">
+  <button
+    *ngIf="isCommentAuthor()"
+    (click)="deleteComment(comment.id)"
+    class="delete-button"
+  >
     <i class="bi bi-trash"></i>
   </button>
 </div>

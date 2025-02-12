@@ -6,6 +6,7 @@ $light-grey: #272727;
   padding-bottom: 2%;
 }
 
+
 .delete-button {
   background: none;
   border: none;
@@ -18,3 +19,16 @@ $light-grey: #272727;
 .delete-button:hover {
   color: red;
 }
+
+.profile-picture{
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
