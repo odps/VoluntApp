@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { Profile } from '../../interfaces/profile';
 import { UserService } from '../../services/user.service';
@@ -7,6 +7,7 @@ import { PostService } from '../../services/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FriendService } from '../../services/friend.service';
 import { FriendshipRequest } from '../../interfaces/friendship';
+import { environment } from '../../../environment';
 
 @Component({
   selector: 'app-friend-profile',
@@ -18,7 +19,7 @@ import { FriendshipRequest } from '../../interfaces/friendship';
 export class FriendProfileComponent implements OnInit {
   user: User | null = null;
   userFriends: User[] | [] = [];
-
+  baseUrl = environment.baseUrl;
   friendId: number = 0;
 
   friendProfile: { friend: User; profile: Profile } | null = null;
@@ -54,12 +55,27 @@ export class FriendProfileComponent implements OnInit {
         this.getUserProfileFriend(this.friendId);
         this.getFriendPosts(this.friendId);
         this.loadFriends(); // Al final, la lista de amigos se carga y se verifica la amistad
-        ///////
         this.checkFriendshipRequest();
       },
       error: (error) =>
         console.error('Error al conseguir el friendId de la ruta', error),
     });
+
+    // Inicializar isDesktop basado en el tamaño actual de la ventana
+    this.isDesktop = window.innerWidth >= 768;
+    if (this.isDesktop && this.activeSection !== 'posts') {
+      this.activeSection = 'posts';
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isDesktop = window.innerWidth >= 768;
+
+    // Si es desktop y no tiene 'posts' como sección activa, pon 'posts' por defecto
+    if (this.isDesktop && this.activeSection !== 'posts') {
+      this.activeSection = 'posts';
+    }
   }
 
   ///////////////////////////
@@ -85,9 +101,8 @@ export class FriendProfileComponent implements OnInit {
     this.userFriends.forEach((friend) => {
       if (friend.id == friendId) {
         this.esAmigo = true;
-      } else {
-        this.esAmigo = false;
       }
+      
       console.log('¿Son amigos?', this.esAmigo);
     });
   }

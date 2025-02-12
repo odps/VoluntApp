@@ -16,8 +16,7 @@ body {
 }
 
 // OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
-app-navbar-profile,
-app-post-list {
+app-navbar-profile{
   display: none;
 }
 
@@ -25,6 +24,10 @@ app-post-list {
 .container-fluid {
   padding: 9%;
   min-height: 58vh;
+
+  .titulo-posts{
+    margin-top: 30px;
+  }
 
   h4 {
     @include degradado-horizontal-texto($white, $grey);
@@ -57,6 +60,10 @@ app-post-list {
   // CONTENEDOR PRINCIPAL
   .container-fluid {
     padding-top: 2%;
+
+    .titulo-posts{
+      display: none;
+    }
 
     // OCULTAR BIOGRAFÍA (MOBILE) Y BOTÓN (VER MIS POSTS)
     .bio,

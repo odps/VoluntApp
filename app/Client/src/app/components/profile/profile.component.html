@@ -35,6 +35,7 @@
       *ngIf="isDesktop ? activeSection === 'solicitudes' : true"
     ></app-friend-requests>
 
+    <h3 class="titulo-posts">Mis posts:</h3>
     <!-- POSTS -->
     <app-post-list
       [userId]="user?.id"
@@ -42,9 +43,10 @@
     ></app-post-list>
 
     <!-- VER MIS POSTS (MOBILE)-->
-    <div class="mis-posts">
+    <!-- <div class="mis-posts">
       <a href="">Mis posts<i class="bi bi-arrow-right"></i></a>
-    </div>
+    </div> -->
+
   </div>
 
   <app-footer></app-footer>

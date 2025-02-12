@@ -18,16 +18,25 @@ body {
 // CONTENEDOR PRINCIPAL
 header {
   width: 100%;
+
+  .back {
+    display: block !important;
+
+    .bi {
+      font-size: 35px !important;
+    }
+  }
 }
 
 // OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
-.navbardesktop,
-app-post-list {
+
+.navbar-desktop{
   display: none;
 }
 
 // CABECERA
 .perfil-cabezera {
+  margin-inline: 20px;
   justify-content: space-between;
   display: flex;
   height: 100%;
@@ -63,11 +72,6 @@ app-post-list {
   .bi {
     font-size: x-large;
   }
-
-  // OCULTAMOS FLECHA BACK PARA MOBILE
-  .back {
-    display: none;
-  }
 }
 
 // OCULTAMOS BIOGRAFÍA DE LA PARA MOBILE
@@ -79,6 +83,10 @@ app-post-list {
 .container-fluid {
   padding: 9%;
   min-height: 58vh;
+
+  .titulo-posts{
+    margin-top: 30px;
+  }
 
   .bio {
     h4 {
@@ -96,6 +104,7 @@ app-post-list {
 
   .mis-posts {
     display: flex;
+
     a {
       margin-left: auto;
       text-decoration: none;
@@ -109,7 +118,7 @@ app-post-list {
 
 @media (min-width: 769px) {
   // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP Y LISTADO DE POSTS
-  .navbardesktop,
+  .navbar-desktop,
   app-post-list {
     display: flex;
   }
@@ -117,14 +126,6 @@ app-post-list {
   // CABEZERA
   .perfil-cabezera {
     margin-inline: 50px !important;
-
-    .back {
-      display: block !important;
-    }
-
-    .bi {
-      font-size: 35px !important;
-    }
 
     .perfil-info {
       display: block;
@@ -188,6 +189,10 @@ app-post-list {
   // CONTENEDOR PRINCIPAL
   .container-fluid {
     padding-top: 2%;
+
+    .titulo-posts{
+      display: none;
+    }
 
     // OCULTAR BIOGRAFÍA (MOBILE) Y BOTÓN (VER MIS POSTS)
     .bio,
