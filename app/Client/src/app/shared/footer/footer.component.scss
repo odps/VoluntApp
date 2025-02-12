@@ -1,28 +1,5 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$red: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
-
-// Mixins
-@mixin center-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin background-clip-text($color1, $color2) {
-  background: linear-gradient(to right, $color1, $color2);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
 
 p{
   margin-bottom: 0;
@@ -30,7 +7,7 @@ p{
 
 // FOOTER
   footer {
-    border-top: solid 0.5px $light-grey;
+    border-top: solid 0.5px $color-secondary;
     background-color: transparent;
     font-size: $font-size-x-small;
     margin-top: 0;

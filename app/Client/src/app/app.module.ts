@@ -29,7 +29,6 @@ import { HeaderProfileComponent } from './components/profile/header-profile/head
 import { NavbarProfileComponent } from './components/profile/navbar-profile/navbar-profile.component';
 import { EventosProfileComponent } from './components/profile/eventos-profile/eventos-profile.component';
 import { LogrosProfileComponent } from './components/profile/logros-profile/logros-profile.component';
-import { MisPostsProfileComponent } from './components/profile/mis-posts-profile/mis-posts-profile.component';
 import { FriendProfileComponent } from './components/friend-profile/friend-profile.component';
 import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
 
@@ -65,7 +64,6 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     NavbarProfileComponent,
     EventosProfileComponent,
     LogrosProfileComponent,
-    MisPostsProfileComponent,
     FriendProfileComponent,
     FriendRequestsComponent,
     PagenotfoundComponent,
