@@ -1,20 +1,6 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
 
-@mixin center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 * {
     background-size: cover;
@@ -31,14 +17,8 @@ html, body {
   }
   
   body {
-    background-image: url("../../../assets/images/Wallp-Dark.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    @include fondo-voluntapp;
+
   }
   
 main{
@@ -58,7 +38,7 @@ main{
 
 
 .publicar {
-    background-color: $primary-color;
+    background-color: $red;
     border-radius: 50%;
     border: none;
     color: $white;
@@ -73,7 +53,7 @@ main{
 }
 
 .publicar:hover {
-    background-color: darken($primary-color, 10%); 
+    background-color: darken($red, 10%); 
 }
 
 .publicar::after{
