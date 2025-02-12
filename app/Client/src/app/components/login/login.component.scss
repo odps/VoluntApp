@@ -1,39 +1,51 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixin.scss";
-
+@import "../../../styles/animaciones.scss";
 // Reset y estilos globales
 * {
+  box-sizing: border-box;
+  font-family: $font-family;
   margin: 0;
   padding: 0;
-  font-family: $font-family;
-  box-sizing: border-box;
 }
 
 // Body
 body {
   @include fondo-voluntapp;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   height: 100vh;
+  justify-content: center;
   overflow: hidden;
   position: relative;
 }
 
 // Contenedor principal
 .container-fluid {
+  align-items: center;
+  animation: fadeIn 0.8s ease-in;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
   width: 100%;
 }
 
 // Título
 .title {
-  font-weight: normal;
   color: $white;
+  font-weight: bold;
   margin-bottom: 30px;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, $red, $white, $white);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    gradient 3s ease infinite,
+    float 6s ease-in-out infinite,
+    glow 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
 }
 
 // Imágenes
@@ -52,14 +64,14 @@ body {
   border: 1.5px solid $red;
   border-radius: 20px;
   color: $white;
-  padding: 3rem;
-  width: 90%;
   max-width: 400px;
   min-width: 280px;
+  padding: 3rem;
+  width: 90%;
 
   h2 {
-    font-weight: lighter;
     font-size: 2rem;
+    font-weight: lighter;
     margin-bottom: 1.5rem;
   }
 
@@ -68,9 +80,23 @@ body {
     border: 1px solid $white;
     border-radius: 15px;
     color: $white;
+    transition: all 0.3s ease;
 
     &:focus {
+      border-color: $red;
+      border-width: 2px;
       box-shadow: none;
+      transform: translateX(5px);
+    }
+
+    &:hover {
+      border-color: $red;
+      transform: translateX(5px);
+    }
+
+    &.ng-invalid.ng-touched {
+      animation: shake 0.5s ease-in-out;
+      border-color: #ff4444;
     }
 
     &::placeholder {
@@ -83,30 +109,93 @@ body {
     border: 1px solid $white;
     border-radius: 15px;
     color: $white;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   }
 
   .btn-primary {
     background-color: $red;
-    padding: 0.5rem 2rem;
+    border: none;
     border-radius: 25px;
     font-size: 1rem;
-    border: none;
     margin-top: 20px;
+    overflow: hidden;
+    padding: 0.5rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:active {
+      transform: translateY(1px);
+    }
 
     &:hover {
-      background-color: lighten($red, 10%);
+      box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+      transform: translateY(-2px);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &::after {
+      background-color: rgba(255, 255, 255, 0.5);
+      bottom: 0;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      width: 100%;
     }
   }
 
   .link {
-    text-decoration: none;
-    font-size: 0.8rem;
     color: $red;
     display: block;
+    font-size: 0.8rem;
     margin-top: 10px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &::after {
+      background-color: $red;
+      bottom: -2px;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+      width: 100%;
+    }
 
     &:hover {
-      text-decoration: underline;
+      color: lighten($red, 10%);
+      transform: translateX(5px);
+
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+// Input group hover effect
+.input-group {
+  transition: all 0.3s ease;
+
+  &:hover {
+    .form-control,
+    .iconos {
+      border-color: $red;
     }
   }
 }
@@ -116,38 +205,18 @@ body {
 // Tablet
 @media (min-width: 481px) and (max-width: 768px) {
   .contenedor-fondo {
-    transform: translate(-50%, -50%);
-    justify-content: center;
     align-items: center;
-    position: absolute;
     display: flex;
-    z-index: -1;
+    height: 100%;
+    justify-content: center;
+    left: 50%;
     max-height: 500px;
     max-width: 500px;
-    height: 100%;
-    width: 100%;
-    left: 50%;
-    top: 50%;
-  }
-
-  .fondo1,
-  .fondo2 {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transform: rotate(-30deg);
     position: absolute;
-    display: block;
-    height: 500px;
-    width: 350px;
-  }
-
-  .fondo1 {
-    top: -30%;
-    left: 9%;
-  }
-
-  .fondo2 {
-    top: -20%;
-    left: 5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: -1;
   }
 
   .title {
@@ -161,8 +230,8 @@ body {
 
   .img2 {
     display: block;
-    width: 210px;
     margin-bottom: 20px;
+    width: 210px;
   }
 
   .caja {
@@ -173,52 +242,32 @@ body {
 // Desktop
 @media (min-width: 769px) {
   .contenedor-fondo {
-    transform: translate(-50%, -50%);
-    justify-content: center;
     align-items: center;
-    position: absolute;
     display: flex;
-    z-index: -1;
+    height: 100%;
+    justify-content: center;
+    left: 10%;
     max-height: 500px;
     max-width: 500px;
-    height: 100%;
-    width: 100%;
-    left: 10%;
-    top: 50%;
-  }
-
-  .fondo1,
-  .fondo2 {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transform: rotate(-30deg);
     position: absolute;
-    display: block;
-    height: 750px;
-    width: 500px;
-  }
-
-  .fondo1 {
-    top: -30%;
-    left: 9%;
-  }
-
-  .fondo2 {
-    top: -20%;
-    left: 5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: -1;
   }
 
   .container-fluid {
     flex-direction: row;
-    max-width: 100%;
     height: 100%;
-    padding: 0;
-    margin: 0;
     justify-content: center;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
   }
 
   .title {
-    position: absolute;
     left: 2%;
+    position: absolute;
     top: 2%;
   }
 
@@ -253,9 +302,9 @@ body {
   }
 
   .link {
-    padding-top: 0;
-    margin-top: 0;
     margin-bottom: 10px;
+    margin-top: 0;
+    padding-top: 0;
   }
 
   .btn-primary {

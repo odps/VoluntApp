@@ -1,5 +1,6 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixin.scss";
+@import "../../../styles/animaciones.scss";
 
 // Reset y estilos globales
 * {
@@ -38,9 +39,20 @@ body {
 
 // Título
 .title {
-  font-weight: normal;
   color: $white;
+  font-weight: bold;
   margin-bottom: 30px;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, $red, $white, $white);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    gradient 3s ease infinite,
+    float 6s ease-in-out infinite,
+    glow 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
 }
 
 // Imágenes
@@ -75,9 +87,23 @@ body {
     border: 1px solid $white;
     border-radius: 15px;
     color: $white;
+    transition: all 0.3s ease;
 
     &:focus {
+      border-color: $red;
+      border-width: 2px;
       box-shadow: none;
+      transform: translateX(5px);
+    }
+
+    &:hover {
+      border-color: $red;
+      transform: translateX(5px);
+    }
+
+    &.ng-invalid.ng-touched {
+      animation: shake 0.5s ease-in-out;
+      border-color: #ff4444;
     }
 
     &::placeholder {
@@ -90,6 +116,11 @@ body {
     border: 1px solid $white;
     border-radius: 15px;
     color: $white;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   }
 
   .btn-primary {
@@ -99,9 +130,31 @@ body {
     font-size: 1rem;
     border: none;
     margin-top: 20px;
+    transition: all 0.3s ease;
+
+    &:active {
+      transform: translateY(1px);
+    }
 
     &:hover {
-      background-color: lighten($red, 10%);
+      box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+      transform: translateY(-2px);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+    &::after {
+      background-color: rgba(255, 255, 255, 0.5);
+      bottom: 0;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      width: 100%;
     }
   }
 
@@ -111,9 +164,29 @@ body {
     color: $red;
     display: block;
     margin-top: 10px;
+    transition: all 0.3s ease;
+
+    &::after {
+      background-color: $red;
+      bottom: -2px;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+      width: 100%;
+    }
 
     &:hover {
-      text-decoration: underline;
+      color: lighten($red, 10%);
+      transform: translateX(5px);
+
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
     }
   }
 }
