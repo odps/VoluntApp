@@ -38,6 +38,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { FriendshipRequest } from './interfaces/friendship';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { FriendshipRequest } from './interfaces/friendship';
     MisPostsProfileComponent,
     FriendProfileComponent,
     FriendRequestsComponent,
+    PagenotfoundComponent,
   ],
 
   imports: [
