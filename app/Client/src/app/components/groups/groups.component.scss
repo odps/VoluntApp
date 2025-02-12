@@ -1,48 +1,24 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
+@import '../../../styles/styles.scss';
+@import '../../../styles/mixin.scss';
 
-
-@mixin background-clip-text($color1, $color2) {
-    background: linear-gradient(to right, $color1, $color2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-
-
-  .tituloGrupos{
-    @include background-clip-text($white, $grey);
-
-  }
-
-
+.tituloGrupos{
+  @include degradado-horizontal-texto($white, $grey);
+}
 
 .crearGrupoBtn {
-    background-color: $background-color;
-    color: $white;
-    border: none;
-    padding: 10px 20px;
-    font-size: $font-size-medium;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: $primary-color;
-    }
+  background-color: $background-color;
+  color: $white;
+  border: none;
+  padding: 10px 20px;
+  font-size: $font-size-medium;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $red;
   }
-
-
+}
 
 .arrow-icon {
     cursor: pointer;
@@ -53,7 +29,7 @@ $font-size-x-large: x-large;
   }
   
   .group-details {
-    background-color: $light-grey;
+    background-color: $color-secondary;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
@@ -64,46 +40,78 @@ $font-size-x-large: x-large;
 
     }
   }
-  .descripcionGrupo {
-    text-align: left;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: $light-grey;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px;
-    color: $white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-    p {
-      margin: 10px 0;
-      font-size: $font-size-medium;
-    }
-  
-    strong {
-      color: $primary-color;
-    }
-  
-    img {
-      border-radius: 50%;
-      margin-top: 10px;
-    }
-  }
 
+.descripcionGrupo {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: $color-secondary;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  color: $white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  .nombreGrupo {
-    text-align: justify !important;
-    padding-left: 5%;
+  p {
+    margin: 10px 0;
     font-size: $font-size-medium;
-    font-weight: bold;
-    color: $primary-color;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    display: flex;
   }
-  
-  .unirseGrupoBtn {
-    background-color: $primary-color;
+
+  strong {
+    color: $red;
+  }
+
+  img {
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+}
+
+.nombreGrupo {
+  text-align: justify !important;
+  padding-left: 5%;
+  font-size: $font-size-medium;
+  font-weight: bold;
+  color: $red;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  display: flex;
+}
+
+.unirseGrupoBtn {
+  background-color: $red;
+  color: $white;
+  border: none;
+  padding: 10px 20px;
+  font-size: $font-size-medium;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($red, 10%);
+  }
+}
+
+.formGroup {
+  background-color: $color-secondary;
+  border-radius: 5px;
+  padding: 5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: $white;
+
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    background-color: $background-color;
+    color: $white;
+  }
+
+  button {
+    background-color: $red;
     color: $white;
     border: none;
     padding: 10px 20px;
@@ -111,67 +119,31 @@ $font-size-x-large: x-large;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-  
+    margin-right: 10px;
+
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: darken($red, 10%);
     }
   }
+}
 
-  .formGroup {
-    background-color: $light-grey;
-    border-radius: 5px;
-    padding: 5%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: $white;
-  
-    input[type="text"] {
-      width: calc(100% - 20px);
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid $grey;
-      border-radius: 5px;
-      background-color: $background-color;
-      color: $white;
-    }
-  
-    button {
-      background-color: $primary-color;
-      color: $white;
-      border: none;
-      padding: 10px 20px;
-      font-size: $font-size-medium;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      margin-right: 10px;
-  
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
-    }
+.grupos-button {
+  background-color: $red;
+  border: none;
+  border-radius: 20px;
+  color: $white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($red, 10%);
+    transform: scale(1.05);
   }
+}
 
-
-
-
-  .grupos-button {
-    background-color: $primary-color;
-    border: none;
-    border-radius: 20px;
-    color: $white;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  
-    &:hover {
-      background-color: darken($primary-color, 10%);
-      transform: scale(1.05);
-    }
+.eliminar-button {
+  &:hover {
+    background-color: darken($color-secondary, 10%);
   }
-  
-  .eliminar-button {
-    &:hover {
-      background-color: darken($light-grey, 10%);
-    }
-  }
-  
+}

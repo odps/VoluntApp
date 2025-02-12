@@ -7,7 +7,7 @@ import { CommentService } from '../../services/comment.service';
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrl: './post-list.component.css',
+  styleUrl: './post-list.component.scss',
   standalone: false,
 })
 export class PostListComponent implements OnInit, OnChanges{

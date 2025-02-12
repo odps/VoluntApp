@@ -1,21 +1,5 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
-
-@mixin center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+@import '../../../styles/styles.scss';
+@import '../../../styles/mixin.scss';
 
 .usuario {
   display: flex;
@@ -102,7 +86,7 @@ $font-size-x-large: x-large;
   }
 
   &:hover .heart-icon {
-    color: $primary-color;
+    color: $red;
     transform: scale(1.1);
   }
 
@@ -112,7 +96,7 @@ $font-size-x-large: x-large;
 }
 
 .bi-heart-fill {
-  color: $primary-color !important;
+  color: $red !important;
 }
 
 .post-actions {
@@ -128,7 +112,7 @@ $font-size-x-large: x-large;
   margin: 0 5px;
 
   &:hover {
-    color: $primary-color;
+    color: $red;
     transform: scale(1.1);
   }
 }
@@ -152,12 +136,9 @@ $font-size-x-large: x-large;
   padding-right: 5px;
 
   &:hover{
-    color: $primary-color;
+    color: $red;
   }
 }
-
-
-
 
 .comment-textarea {
   background-color: $grey;
@@ -177,7 +158,7 @@ $font-size-x-large: x-large;
 }
 
 .comment-button {
-  background-color: $primary-color;
+  background-color: $red;
   border: none;
   border-radius: 20px;
   color: $white;
@@ -186,23 +167,22 @@ $font-size-x-large: x-large;
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: darken($red, 10%);
     transform: scale(1.05);
   }
 }
 
 .cancel-button {
-  background-color: $light-grey;
+  background-color: $color-dark;
   &:hover {
-    background-color: darken($light-grey, 10%);
+    background-color: darken($color-dark, 10%);
   }
 }
-
 
 .comments {
   margin-top: 20px;
   padding: 10px;
-  background-color: $light-grey;
+  background-color: $color-dark;
   border-radius: 10px;
 }
 

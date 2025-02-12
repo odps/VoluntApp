@@ -1,47 +1,26 @@
-<!-- LINK BOOTSTRAP -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-/>
-<!-- LINK SASS -->
-<link rel="stylesheet" href="main.component.scss" />
-<!-- ICONOS BOOTSTRAP -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-<!--FUENTE MONTSERRAT-->
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-  rel="stylesheet"
-/>
-
 <body>
   <app-header></app-header>
   <app-navbar></app-navbar>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <section class="main">
+
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <app-friends></app-friends>
       <app-groups></app-groups>
     </aside>
 
+    <!-- CONTENEDOR DE POSTS -->
     <main>
       <app-post-list></app-post-list>
+      <button
+      class="publicar"
+      [routerLink]="['/posts']"
+      ></button>
     </main>
+    
   </section>
-  <button
-    class="publicar"
-    [routerLink]="['/posts']"
-  ></button>
 
   <app-footer></app-footer>
 </body>

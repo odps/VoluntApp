@@ -21,7 +21,6 @@ import { ChangeEmailComponent } from './components/settings-options/change-email
 import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
-import { EventsComponent } from './components/events/events.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
@@ -57,7 +56,6 @@ import { FriendshipRequest } from './interfaces/friendship';
     ChangeEmailComponent,
     ChangeBioComponent,
     ChangeProfilePictureComponent,
-    EventsComponent,
     NavbarComponent,
     GroupsComponent,
     PostListComponent,

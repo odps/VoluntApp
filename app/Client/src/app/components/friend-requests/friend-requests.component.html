@@ -5,12 +5,6 @@
       <li class="solicitud" *ngFor="let request of friendshipRequests">
         <div class="user-info">
           <p>{{ request?.sender?.name }}</p>
-          <!-- <img
-            [src]="
-              baseUrl + '/' + request?.sender?.profile?.profile_picture_route
-            "
-            alt="Imagen de {{ request.sender.name }}"
-          /> -->
         </div>
         <p class="texto-desktop">
           {{ request?.sender?.name }} Quiere ser tu amigo 🤗

@@ -1,7 +1,6 @@
 <body>
     <app-header></app-header>
     <app-navbar></app-navbar>
-
     <div  class="container-fluid">
         <div *ngIf="friends && friendProfiles.length > 0; else noFriends">
             <ul class="amigos">
@@ -24,8 +23,6 @@
         <p>Parece que aun no tienes amigos, prueba a agregar a alguien!</p>
         </ng-template>
     </div>
-
-    
 
 <app-footer></app-footer>
 

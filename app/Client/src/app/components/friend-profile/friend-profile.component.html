@@ -29,16 +29,6 @@
 
     <!-- Botón para solicitar amistad o dejar de ser amigos -->
     <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
-      <button *ngIf="!esAmigo" (click)="solicitarAmistad(friendProfile!.friend.id)">
-        Solicitar amistad
-      </button>
-      <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
-        Dejar de ser amigos
-      </button>
-    </div> -->
-
-    <!-- Botón para solicitar amistad o dejar de ser amigos -->
-    <div *ngIf="user && friendProfile?.friend?.id !== user.id">
       <button
         *ngIf="!esAmigo && !solicitudPendiente"
         (click)="solicitarAmistad(friendProfile!.friend!.id)"
@@ -52,21 +42,12 @@
         Dejar de ser amigos
       </button>
       <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
-    </div>
+    </div> -->
   </header>
 
   <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
   <nav class="navbar-desktop">
     <ul class="menu">
-      <!-- <li>
-        <a
-          class="menu-link"
-          [class.active]="activeView === 'eventos'"
-          (click)="changeSection('eventos')"
-          (click)="setActiveView('eventos')"
-          >Eventos</a
-        >
-      </li> -->
       <li>
         <a
           class="menu-link"
@@ -103,11 +84,6 @@
     <app-logros-profile
       *ngIf="isDesktop ? activeSection === 'logros' : true"
     ></app-logros-profile>
-
-    <!-- EVENTOS -->
-    <!-- <app-eventos-profile
-      *ngIf="isDesktop ? activeSection === 'eventos' : true"
-    ></app-eventos-profile> -->
 
     <!-- POSTS -->
     <h3 class="titulo-posts">Posts de {{ friendProfile?.profile?.nickname }}:</h3>

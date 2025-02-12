@@ -11,7 +11,7 @@
 
 // Body
 body {
-  background-color: $background-color;
+  @include fondo-voluntapp;
   display: flex;
   justify-content: center;
   align-items: center;
