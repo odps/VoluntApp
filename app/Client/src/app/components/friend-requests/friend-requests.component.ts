@@ -14,29 +14,23 @@ interface ProfileResponse {
 @Component({
   selector: 'app-friend-requests',
   standalone: false,
-  
+
   templateUrl: './friend-requests.component.html',
-  styleUrl: './friend-requests.component.css'
+  styleUrl: './friend-requests.component.scss',
 })
-
-
-
 export class FriendRequestsComponent implements OnInit {
-
-
-friendshipRequests: FriendshipRequest[] = [];
-friendshipRequestsWithSender: FriendshipRequest[] = [];
-baseUrl = environment.baseUrl;
-user: User | null = null;
-profilePictureUrl: string = '';
+  friendshipRequests: FriendshipRequest[] = [];
+  friendshipRequestsWithSender: FriendshipRequest[] = [];
+  baseUrl = environment.baseUrl;
+  user: User | null = null;
+  profilePictureUrl: string = '';
 
   constructor(
     private userService: UserService,
     private friendService: FriendService,
     private location: Location,
-    private router: Router
+    private router: Router,
   ) {}
-
 
   ngOnInit() {
     this.loadUserProfile();
@@ -45,7 +39,7 @@ profilePictureUrl: string = '';
     this.loadFriendshipRequests();
   }
 
-loadUserProfile() {
+  loadUserProfile() {
     this.userService.getUserProfile().subscribe({
       next: (response: ProfileResponse) => {
         this.user = response.user;
@@ -55,63 +49,64 @@ loadUserProfile() {
     });
   }
 
-
-  getFriendshipRequests(){
+  getFriendshipRequests() {
     this.friendService.getFriendshipRequests().subscribe({
-      next:(requests: FriendshipRequest[]) => {
+      next: (requests: FriendshipRequest[]) => {
         this.friendshipRequests = requests;
-      }
-    })
+      },
+    });
   }
 
-  getSenders(friendshipRequests: FriendshipRequest[]){
-
+  getSenders(friendshipRequests: FriendshipRequest[]) {
     for (let i = 0; i < friendshipRequests.length; i++) {
-      
-      this.userService.getUserProfileSpecific(friendshipRequests[i].sender.id).subscribe({
-        next:(response)=>{
-          friendshipRequests[i].sender = response.user;
-        },
-        error:(error)=>{
-          console.error('Error al guardar los datos del sender',error);
-        }
-      })
-      
+      this.userService
+        .getUserProfileSpecific(friendshipRequests[i].sender.id)
+        .subscribe({
+          next: (response) => {
+            friendshipRequests[i].sender = response.user;
+          },
+          error: (error) => {
+            console.error('Error al guardar los datos del sender', error);
+          },
+        });
     }
   }
 
-  loadFriendshipRequests(){
+  loadFriendshipRequests() {
     this.friendshipRequests = this.friendshipRequestsWithSender;
-
   }
 
   // Método para aceptar una solicitud
-acceptFriendshipRequest(request: FriendshipRequest) {
-  this.friendService.respondFriendshipRequest(request.id, 'accepted').subscribe({
-    next: (response) => {
-      console.log('Solicitud aceptada:', response);
-      // Actualizar la lista de solicitudes
-      this.getFriendshipRequests();
-    this.getSenders(this.friendshipRequests);
-    this.loadFriendshipRequests();
-    },
-    error: (error) => console.error('Error al aceptar la solicitud:', error)
-  });
-}
+  acceptFriendshipRequest(request: FriendshipRequest) {
+    this.friendService
+      .respondFriendshipRequest(request.id, 'accepted')
+      .subscribe({
+        next: (response) => {
+          console.log('Solicitud aceptada:', response);
+          // Actualizar la lista de solicitudes
+          this.getFriendshipRequests();
+          this.getSenders(this.friendshipRequests);
+          this.loadFriendshipRequests();
+        },
+        error: (error) =>
+          console.error('Error al aceptar la solicitud:', error),
+      });
+  }
 
-// Método para rechazar una solicitud
-rejectFriendshipRequest(request: FriendshipRequest) {
-  this.friendService.respondFriendshipRequest(request.id, 'rejected').subscribe({
-    next: (response) => {
-      console.log('Solicitud rechazada:', response);
-      // Actualizar la lista de solicitudes
-      this.getFriendshipRequests();
-    this.getSenders(this.friendshipRequests);
-    this.loadFriendshipRequests();
-    },
-    error: (error) => console.error('Error al rechazar la solicitud:', error)
-  });
-}
-
-
+  // Método para rechazar una solicitud
+  rejectFriendshipRequest(request: FriendshipRequest) {
+    this.friendService
+      .respondFriendshipRequest(request.id, 'rejected')
+      .subscribe({
+        next: (response) => {
+          console.log('Solicitud rechazada:', response);
+          // Actualizar la lista de solicitudes
+          this.getFriendshipRequests();
+          this.getSenders(this.friendshipRequests);
+          this.loadFriendshipRequests();
+        },
+        error: (error) =>
+          console.error('Error al rechazar la solicitud:', error),
+      });
+  }
 }

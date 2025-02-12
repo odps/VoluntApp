@@ -27,5 +27,14 @@
         >Logros</a
       >
     </li>
+    <li>
+      <a
+        class="menu-link"
+        [class.active]="activeView === 'solicitudes'"
+        (click)="changeSection('solicitudes')"
+        (click)="setActiveView('solicitudes')"
+        >Solicitudes</a
+      >
+    </li>
   </ul>
 </nav>

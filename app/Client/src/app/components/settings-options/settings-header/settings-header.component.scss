@@ -14,12 +14,12 @@
   text-align: center;
   padding: 5%;
 
-  // .back {
-  //   font-size: xx-large;
-  //   position: fixed;
-  //   left: 20px;
-  //   top: 15px;
-  // }
+  .back {
+    font-size: xx-large;
+    position: fixed;
+    left: 20px;
+    top: 15px;
+  }
 
   h1 {
     @include degradado-horizontal-texto($white, $grey);

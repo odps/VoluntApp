@@ -25,15 +25,15 @@
       *ngIf="isDesktop ? activeSection === 'logros' : true"
     ></app-logros-profile>
 
-    <!-- SOLICITUDES AMISTAD-->
-     <app-friend-requests
-      *ngIf="isDesktop ? activeSection === 'friendRequests': true"
-      ></app-friend-requests>
-
     <!-- EVENTOS -->
     <app-eventos-profile
       *ngIf="isDesktop ? activeSection === 'eventos' : true"
     ></app-eventos-profile>
+
+    <!-- SOLICITUDES AMISTAD-->
+    <app-friend-requests
+      *ngIf="isDesktop ? activeSection === 'solicitudes' : true"
+    ></app-friend-requests>
 
     <!-- POSTS -->
     <app-post-list

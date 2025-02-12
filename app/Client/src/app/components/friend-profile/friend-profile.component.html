@@ -1,104 +1,120 @@
-<header>
-<div id="back">
-    <a [routerLink]="['/main']">Go back</a>
-</div>
+<body>
+  <header>
+    <div class="perfil-cabezera">
+      <!-- FLECHA DE REGRESO -->
+      <div class="back">
+        <a [routerLink]="['/main']"><i class="bi bi-arrow-left"></i></a>
+      </div>
 
-<div>
-    <img [src]="friendProfile?.profile?.profile_picture_route" [alt]="friendProfile?.profile?.nickname">
-    <h2>{{friendProfile?.profile?.nickname}}</h2>
-
-    <p *ngIf="friendProfile?.profile?.interests">
-        {{friendProfile?.profile?.interests}}
-    </p>
-
-    <p *ngIf="friendProfile?.profile?.rating">
-        {{friendProfile?.profile?.rating}}
-    </p>
-    <br><br><br>
-    
-    <!-- Botón para solicitar amistad o dejar de ser amigos -->
-  <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
-    <button *ngIf="!esAmigo" (click)="solicitarAmistad(friendProfile!.friend.id)">
-      Solicitar amistad
-    </button>
-    <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
-      Dejar de ser amigos
-    </button>
-  </div> -->
-
-  <!-- Botón para solicitar amistad o dejar de ser amigos -->
-  <div *ngIf="user && friendProfile?.friend?.id !== user.id">
-    <button *ngIf="!esAmigo && !solicitudPendiente" (click)="solicitarAmistad(friendProfile!.friend!.id)">
-      Solicitar amistad
-    </button>
-    <button *ngIf="solicitudPendiente" disabled>
-      Solicitud enviada
-    </button>
-    <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
-      Dejar de ser amigos
-    </button>
-  </div>
-    
-    
-    
-    
-    
-    <br><br><br>
-
-    <div id="settings">
+      <!-- FOTO, NOMBRE Y RATING DE PERFIL -->
+      <div class="perfil-info">
         <img
-          src="assets/icons/settings.svg"
-          alt="Settings"
-          (click)="toSettings()"
+          [src]="friendProfile?.profile?.profile_picture_route"
+          [alt]="friendProfile?.profile?.nickname"
+          class="foto-perfil rounded-circle"
         />
+        <h2 id="nickname">{{ friendProfile?.profile?.nickname }}</h2>
+        <p class="rating" *ngIf="friendProfile?.profile?.rating">
+          🌟{{ friendProfile?.profile?.rating }}
+        </p>
+      </div>
     </div>
-</div>
-</header>
 
-<main>
-    <!-- Barrita navegadora con Eventos, Posts y Logros -->
-     <nav>
-        <ul>
-            <li>
-                <a 
-                [class.active]="activeView === 'eventos'"
-                (click)="setActiveView('eventos')"
-                style="font-weight: bold"
-                >Eventos
-                </a>
-            </li>
+    <!-- BIOGRAFÍA -->
+    <div class="bio-content-header">
+      <p id="interests" *ngIf="friendProfile?.profile?.interests">
+        {{ friendProfile?.profile?.interests }}
+      </p>
+    </div>
 
+    <!-- Botón para solicitar amistad o dejar de ser amigos -->
+    <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+      <button *ngIf="!esAmigo" (click)="solicitarAmistad(friendProfile!.friend.id)">
+        Solicitar amistad
+      </button>
+      <button *ngIf="esAmigo" (click)="eliminarAmistad(friendProfile!.friend.id)">
+        Dejar de ser amigos
+      </button>
+    </div> -->
 
-            <li>
-                <a [class.active]="activeView === 'posts'"
-                (click)="setActiveView('posts')"
-                style="font-weight: bold"
-                >Posts</a>
-            </li>
+    <!-- Botón para solicitar amistad o dejar de ser amigos -->
+    <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+      <button
+        *ngIf="!esAmigo && !solicitudPendiente"
+        (click)="solicitarAmistad(friendProfile!.friend!.id)"
+      >
+        Solicitar amistad
+      </button>
+      <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
+      <button
+        *ngIf="esAmigo"
+        (click)="eliminarAmistad(friendProfile!.friend.id)"
+      >
+        Dejar de ser amigos
+      </button>
+    </div> -->
+  </header>
 
+  <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
+  <nav class="navbar-desktop">
+    <ul class="menu">
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'eventos'"
+          (click)="changeSection('eventos')"
+          (click)="setActiveView('eventos')"
+          >Eventos</a
+        >
+      </li>
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'posts'"
+          (click)="changeSection('posts')"
+          (click)="setActiveView('posts')"
+          >Posts</a
+        >
+      </li>
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'logros'"
+          (click)="changeSection('logros')"
+          (click)="setActiveView('logros')"
+          >Logros</a
+        >
+      </li>
+    </ul>
+  </nav>
 
-            <li>
-                <a [class.active]="activeView === 'logros'"
-                (click)="setActiveView('logros')"
-                style="font-weight: bold"
-                >Logros</a>
-            </li>
-        </ul>
-     </nav>
+  <div class="container-fluid">
+    <!-- BIOGRAFÍA (USO EXCLUSIVO EN MOBILE)-->
+    <section class="bio" *ngIf="user">
+      <h4>Biografía</h4>
+      <div class="bio-content">
+        <p id="interests" *ngIf="friendProfile?.profile?.interests">
+          {{ friendProfile?.profile?.interests }}
+        </p>
+      </div>
+    </section>
 
-     <!-- modulo que corresponda segun se pinche en la barrita -->
-  <app-events *ngIf="activeView === 'eventos'"></app-events>
+    <!-- LOGROS -->
+    <app-logros-profile
+      *ngIf="isDesktop ? activeSection === 'logros' : true"
+    ></app-logros-profile>
 
-  <div *ngIf="activeView === 'posts'">
-    <h2>Mis Posts</h2>
-    <!-- En esta etiqueta, ya que app-post-list tiene un input de user id
-    nos permite pasar el usuario y filtrar por si hiciera falta -->
-    <app-post-list [userId]="friendId"></app-post-list>
+    <!-- EVENTOS -->
+    <app-eventos-profile
+      *ngIf="isDesktop ? activeSection === 'eventos' : true"
+    ></app-eventos-profile>
+
+    <!-- POSTS -->
+    <app-post-list
+      [userId]="friendId"
+      *ngIf="isDesktop ? activeSection === 'posts' : true"
+    ></app-post-list>
   </div>
 
-  <app-logros *ngIf="activeView === 'logros'"></app-logros>
-</main>
-<app-footer></app-footer>
-
-
-
+  <app-footer></app-footer>
+</body>

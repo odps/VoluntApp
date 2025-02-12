@@ -1,0 +1,80 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+// CONTENEDOR PRINCIPAL
+
+.container-fluid {
+  padding: 0;
+  margin-block: 35px;
+  width: 100%;
+
+  h4 {
+    // @include degradado-horizontal-texto($white, $grey);
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .solicitudes {
+    list-style: none;
+    margin-inline: 30px;
+
+    .solicitud {
+      background-color: $grey;
+      border-radius: 15px;
+      padding: 20px;
+
+      .user-info {
+        display: flex;
+        margin-bottom: 25px;
+      }
+
+      button {
+        border-radius: 15px;
+        width: 90px;
+        margin-right: 20px;
+      }
+
+      #aceptar {
+        background-color: green;
+      }
+
+      #rechazar {
+        background-color: $red;
+      }
+
+      .texto-desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  h4 {
+    display: none;
+  }
+
+  .user-info {
+    font-size: 20px;
+  }
+
+  .texto-desktop {
+    display: flex !important;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 120px !important;
+    font-size: 16px !important;
+  }
+}

@@ -1,26 +1,34 @@
-<div *ngIf="friendshipRequests.length > 0; else noRequests">
-<h3>Solicitudes de Amistad Pendientes</h3>
-    <ul>
-        <li *ngFor="let request of friendshipRequests">
-        
-            <div>
-                <p>{{request?.sender?.name}}</p>
+<section class="container-fluid">
+  <div *ngIf="friendshipRequests.length > 0; else noRequests">
+    <h4>Solicitudes de Amistad Pendientes</h4>
+    <ul class="solicitudes">
+      <li class="solicitud" *ngFor="let request of friendshipRequests">
+        <div class="user-info">
+          <p>{{ request?.sender?.name }}</p>
+          <img
+            [src]="
+              baseUrl + '/' + request?.sender?.profile?.profile_picture_route
+            "
+            alt="Imagen de {{ request.sender.name }}"
+          />
+        </div>
+        <p class="texto-desktop">
+          {{ request?.sender?.name }} Quiere ser tu amigo 🤗
+        </p>
+        <div>
+          <button id="aceptar" (click)="acceptFriendshipRequest(request)">
+            Aceptar
+          </button>
 
-                <img [src]="baseUrl+'/'+request?.sender?.profile?.profile_picture_route" 
-                alt="Imagen de {{request.sender.name}}">
-            </div>
-
-            <div>
-                <button (click)="acceptFriendshipRequest(request)">Aceptar</button>
-
-                <button (click)="rejectFriendshipRequest(request)">Rechazar </button>
-            </div>
-
-        </li>
+          <button id="rechazar" (click)="rejectFriendshipRequest(request)">
+            Rechazar
+          </button>
+        </div>
+      </li>
     </ul>
-</div>
+  </div>
 
-
-<ng-template #noRequests>
+  <ng-template #noRequests>
     <p>No hay solicitudes de amistad pendientes</p>
-</ng-template>
+  </ng-template>
+</section>
