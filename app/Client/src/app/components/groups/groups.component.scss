@@ -92,6 +92,8 @@ $font-size-x-large: x-large;
 
 
   .nombreGrupo {
+    text-align: justify !important;
+    padding-left: 20%;
     font-size: $font-size-medium;
     font-weight: bold;
     color: $primary-color;
