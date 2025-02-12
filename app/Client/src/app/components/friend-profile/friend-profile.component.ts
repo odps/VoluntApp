@@ -86,7 +86,11 @@ export class FriendProfileComponent implements OnInit {
 
         if (request) {
           console.log(request.status);
-          this.solicitudPendiente = request.status == 'pending';
+            if(request.status == 'pending'){
+              this.solicitudPendiente = true;
+            } else{
+              this.solicitudPendiente = false;
+            }
         }
       },
       error: (error) =>

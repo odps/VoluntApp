@@ -37,6 +37,8 @@ import { FriendRequestsComponent } from './components/friend-requests/friend-req
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
+import { FriendshipRequest } from './interfaces/friendship';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FriendProfileComponent,
     FriendRequestsComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

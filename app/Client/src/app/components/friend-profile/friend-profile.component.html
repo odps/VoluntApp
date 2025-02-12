@@ -45,13 +45,13 @@
       >
         Solicitar amistad
       </button>
-      <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
       <button
         *ngIf="esAmigo==true"
         (click)="eliminarAmistad(friendProfile!.friend.id)"
       >
         Dejar de ser amigos
       </button>
+      <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
     </div>
   </header>
 
