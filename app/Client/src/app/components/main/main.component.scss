@@ -49,7 +49,9 @@ main{
     transition: background-color 0.3s ease; 
     margin-bottom: 2%;
     margin-left: 80%;
-
+    position: fixed;
+    bottom: 13%;
+    right: 7%;
 }
 
 .publicar:hover {
