@@ -30,7 +30,7 @@ header {
 
 // OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
 
-.navbar-desktop{
+.navbar-desktop {
   display: none;
 }
 
@@ -79,12 +79,23 @@ header {
   display: none;
 }
 
+.solicitud {
+  display: flex;
+  margin-left: 12%;
+
+  button{
+    @include degradado-horizontal($grey, $red);
+    border-radius: 15px;
+    padding: 8px;
+  }
+}
+
 // CONTENEDOR PRINCIPAL
 .container-fluid {
   padding: 9%;
   min-height: 58vh;
 
-  .titulo-posts{
+  .titulo-posts {
     margin-top: 30px;
   }
 
@@ -190,7 +201,7 @@ header {
   .container-fluid {
     padding-top: 2%;
 
-    .titulo-posts{
+    .titulo-posts {
       display: none;
     }
 

@@ -28,7 +28,7 @@
     </div>
 
     <!-- Botón para solicitar amistad o dejar de ser amigos -->
-    <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+    <div class="solicitud" *ngIf="user && friendProfile?.friend?.id !== user.id">
       <button
         *ngIf="!esAmigo && !solicitudPendiente"
         (click)="solicitarAmistad(friendProfile!.friend!.id)"
@@ -42,7 +42,7 @@
         Dejar de ser amigos
       </button>
       <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
-    </div> -->
+    </div>
   </header>
 
   <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
