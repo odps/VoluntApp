@@ -11,7 +11,7 @@
 
 // Body
 body {
-  background-color: $background-color;
+  @include fondo-voluntapp;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,6 @@ body {
   overflow: hidden;
   position: relative;
 }
-
 
 // Contenedor principal
 .container-fluid {
@@ -172,7 +171,7 @@ body {
 }
 
 // Desktop
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .contenedor-fondo {
     transform: translate(-50%, -50%);
     justify-content: center;

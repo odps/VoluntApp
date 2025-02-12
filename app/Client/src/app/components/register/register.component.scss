@@ -11,7 +11,7 @@
 
 // Body
 body {
-  background-color: $background-color;
+  @include fondo-voluntapp;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,8 +45,7 @@ body {
 
 // Imágenes
 .img1 {
-  width: 120px;
-  margin-bottom: 30px;
+  width: 90px;
 }
 
 .img2,
@@ -235,7 +234,6 @@ body {
   }
 
   .img1 {
-    position: fixed;
     right: 0;
     top: 0;
   }

@@ -13,7 +13,8 @@ import { ChangeBioComponent } from './components/settings-options/change-bio/cha
 import { ChangeEmailComponent } from './components/settings-options/change-email/change-email.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
 import { GroupsComponent } from './components/groups/groups.component';
-
+import { FriendProfileComponent } from './components/friend-profile/friend-profile.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 // Definición de las rutas de la aplicación
 export const routes: Routes = [
@@ -41,5 +42,8 @@ export const routes: Routes = [
   { path: 'settings/change-picture', component: ChangeProfilePictureComponent },
   { path: 'settings/change-username', component: ChangeUsernameComponent },
   //Ruta para el componente de grupos
-  { path: 'groups', component: GroupsComponent }
+  { path: 'groups', component: GroupsComponent },
+  //Ruta para el componente friend-profile
+  { path: 'friend-profile/:friendId', component: FriendProfileComponent },
+  { path: '**', component: PagenotfoundComponent },
 ];

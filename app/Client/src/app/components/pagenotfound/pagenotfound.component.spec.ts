@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogrosComponent } from './logros.component';
+import { PagenotfoundComponent } from './pagenotfound.component';
 
-describe('LogrosComponent', () => {
-  let component: LogrosComponent;
-  let fixture: ComponentFixture<LogrosComponent>;
+describe('PagenotfoundComponent', () => {
+  let component: PagenotfoundComponent;
+  let fixture: ComponentFixture<PagenotfoundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LogrosComponent]
+      declarations: [PagenotfoundComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LogrosComponent);
+    fixture = TestBed.createComponent(PagenotfoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

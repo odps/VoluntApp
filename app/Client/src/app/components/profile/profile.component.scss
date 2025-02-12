@@ -15,8 +15,8 @@ body {
   min-height: 100vh;
 }
 
-// OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP
-app-navbar-profile {
+// OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
+app-navbar-profile{
   display: none;
 }
 
@@ -24,12 +24,16 @@ app-navbar-profile {
 .container-fluid {
   padding: 9%;
   min-height: 58vh;
-  .bio {
-    h4 {
-      @include degradado-horizontal-texto($white, $grey);
-      margin-bottom: 20px;
-    }
 
+  .titulo-posts{
+    margin-top: 30px;
+  }
+
+  h4 {
+    @include degradado-horizontal-texto($white, $grey);
+    margin-bottom: 20px;
+  }
+  .bio {
     .bio-content {
       @include degradado-horizontal(#ff6060, #ffb000);
       border-radius: 15px;
@@ -57,6 +61,10 @@ app-navbar-profile {
   .container-fluid {
     padding-top: 2%;
 
+    .titulo-posts{
+      display: none;
+    }
+
     // OCULTAR BIOGRAFÍA (MOBILE) Y BOTÓN (VER MIS POSTS)
     .bio,
     .mis-posts {
@@ -64,8 +72,9 @@ app-navbar-profile {
     }
   }
 
-  // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP
-  app-navbar-profile {
+  // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP Y LISTADO DE POSTS
+  app-navbar-profile,
+  app-post-list {
     display: flex;
   }
 }

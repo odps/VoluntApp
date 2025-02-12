@@ -1,12 +1,14 @@
 <body>
+  <!-- CABECERA DE PROFILE -->
   <app-header-profile></app-header-profile>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (SE USA EN MOBILE)-->
   <app-navbar></app-navbar>
 
   <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
   <app-navbar-profile></app-navbar-profile>
 
+  <!-- CONTENEDOR PRINCIPAL -->
   <div class="container-fluid">
     <!-- BIOGRAFÍA (USO EXCLUSIVO EN MOBILE)-->
     <section class="bio" *ngIf="user">
@@ -28,12 +30,17 @@
       *ngIf="isDesktop ? activeSection === 'eventos' : true"
     ></app-eventos-profile>
 
-    <!-- VER MIS POSTS (MOBILE)-->
-    <app-post-list
-    [userId]="user?.id"
-    *ngIf="isDesktop ? activeSection === 'posts' : true"
-  ></app-post-list>
+    <!-- SOLICITUDES AMISTAD-->
+    <app-friend-requests
+      *ngIf="isDesktop ? activeSection === 'solicitudes' : true"
+    ></app-friend-requests>
 
+    <h3 class="titulo-posts">Mis posts:</h3>
+    <!-- POSTS -->
+    <app-post-list
+      [userId]="user?.id"
+      *ngIf="isDesktop ? activeSection === 'posts' : true"
+    ></app-post-list>
   </div>
 
   <app-footer></app-footer>

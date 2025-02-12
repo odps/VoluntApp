@@ -14,8 +14,9 @@ use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\GroupController;
 use App\Http\Controllers\User\FriendRequestController;
 use App\Http\Controllers\User\EventsController;
-use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\User\ProfileController as UserProfileController;
+use App\Http\Controllers\ProfileController;
 
 
 // Ruta para obtener los datos de la cuenta de usuario
@@ -108,16 +109,19 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     //Ruta de gestion del perfil de usuario
-    Route::get('profile', [ProfileController::class, 'index']); // Obtener informacion del perfil del usuario
-    Route::get('profile/{id}', [ProfileController::class, 'getProfile']); // Obtener info perfil especifico
-    Route::get('profile/picture/{id?}', [ProfileController::class, 'getProfilePicture']); //Obtiene foto de perfil de usuario
-    Route::post('edit/profile-picture', [ProfileController::class, 'setProfilePicture']); // Modifica la foto de perfil del usuario
-    Route::put('edit/profile-email', [ProfileController::class, 'setEmail']); // Modifica el email del usuario
-    Route::put('edit/profile-password', [ProfileController::class, 'setPassword']); // Modifica la contraseña del usuario
-    Route::put('edit/profile-nickname', [ProfileController::class, 'setNickname']); //Modifica el nickname del usuario
-    Route::put('edit/profile-interests', [ProfileController::class, 'setInterests']); // Modifica los intereses del usuario
+    Route::get('profile', [UserProfileController::class, 'index']); // Obtener informacion del perfil del usuario
+    Route::get('profile/{id}', [UserProfileController::class, 'getProfile']); // Obtener info perfil especifico
+    Route::get('profile/picture/{id?}', [UserProfileController::class, 'getProfilePicture']); //Obtiene foto de perfil de usuario
+    Route::post('edit/profile-picture', [UserProfileController::class, 'setProfilePicture']); // Modifica la foto de perfil del usuario
+    Route::put('edit/profile-email', [UserProfileController::class, 'setEmail']); // Modifica el email del usuario
+    Route::put('edit/profile-password', [UserProfileController::class, 'setPassword']); // Modifica la contraseña del usuario
+    Route::put('edit/profile-nickname', [UserProfileController::class, 'setNickname']); //Modifica el nickname del usuario
+    Route::put('edit/profile-interests', [UserProfileController::class, 'setInterests']); // Modifica los intereses del usuario
 
     //Ruta de las reviews entre usuarios
     Route::post('/review', [ReviewController::class, 'setReview']); //Deja una review sobre el usuario
     Route::get('/reviews/{userId}', [ReviewController::class, 'getReviews']); //Permite ver la info de las review
+
+
+    Route::get('/users', [ProfileController::class, 'getUsers']); //Ruta para devolver todos los usuarios disponibles con su perfil.
 });

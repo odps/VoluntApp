@@ -30,7 +30,8 @@
 @media (min-width: 769px) {
   .settings-header {
     .back {
-      font-size: 45px;
+      position: fixed;
+      font-size: 35px;
       left: 5%;
       top: 4%;
     }

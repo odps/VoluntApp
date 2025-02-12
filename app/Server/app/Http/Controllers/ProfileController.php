@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use App\Models\Profile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +59,22 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    //Ruta que devuelve todos los usuarios y sus perfiles.
+    public function getUsers(): JsonResponse
+    {
+        $users = User::all();
+        $usersWithProfiles = [];
+
+        foreach ($users as $user) {
+            $profile = Profile::where('user_id', $user->id)->first();
+            $usersWithProfiles[] = [
+                'user' => $user,
+                'profile' => $profile,
+            ];
+        }
+
+        return response()->json($usersWithProfiles);
     }
 }

@@ -1,27 +1,12 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
 
-// Mixins
-@mixin center-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin background-clip-text($color1, $color2) {
-  background: linear-gradient(to right, $color1, $color2);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+*{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
 }
 
 body {
@@ -48,18 +33,17 @@ body {
 }
 
 .amigos h2 {
-  @include background-clip-text($white, $grey);
+  @include degradado-horizontal-texto($white, $grey);
 }
 
 .amigo {
   padding: 20px;
-  display: flex;
-  text-align: center;
+
 }
 
 .amigo .foto {
   height: 50px;
-  margin-left: 20px;
+  border-radius: 50%;
 }
 
 .amigo .nombre {
@@ -71,11 +55,12 @@ body {
 .link_amigo {
   text-decoration: none;
   color: $white;
+  display: flex;
 }
 
 .no_amigos h2 {
   margin-bottom: 60px;
-  @include background-clip-text($white, $grey);
+  @include degradado-horizontal-texto($white, $grey);
 }
 
 @media (min-width: 769px) {

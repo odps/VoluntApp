@@ -1,18 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
 import { CommentService } from '../../services/comment.service';
-import { CommentComponent } from '../comment/comment.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrl: './post-list.component.css',
+  styleUrl: './post-list.component.scss',
   standalone: false,
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, OnChanges{
   @Input() userId: number | undefined;
   posts: any = [];
   user: User | null = null;
@@ -20,6 +18,7 @@ export class PostListComponent implements OnInit {
   userNickNames: Map<number, string> = new Map();
   newComment: any;
   commentingPostId: number | null | undefined;
+  isLoading: boolean = true; // Agrega esta línea
 
   constructor(
     private postService: PostService,
@@ -38,16 +37,20 @@ export class PostListComponent implements OnInit {
     this.loadPosts(this.userId);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userId'] && changes['userId'].currentValue !== undefined) {
+      this.loadPosts(this.userId);
+    }
+  }
+
   //Carga los posts, si no se pasa un Id como parametro a la clase devuelve todos los posts
   //disponibles en la BB.DD, caso contrario filtra por id de usuario
   loadPosts(userId?: number): void {
+    this.isLoading = true; // Establece isLoading en true al comenzar la carga
     this.postService.getPosts().subscribe({
       next: (response) => {
-        // console.log('Full Response:', response);
-
         if (response.posts) {
           let allPosts = response.posts as unknown as any[];
-          // console.log('All posts:', allPosts);
 
           if (userId) {
             this.posts = allPosts
@@ -63,15 +66,18 @@ export class PostListComponent implements OnInit {
               liked: false,
             }));
           }
-          // console.log('Filtered posts:', this.posts);
           this.getProfilePictures();
           this.getNicknames();
         } else {
           console.warn('Posts data not found in response');
           this.posts = [];
         }
+        this.isLoading = false; // Establece isLoading en false al terminar la carga
       },
-      error: (err) => console.error('Error loading posts:', err),
+      error: (err) => {
+        console.error('Error loading posts:', err);
+        this.isLoading = false; // Establece isLoading en false en caso de error
+      },
     });
   }
 
@@ -110,10 +116,7 @@ export class PostListComponent implements OnInit {
   toggleLike(post: any): void {
     this.postService.likePost(post.id).subscribe({
       next: (response) => {
-        // Find the index of the post in the posts array
         const index = this.posts.findIndex((p: any) => p.id === post.id);
-
-        // If the post is found, update its properties
         if (index !== -1) {
           this.posts[index].liked = response.liked;
           if (response.post && response.post.likes) {
@@ -154,12 +157,10 @@ export class PostListComponent implements OnInit {
     this.commentingPostId = null;
   }
 
-  //Metodo para mostrar comentarios
   toggleComments(post: any) {
     post.showComments = !post.showComments;
   }
 
-  //Metodo para eliminar comentarios
   onCommentDeleted(commentId: number, postId: number): void {
     const post = this.posts.find((post: { id: number }) => post.id === postId);
     if (post) {

@@ -21,8 +21,6 @@ import { ChangeEmailComponent } from './components/settings-options/change-email
 import { ChangeUsernameComponent } from './components/settings-options/change-username/change-username.component';
 import { ChangeBioComponent } from './components/settings-options/change-bio/change-bio.component';
 import { ChangeProfilePictureComponent } from './components/settings-options/change-profile-picture/change-profile-picture.component';
-import { EventsComponent } from './components/events/events.component';
-import { LogrosComponent } from './components/logros/logros.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { PostListComponent } from './components/post-list/post-list.component';
@@ -31,10 +29,14 @@ import { HeaderProfileComponent } from './components/profile/header-profile/head
 import { NavbarProfileComponent } from './components/profile/navbar-profile/navbar-profile.component';
 import { EventosProfileComponent } from './components/profile/eventos-profile/eventos-profile.component';
 import { LogrosProfileComponent } from './components/profile/logros-profile/logros-profile.component';
-import { MisPostsProfileComponent } from './components/profile/mis-posts-profile/mis-posts-profile.component';
+import { FriendProfileComponent } from './components/friend-profile/friend-profile.component';
+import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+
+import { FriendshipRequest } from './interfaces/friendship';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +56,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ChangeEmailComponent,
     ChangeBioComponent,
     ChangeProfilePictureComponent,
-    EventsComponent,
-    LogrosComponent,
     NavbarComponent,
     GroupsComponent,
     PostListComponent,
@@ -64,8 +64,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NavbarProfileComponent,
     EventosProfileComponent,
     LogrosProfileComponent,
-    MisPostsProfileComponent,
+    FriendProfileComponent,
+    FriendRequestsComponent,
+    PagenotfoundComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

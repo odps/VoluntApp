@@ -1,0 +1,97 @@
+<body>
+  <header>
+    <div class="perfil-cabezera">
+      <!-- FLECHA DE REGRESO -->
+      <div class="back">
+        <a [routerLink]="['/main']"><i class="bi bi-arrow-left"></i></a>
+      </div>
+
+      <!-- FOTO, NOMBRE Y RATING DE PERFIL -->
+      <div class="perfil-info">
+        <img
+          [src]="baseUrl +'/'+ friendProfile?.profile?.profile_picture_route"
+          [alt]="friendProfile?.profile?.nickname"
+          class="foto-perfil rounded-circle"
+        />
+        <h2 id="nickname">{{ friendProfile?.profile?.nickname }}</h2>
+        <p class="rating" *ngIf="friendProfile?.profile?.rating">
+          🌟{{ friendProfile?.profile?.rating }}
+        </p>
+      </div>
+    </div>
+
+    <!-- BIOGRAFÍA -->
+    <div class="bio-content-header">
+      <p id="interests" *ngIf="friendProfile?.profile?.interests">
+        {{ friendProfile?.profile?.interests }}
+      </p>
+    </div>
+
+    <!-- Botón para solicitar amistad o dejar de ser amigos -->
+    <!-- <div *ngIf="user && friendProfile?.friend?.id !== user.id">
+      <button
+        *ngIf="!esAmigo && !solicitudPendiente"
+        (click)="solicitarAmistad(friendProfile!.friend!.id)"
+      >
+        Solicitar amistad
+      </button>
+      <button
+        *ngIf="esAmigo==true"
+        (click)="eliminarAmistad(friendProfile!.friend.id)"
+      >
+        Dejar de ser amigos
+      </button>
+      <button *ngIf="solicitudPendiente" disabled>Solicitud enviada</button>
+    </div> -->
+  </header>
+
+  <!-- NAVBAR EXCLUSIVA DE PROFILE (SE USA EN DESKTOP) -->
+  <nav class="navbar-desktop">
+    <ul class="menu">
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'posts'"
+          (click)="changeSection('posts')"
+          (click)="setActiveView('posts')"
+          >Posts</a
+        >
+      </li>
+      <li>
+        <a
+          class="menu-link"
+          [class.active]="activeView === 'logros'"
+          (click)="changeSection('logros')"
+          (click)="setActiveView('logros')"
+          >Logros</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <!-- BIOGRAFÍA (USO EXCLUSIVO EN MOBILE)-->
+    <section class="bio" *ngIf="user">
+      <h4>Biografía</h4>
+      <div class="bio-content">
+        <p id="interests" *ngIf="friendProfile?.profile?.interests">
+          {{ friendProfile?.profile?.interests }}
+        </p>
+      </div>
+    </section>
+
+    <!-- LOGROS -->
+    <app-logros-profile
+      *ngIf="isDesktop ? activeSection === 'logros' : true"
+    ></app-logros-profile>
+
+    <!-- POSTS -->
+    <h3 class="titulo-posts">Posts de {{ friendProfile?.profile?.nickname }}:</h3>
+    <app-post-list
+      [userId]="friendId"
+      *ngIf="isDesktop ? activeSection === 'posts' : true"
+    ></app-post-list>
+  </div>
+
+  <app-footer></app-footer>
+</body>

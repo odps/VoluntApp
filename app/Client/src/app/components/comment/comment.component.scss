@@ -1,20 +1,36 @@
-$grey: #464646;
-$light-grey: #272727;
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
 
 .comment {
   border-bottom: $grey 2px solid;
   padding-bottom: 2%;
+  margin-left: 2%;
+
+  .profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+
+    .profile-picture{
+      width: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+
+  .delete-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0;
+  }
+  
+  .delete-button:hover {
+    color: $red;
+  }
 }
 
-.delete-button {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1.2em;
-  padding: 0;
-}
-
-.delete-button:hover {
-  color: red;
-}

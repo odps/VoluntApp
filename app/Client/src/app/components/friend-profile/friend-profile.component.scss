@@ -1,0 +1,203 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
+
+// GLOBALES
+* {
+  background-color: transparent;
+  font-family: $font-family;
+  color: $white;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  @include fondo-voluntapp;
+  min-height: 100vh;
+}
+
+// CONTENEDOR PRINCIPAL
+header {
+  width: 100%;
+
+  .back {
+    display: block !important;
+
+    .bi {
+      font-size: 35px !important;
+    }
+  }
+}
+
+// OCULTAR EL MENÚ NAV BAR EXCLUSIVO DE DESKTOP Y EL LISTADO DE POSTS
+
+.navbar-desktop{
+  display: none;
+}
+
+// CABECERA
+.perfil-cabezera {
+  margin-inline: 20px;
+  justify-content: space-between;
+  display: flex;
+  height: 100%;
+  min-height: 18vh;
+  padding: 1%;
+
+  .foto-perfil {
+    width: 65px;
+    border-radius: 50%;
+  }
+
+  .perfil-info {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+    gap: 20px;
+    margin-inline: 10%;
+
+    h2 {
+      padding: auto;
+      justify-content: baseline;
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
+      font-size: 35px;
+    }
+  }
+
+  // ICONOS DE BACK Y SETTINGS
+  .bi {
+    font-size: x-large;
+  }
+}
+
+// OCULTAMOS BIOGRAFÍA DE LA PARA MOBILE
+.bio-content-header {
+  display: none;
+}
+
+// CONTENEDOR PRINCIPAL
+.container-fluid {
+  padding: 9%;
+  min-height: 58vh;
+
+  .titulo-posts{
+    margin-top: 30px;
+  }
+
+  .bio {
+    h4 {
+      @include degradado-horizontal-texto($white, $grey);
+      margin-bottom: 20px;
+    }
+
+    .bio-content {
+      @include degradado-horizontal(#ff6060, #ffb000);
+      border-radius: 15px;
+      padding: 15px;
+      background-color: red;
+    }
+  }
+
+  .mis-posts {
+    display: flex;
+
+    a {
+      margin-left: auto;
+      text-decoration: none;
+
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  // MOSTRAR EL MENÚ NAVBAR EXCLUSIVO DE DESKTOP Y LISTADO DE POSTS
+  .navbar-desktop,
+  app-post-list {
+    display: flex;
+  }
+
+  // CABEZERA
+  .perfil-cabezera {
+    margin-inline: 50px !important;
+
+    .perfil-info {
+      display: block;
+
+      h2 {
+        margin-right: 80px;
+      }
+    }
+
+    .bio-content-header {
+      #interests {
+        display: block;
+      }
+
+      display: flex;
+      width: 100%;
+      padding-left: 25%;
+      padding-right: 25%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  .bio-content-header {
+    display: block;
+    text-align: center;
+  }
+
+  // NAVBAR
+  nav {
+    display: flex;
+    width: 100%;
+    margin-block: 20px;
+    justify-content: center;
+    align-items: center;
+
+    .menu {
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      max-width: 100%;
+      width: 60%;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .menu-link {
+      color: $white;
+      border-bottom: solid 1px $white;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-decoration: none;
+    }
+
+    .menu-link.active {
+      color: $red;
+    }
+  }
+
+  // CONTENEDOR PRINCIPAL
+  .container-fluid {
+    padding-top: 2%;
+
+    .titulo-posts{
+      display: none;
+    }
+
+    // OCULTAR BIOGRAFÍA (MOBILE) Y BOTÓN (VER MIS POSTS)
+    .bio,
+    .mis-posts {
+      display: none;
+    }
+  }
+}

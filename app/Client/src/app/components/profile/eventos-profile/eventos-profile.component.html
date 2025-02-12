@@ -1,19 +1,23 @@
 <section class="container-fluid">
   <h4>Eventos</h4>
   <div *ngIf="events.length === 0" class="no-events">
-    <p>No has publicado nada</p>
+    <p>No hay Eventos</p>
   </div>
-  <section class="eventos" *ngIf="events.length > 0;">
+  <section class="eventos" *ngIf="events.length > 0">
     <div class="evento" *ngFor="let event of events">
       <div class="evento-header">
-        <img
-          *ngFor="let participant of participantsByEvent.get(event.id)"
-          [src]="participantPictures.get(participant.id)"
-          [alt]="participant.name"
-          class="participant-pic"
-          width="32"
-          height="32"
-        />
+        <div class="participants" *ngIf="participantsByEvent.get(event.id)">
+          <div class="participant-pictures">
+            <img
+              *ngFor="let participant of participantsByEvent.get(event.id)"
+              [src]="participantPictures.get(participant.id)"
+              [alt]="participant.name"
+              class="participant-pic"
+              width="32"
+              height="32"
+            />
+          </div>
+        </div>
         <h5>{{ event.title }}</h5>
         <div class="participants" *ngIf="participantsByEvent.get(event.id)">
           <div class="participant-pictures"></div>
@@ -27,17 +31,3 @@
     </div>
   </section>
 </section>
-
-<!-- <main class="eventos"> -->
-<!-- modulo que corresponda segun se pinche en la barrita -->
-<!-- <app-events *ngIf="activeView === 'eventos'"></app-events>
-
-    <div *ngIf="activeView === 'posts'">
-      <h2>Mis Posts</h2> -->
-<!-- En esta etiqueta, ya que app-post-list tiene un input de user id
-      nos permite pasar el usuario y filtrar por si hiciera falta -->
-<!-- <app-post-list [userId]="user?.id"></app-post-list>
-    </div>
-
-    <app-logros *ngIf="activeView === 'logros'"></app-logros>
-  </main> -->

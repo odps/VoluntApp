@@ -12,11 +12,10 @@ interface ProfileResponse {
 @Component({
   selector: 'app-header-profile',
   standalone: false,
-  
-  templateUrl: './header-profile.component.html',
-  styleUrl: './header-profile.component.scss'
-})
 
+  templateUrl: './header-profile.component.html',
+  styleUrl: './header-profile.component.scss',
+})
 export class HeaderProfileComponent implements OnInit {
   user: User | null = null;
   profilePictureUrl: string = '';
@@ -25,7 +24,7 @@ export class HeaderProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private location: Location,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

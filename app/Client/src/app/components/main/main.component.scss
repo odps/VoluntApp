@@ -1,20 +1,5 @@
-// Variables
-$font-family: "Montserrat", sans-serif;
-$background-color: #1d1d1d;
-$primary-color: #d04b4b;
-$white: #ffffff;
-$grey: #464646;
-$light-grey: #272727;
-$font-size-small: small;
-$font-size-medium: medium;
-$font-size-x-small: x-small;
-$font-size-x-large: x-large;
-
-@mixin center-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
 
 * {
     background-size: cover;
@@ -23,6 +8,7 @@ $font-size-x-large: x-large;
     background-position: center;
     color: white;
 }
+
 html, body {
     height: 100%;
     margin: 0;
@@ -31,14 +17,7 @@ html, body {
   }
   
   body {
-    background-image: url("../../../assets/images/Wallp-Dark.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    @include fondo-voluntapp;
   }
   
 main{
@@ -48,17 +27,14 @@ main{
 
 }
 
-
 .sidebar {
     display: none;
     background-color: $grey;
     max-width: 100%;
 }
 
-
-
 .publicar {
-    background-color: $primary-color;
+    background-color: $red;
     border-radius: 50%;
     border: none;
     color: $white;
@@ -69,18 +45,18 @@ main{
     transition: background-color 0.3s ease; 
     margin-bottom: 2%;
     margin-left: 80%;
-
+    position: fixed;
+    bottom: 13%;
+    right: 7%;
 }
 
 .publicar:hover {
-    background-color: darken($primary-color, 10%); 
+    background-color: darken($red, 10%); 
 }
 
 .publicar::after{
     content: "+";
 }
-
-
 
 @media (min-width: 481px) and (max-width: 768px) {
     html,body{
@@ -99,12 +75,10 @@ main{
     }
     main{
         width: 100%;
-    }
-
-    
+    } 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
   main,html {
     width: 60%;
@@ -157,10 +131,9 @@ main{
         font-size: $font-size-medium;
         width: 120px; 
         height: 40px;
-    }
 
-    .publicar::after{
-        content: "Publicar";
-        
+        &::after{
+            content: "Publicar"; 
+        }    
     }
 }

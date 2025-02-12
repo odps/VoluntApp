@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class PostsComponent {
   postContent: string = '';
+  location: any;
 
   constructor(
     private postService: PostService,
